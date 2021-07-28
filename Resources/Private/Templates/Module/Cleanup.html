@@ -1,0 +1,13 @@
+{namespace vh=In2code\Powermail\ViewHelpers}
+<f:layout name="Backend" />
+
+Show Backend Module: Overview
+{forms}         Powermail Forms
+
+<f:section name="content">
+
+	<h1><f:translate key="BackendSelectionOverview">Form Overview</f:translate></h1>
+
+	<f:render partial="Module/Cleanup" arguments="{_all}"></f:render>
+</f:section>
+

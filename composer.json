@@ -1,0 +1,41 @@
+{
+  "name": "in2code/powermail_cleaner",
+  "description": "Powermail Cleaner helps to clean up quick and easy old requests",
+  "keywords": [
+    "typo3",
+    "form",
+    "mailform",
+    "spamprevention"
+  ],
+  "authors": [
+    {
+      "name": "Oliver Eglseder",
+      "email": "oliver.eglseder@in2code.de"
+    },
+    {
+      "name": "Stefan Busemann",
+      "email": "stefan.busemann@in2code.de"
+    }
+  ],
+  "type": "typo3-cms-extension",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "typo3/cms-core": ">=8.7.0 <10.0.0",
+    "ext-json": "*",
+    "ext-gd": "*"
+  },
+  "replace": {
+    "typo3-ter/powermail": "self.version"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "In2code\\PowermailCleaner\\": "Classes/"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "powermail_cleaner"
+    }
+  }
+}

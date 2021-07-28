@@ -1,0 +1,13 @@
+#################
+# Backend Module
+#################
+module.tx_powermail {
+	view {
+		templateRootPaths.20 = EXT:powermail_cleaner/Resources/Private/Templates/
+		partialRootPaths.20 = EXT:powermail_cleaner/Resources/Private/Partials/
+		layoutRootPaths.20 = EXT:powermail_cleaner/Resources/Private/Layouts/
+	}
+	settings {
+		cleanupAge = 31536000
+	}
+}
