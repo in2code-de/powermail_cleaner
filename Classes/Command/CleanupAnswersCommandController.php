@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace In2code\PowermailCleaner\Command;
 
-use In2code\Powermail\Domain\Service\CleanupService;
+use In2code\PowermailCleaner\Domain\Service\CleanupService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\CommandController;
 
 class CleanupAnswersCommandController extends CommandController
@@ -14,6 +17,9 @@ class CleanupAnswersCommandController extends CommandController
      */
     protected $cleanupService;
 
+    /** @var array */
+    public $settings;
+
     /**
      * @param CleanupService $cleanupService
      */
@@ -21,7 +27,6 @@ class CleanupAnswersCommandController extends CommandController
     {
         $this->cleanupService = $cleanupService;
     }
-
     /**
      * @param int $age Age of the answers in seconds. e.g. 5184000 = 60 days
      * @param int $pid Optional PID. If set, only answers stored on the given PID are cleaned up.
@@ -29,6 +34,12 @@ class CleanupAnswersCommandController extends CommandController
      */
     public function deleteCommand(int $age, int $pid = null): bool
     {
+        $configurationManager = GeneralUtility::makeInstance(ConfigurationManager::class);
+
+        $this->settings = $configurationManager->getConfiguration(
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+        $this->cleanupService->settings = $this->settings['module.']['tx_powermail.']['settings.'];
+
         $stats = $this->cleanupService->deleteMailsOlderThanAgeInPid($age, $pid);
         $this->outputLine(
             sprintf(

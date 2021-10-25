@@ -15,7 +15,7 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 class CleanupService
 {
     /** @var array */
-    protected $settings;
+    public $settings;
 
     /** @param ConfigurationManager $configurationManager */
     public function injectConfigurationManager(ConfigurationManager $configurationManager): void
