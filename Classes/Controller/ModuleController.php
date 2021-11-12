@@ -19,10 +19,8 @@ class ModuleController extends \In2code\Powermail\Controller\ModuleController
      */
     public function initializeCleanupAction()
     {
-
-
-
-        $this->checkAdminPermissions();
+        #deactive this, to restrict this only for admins
+        #$this->checkAdminPermissions();
     }
 
     /**
