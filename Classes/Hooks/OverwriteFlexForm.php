@@ -19,7 +19,7 @@ class OverwriteFlexForm
      */
     public function overwrite()
     {
-        $GLOBALS['TCA']['tt_content']['columns']['pi_flexform']['config']['ds']['in2studyfinder_pi1,list']
+        $GLOBALS['TCA']['tt_content']['columns']['pi_flexform']['config']['ds']['powermail_pi1,list']
             = $this->path;
     }
 }
