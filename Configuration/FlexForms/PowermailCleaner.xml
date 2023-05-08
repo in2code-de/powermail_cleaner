@@ -1,0 +1,143 @@
+<powermailCleaner>
+    <ROOT>
+        <TCEforms>
+            <sheetTitle>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:tabs.powermailCleaner</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+            <settings.powermailCleaner.deletionBehavior>
+                <TCEforms>
+                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior</label>
+                    <onChange>reload</onChange>
+                    <config>
+                        <type>select</type>
+                        <renderType>selectSingle</renderType>
+                        <items>
+                            <numIndex index="0">
+                                <numIndex index="0">LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior.0</numIndex>
+                                <numIndex index="1"/>
+                            </numIndex>
+                            <numIndex index="1">
+                                <numIndex index="0">LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior.dbDisable</numIndex>
+                                <numIndex index="1">dbDisable</numIndex>
+                            </numIndex>
+                            <numIndex index="2">
+                                <numIndex index="0">LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior.deletionPeriod</numIndex>
+                                <numIndex index="1">deletionPeriod</numIndex>
+                            </numIndex>
+                            <numIndex index="3">
+                                <numIndex index="0">LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior.deletionDate</numIndex>
+                                <numIndex index="1">deletionDate</numIndex>
+                            </numIndex>
+                        </items>
+                    </config>
+                    <displayCond>FIELD:parentRec.l18n_parent:REQ:false</displayCond>
+                </TCEforms>
+            </settings.powermailCleaner.deletionBehavior>
+            <settings.powermailCleaner.deletionBehavior_l10n>
+                <TCEforms>
+                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior</label>
+                    <description>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:hintTransl.Orig</description>
+                    <config>
+                        <type>select</type>
+                        <renderType>selectSingle</renderType>
+                        <items type="array"/>
+                        <itemsProcFunc>In2code\PowermailCleaner\Tca\FormSelectorUserFunc->getDeletionBehaviorL10nItems</itemsProcFunc>
+                        <readOnly>1</readOnly>
+                    </config>
+                    <displayCond>FIELD:parentRec.l18n_parent:REQ:true</displayCond>
+                </TCEforms>
+            </settings.powermailCleaner.deletionBehavior_l10n>
+            <settings.powermailCleaner.deletionPeriod>
+                <TCEforms>
+                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionPeriod</label>
+                    <config>
+                        <type>input</type>
+                        <eval>trim,int,required</eval>
+                        <default>14</default>
+                    </config>
+                    <displayCond>
+                        <AND>
+                            <numIndex index="0">FIELD:parentRec.l18n_parent:REQ:false</numIndex>
+                            <numIndex index="1">FIELD:settings.powermailCleaner.deletionBehavior:=:deletionPeriod</numIndex>
+                        </AND>
+                    </displayCond>
+                </TCEforms>
+            </settings.powermailCleaner.deletionPeriod>
+            <settings.powermailCleaner.deletionPeriod_l10n>
+                <TCEforms>
+                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionPeriod</label>
+                    <description>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:hintTransl.Orig</description>
+                    <config>
+                        <type>select</type>
+                        <renderType>selectSingle</renderType>
+                        <items type="array"/>
+                        <itemsProcFunc>In2code\PowermailCleaner\Tca\FormSelectorUserFunc->getDeletionPeriodL10nItems</itemsProcFunc>
+                        <readOnly>1</readOnly>
+                    </config>
+                    <displayCond>
+                        <AND>
+                            <numIndex index="0">FIELD:parentRec.l18n_parent:REQ:true</numIndex>
+                            <numIndex index="1">USER:In2code\PowermailCleaner\Tca\DisplayCondUserFunc->getDeletionPeriodCondition</numIndex>
+                        </AND>
+                    </displayCond>
+                </TCEforms>
+            </settings.powermailCleaner.deletionPeriod_l10n>
+            <settings.powermailCleaner.deletionDate>
+                <TCEforms>
+                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionDate</label>
+                    <config>
+                        <type>input</type>
+                        <renderType>inputDateTime</renderType>
+                        <eval>trim,date,required</eval>
+                    </config>
+                    <displayCond>
+                        <AND>
+                            <numIndex index="0">FIELD:parentRec.l18n_parent:REQ:false</numIndex>
+                            <numIndex index="1">FIELD:settings.powermailCleaner.deletionBehavior:=:deletionDate</numIndex>
+                        </AND>
+                    </displayCond>
+                </TCEforms>
+            </settings.powermailCleaner.deletionDate>
+            <settings.powermailCleaner.deletionDate_l10n>
+                <TCEforms>
+                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionDate</label>
+                    <description>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:hintTransl.Orig</description>
+                    <config>
+                        <type>select</type>
+                        <renderType>selectSingle</renderType>
+                        <items type="array"/>
+                        <itemsProcFunc>In2code\PowermailCleaner\Tca\FormSelectorUserFunc->getDeletionDateL10nItems</itemsProcFunc>
+                        <readOnly>1</readOnly>
+                    </config>
+                    <displayCond>
+                        <AND>
+                            <numIndex index="0">FIELD:parentRec.l18n_parent:REQ:true</numIndex>
+                            <numIndex index="1">USER:In2code\PowermailCleaner\Tca\DisplayCondUserFunc->getDeletionDateCondition</numIndex>
+                        </AND>
+                    </displayCond>
+                </TCEforms>
+            </settings.powermailCleaner.deletionDate_l10n>
+            <settings.powermailCleaner.deletionContact>
+                <TCEforms>
+                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionContact</label>
+                    <config>
+                        <type>text</type>
+                        <enableRichtext>1</enableRichtext>
+                    </config>
+                    <displayCond>USER:In2code\PowermailCleaner\Tca\DisplayCondUserFunc->getDeletionContactCondition</displayCond>
+                </TCEforms>
+            </settings.powermailCleaner.deletionContact>
+            <settings.powermailCleaner.deletionDetails>
+                <TCEforms>
+                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionDetails</label>
+                    <config>
+                        <type>text</type>
+                        <enableRichtext>1</enableRichtext>
+                    </config>
+                    <displayCond>USER:In2code\PowermailCleaner\Tca\DisplayCondUserFunc->getDeletionDetailsCondition</displayCond>
+                </TCEforms>
+            </settings.powermailCleaner.deletionDetails>
+        </el>
+    </ROOT>
+</powermailCleaner>

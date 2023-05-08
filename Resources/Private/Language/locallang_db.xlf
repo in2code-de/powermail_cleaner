@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext"
+		 original="EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf"
+		 date="2022-03-21T12:00:00Z" product-name="powermail_cleaner">
+		<header/>
+		<body>
+			<trans-unit id="tabs.powermailCleaner">
+				<source>Data protection / Clean-up</source>
+			</trans-unit>
+
+			<trans-unit id="deletionBehavior">
+				<source>Clean-up of form data</source>
+			</trans-unit>
+			<trans-unit id="deletionBehavior.0">
+				<source>Please select</source>
+			</trans-unit>
+			<trans-unit id="deletionBehavior.dbDisable">
+				<source>Data is not stored in database</source>
+			</trans-unit>
+			<trans-unit id="deletionBehavior.deletionPeriod">
+				<source>Data will be cleaned after the specified deletion period</source>
+			</trans-unit>
+			<trans-unit id="deletionBehavior.deletionDate">
+				<source>Data will be cleaned after specified date</source>
+			</trans-unit>
+			<trans-unit id="deletionPeriod">
+				<source>Clean-up period (in days)</source>
+			</trans-unit>
+			<trans-unit id="deletionDate">
+				<source>Clean-up after the specified date</source>
+			</trans-unit>
+			<trans-unit id="deletionContact">
+				<source>Contact for objection and deletion option</source>
+			</trans-unit>
+			<trans-unit id="deletionDetails">
+				<source>Amendments to the Data Protection Policy</source>
+			</trans-unit>
+
+			<trans-unit id="hintTransl.Orig">
+				<source>Setting is taken from standard language</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
