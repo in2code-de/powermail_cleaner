@@ -40,6 +40,20 @@
 			<trans-unit id="hintTransl.Orig">
 				<source>Setting is taken from standard language</source>
 			</trans-unit>
+
+			<trans-unit id="pluginInfo.deletion">
+				<source>Deletion behaviour</source>
+			</trans-unit>
+
+			<trans-unit id="pluginInfo.deletionBehavior.dbDisable">
+				<source>Data is not stored in database</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior.deletionPeriod">
+				<source>Data is deleted after %d days</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior.deletionDate">
+				<source>Data will be deleted on %s</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

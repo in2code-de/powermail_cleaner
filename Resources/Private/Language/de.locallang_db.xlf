@@ -51,6 +51,25 @@
 				<source>Setting is taken from standard language</source>
 				<target state="translated">Einstellung wird aus Standardsprache übernommen</target>
 			</trans-unit>
+
+
+			<trans-unit id="pluginInfo.deletion">
+				<source>Deletion behaviour</source>
+				<target state="translated">Löschen von Daten</target>
+			</trans-unit>
+
+			<trans-unit id="pluginInfo.deletionBehavior.dbDisable">
+				<source>Data is not stored in database</source>
+				<target state="translated">Daten werden nicht in Datenbank gespeichert</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior.deletionPeriod">
+				<source>Data is deleted after %d days</source>
+				<target state="translated">Daten werden nach %d Tagen gelöscht</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior.deletionDate">
+				<source>Data will be deleted on %s</source>
+				<target state="translated">Daten werden am %s gelöscht</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
