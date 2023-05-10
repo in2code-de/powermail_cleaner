@@ -27,7 +27,7 @@ class FlexFormHook
             && $identifier['dataStructureKey'] === 'powermail_pi1,list')
         {
             /** @noinspection Annotator */
-            $filename = 'EXT:powermail_cleaner/Configuration/Flexforms/PowermailCleaner.xml';
+            $filename = 'EXT:powermail_cleaner/Configuration/FlexForms/PowermailCleaner.xml';
             $file     = GeneralUtility::getFileAbsFileName($filename);
             $content  = file_get_contents($file);
             if ($content) {
