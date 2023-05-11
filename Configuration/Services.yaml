@@ -8,3 +8,9 @@ services:
     resource: '../Classes/*'
     exclude:
       - '../Classes/Domain/Model/*'
+
+  In2code\PowermailCleaner\Command\CleanupCommand:
+    tags:
+      - name: console.command
+        command: 'powermail_cleaner:cleanup'
+        description: 'Cleans up powermail mails based on configuration set in plugins'

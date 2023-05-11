@@ -1,12 +1,12 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 namespace In2code\PowermailCleaner\Hooks;
 
 use In2code\Powermail\Domain\Model\Form;
 use In2code\Powermail\Domain\Repository\MailRepository;
 use In2code\Powermail\Utility\ArrayUtility;
 use In2code\Powermail\Utility\ConfigurationUtility;
-use In2code\Powermail\Utility\ObjectUtility;
 use In2code\Powermail\Utility\TemplateUtility;
 use TYPO3\CMS\Backend\Utility\BackendUtility as BackendUtilityCore;
 use TYPO3\CMS\Backend\View\PageLayoutView;
@@ -25,21 +25,20 @@ use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
  */
 class PluginPreview implements PageLayoutViewDrawItemHookInterface
 {
+    /**
+     * @var array
+     */
+    protected array $row = [];
 
     /**
      * @var array
      */
-    protected $row = [];
-
-    /**
-     * @var array
-     */
-    protected $flexFormData;
+    protected array $flexFormData;
 
     /**
      * @var string
      */
-    protected $templatePathAndFile = 'EXT:powermail_cleaner/Resources/Private/Templates/Hook/PluginPreview.html';
+    protected string $templatePathAndFile = 'EXT:powermail_cleaner/Resources/Private/Templates/Hook/PluginPreview.html';
 
     /**
      * Preprocesses the preview rendering of a content element
@@ -109,7 +108,7 @@ class PluginPreview implements PageLayoutViewDrawItemHookInterface
                 'enableMailPreview' => !ConfigurationUtility::isDisablePluginInformationMailPreviewActive(),
                 'form' => $this->getFormTitleByUid(
                     (int)ArrayUtility::getValueByPath($this->flexFormData, 'settings.flexform.main.form')
-                )
+                ),
             ]
         );
         return $standaloneView->render();
@@ -119,12 +118,11 @@ class PluginPreview implements PageLayoutViewDrawItemHookInterface
      * Get latest three emails to this form
      *
      * @return QueryResultInterface
-     * @throws Exception
      */
     protected function getLatestMails(): QueryResultInterface
     {
         /** @var MailRepository $mailRepository */
-        $mailRepository = ObjectUtility::getObjectManager()->get(MailRepository::class);
+        $mailRepository = GeneralUtility::makeInstance(MailRepository::class);
         return $mailRepository->findLatestByForm(
             (int)ArrayUtility::getValueByPath($this->flexFormData, 'settings.flexform.main.form')
         );
@@ -159,7 +157,7 @@ class PluginPreview implements PageLayoutViewDrawItemHookInterface
     {
         $uid = $this->getLocalizedFormUid($uid, $this->getSysLanguageUid());
         $row = BackendUtilityCore::getRecord(Form::TABLE_NAME, $uid, 'title', '', false);
-        return (string)$row['title'];
+        return $row['title'] ?? '';
     }
 
     /**
@@ -191,7 +189,10 @@ class PluginPreview implements PageLayoutViewDrawItemHookInterface
      */
     protected function getFormUid(): int
     {
-        return (int)$this->flexFormData['settings']['flexform']['main']['form'];
+        if (isset($this->flexFormData['settings']['flexform']['main']['form'])) {
+            return (int)$this->flexFormData['settings']['flexform']['main']['form'];
+        }
+        return 0;
     }
 
     /**
@@ -210,12 +211,11 @@ class PluginPreview implements PageLayoutViewDrawItemHookInterface
     /**
      * @param array $row
      * @return void
-     * @throws Exception
      */
     protected function initialize(array $row): void
     {
         $this->row = $row;
-        $flexFormService = ObjectUtility::getObjectManager()->get(FlexFormService::class);
+        $flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
         $this->flexFormData = $flexFormService->convertFlexFormContentToArray($this->row['pi_flexform']);
     }
 }
