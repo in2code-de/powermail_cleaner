@@ -25,10 +25,10 @@ class BackendUtility
         $flexFormData = GeneralUtility::xml2array($l18nParent['pi_flexform']);
         $flexFormData = $flexFormData['data']['powermailCleaner']['lDEF'];
 
-        if (empty($flexFormData['settings.powermailCleaner.' . $field]['vDEF'])) {
+        if (empty($flexFormData['settings.flexform.powermailCleaner.' . $field]['vDEF'])) {
             return '';
         }
 
-        return $flexFormData['settings.powermailCleaner.' . $field]['vDEF'];
+        return $flexFormData['settings.flexform.powermailCleaner.' . $field]['vDEF'];
     }
 }

@@ -42,7 +42,7 @@ class CleanupCommand extends Command
         foreach ($powermailPlugins as $powermailPlugin) {
             $flexForm = $flexFormService->convertFlexFormContentToArray($powermailPlugin['pi_flexform']);
             $formUid = $flexForm['settings']['flexform']['main']['form'];
-            $cleanerConfiguration = $flexForm['settings']['powermailCleaner'];
+            $cleanerConfiguration = $flexForm['settings']['flexform']['powermailCleaner'];
             $deletionBehavior = $cleanerConfiguration['deletionBehavior'];
 
             if (isset($deletionBehavior) && $deletionBehavior != '') {
