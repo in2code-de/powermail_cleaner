@@ -48,11 +48,20 @@
 			<trans-unit id="pluginInfo.deletionBehavior.dbDisable">
 				<source>Data is not stored in database</source>
 			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior_long.dbDisable">
+				<source>The data you submitted to this form will not be stored in the database.</source>
+			</trans-unit>
 			<trans-unit id="pluginInfo.deletionBehavior.deletionPeriod">
 				<source>Data is deleted after %d days</source>
 			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior_long.deletionPeriod">
+				<source>The data you submitted to this form will be deleted after a period of %d days.</source>
+			</trans-unit>
 			<trans-unit id="pluginInfo.deletionBehavior.deletionDate">
 				<source>Data will be deleted on %s</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior_long.deletionDate">
+				<source>The data you submitted to this form will be deleted on %s.</source>
 			</trans-unit>
 		</body>
 	</file>

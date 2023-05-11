@@ -62,13 +62,25 @@
 				<source>Data is not stored in database</source>
 				<target state="translated">Daten werden nicht in Datenbank gespeichert</target>
 			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior_long.dbDisable">
+				<source>The data you submitted to this form will not be stored in the database.</source>
+				<target state="translated">Ihre Eingaben in diesem Formular werden nicht in unserer Datenbank gespeichert.</target>
+			</trans-unit>
 			<trans-unit id="pluginInfo.deletionBehavior.deletionPeriod">
 				<source>Data is deleted after %d days</source>
 				<target state="translated">Daten werden nach %d Tagen gelöscht</target>
 			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior_long.deletionPeriod">
+				<source>The data you submitted to this form will be deleted after a period of %d days.</source>
+				<target state="translated">Ihre Eingaben in diesem Formular werden nach %d Tagen gelöscht.</target>
+			</trans-unit>
 			<trans-unit id="pluginInfo.deletionBehavior.deletionDate">
 				<source>Data will be deleted on %s</source>
 				<target state="translated">Daten werden am %s gelöscht</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior_long.deletionDate">
+				<source>The data you submitted to this form will be deleted on %s.</source>
+				<target state="translated">Ihre Eingaben in diesem Formular werden am %s gelöscht.</target>
 			</trans-unit>
 		</body>
 	</file>

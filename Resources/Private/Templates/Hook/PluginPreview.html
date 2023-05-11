@@ -100,7 +100,7 @@
             </tr>
         </f:if>
 
-        <f:if condition="{flexFormData.settings.powermailCleaner.deletionBehavior} != ''">
+        <f:if condition="{flexFormData.settings.flexform.powermailCleaner.deletionBehavior} != ''">
             <tr>
                 <td style="padding: 2px 10px 2px 5px">
                     <strong>
@@ -108,11 +108,11 @@
                     </strong>
                 </td>
                 <td>
-                    <f:variable name="llArgs" value="{0: flexFormData.settings.powermailCleaner.deletionPeriod}"></f:variable>
-                    <f:if condition="{flexFormData.settings.powermailCleaner.deletionBehavior} == 'deletionDate'">
-                        <f:variable name="llArgs" value="{0: '{flexFormData.settings.powermailCleaner.deletionDate -> f:format.date(format: \'d.m.Y\')}'}"></f:variable>
+                    <f:variable name="llArgs" value="{0: flexFormData.settings.flexform.powermailCleaner.deletionPeriod}"></f:variable>
+                    <f:if condition="{flexFormData.settings.flexform.powermailCleaner.deletionBehavior} == 'deletionDate'">
+                        <f:variable name="llArgs" value="{0: '{flexFormData.settings.flexform.powermailCleaner.deletionDate -> f:format.date(format: \'d.m.Y\')}'}"></f:variable>
                     </f:if>
-                    <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior.{flexFormData.settings.powermailCleaner.deletionBehavior}" arguments="{llArgs}">deletion</f:translate>
+                    <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior.{flexFormData.settings.flexform.powermailCleaner.deletionBehavior}" arguments="{llArgs}">deletion</f:translate>
                 </td>
             </tr>
         </f:if>
