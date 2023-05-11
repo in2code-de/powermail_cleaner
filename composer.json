@@ -1,6 +1,6 @@
 {
   "name": "in2code/powermail_cleaner",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Powermail Cleaner helps to clean up quick and easy old requests",
   "keywords": [
     "typo3",
@@ -21,40 +21,40 @@
   "type": "typo3-cms-extension",
   "license": "GPL-2.0-or-later",
   "require": {
-    "typo3/cms-core": "^10.4",
-    "in2code/powermail": "^8.4",
+    "typo3/cms-core": "^11.5",
+    "in2code/powermail": "^10.7",
     "ext-json": "*",
     "ext-gd": "*"
   },
   "require-dev": {
-    "typo3/cms-about": "^10.4",
-    "typo3/cms-adminpanel": "^10.4",
-    "typo3/cms-backend": "^10.4",
-    "typo3/cms-belog": "^10.4",
-    "typo3/cms-beuser": "^10.4",
-    "typo3/cms-extbase": "^10.4",
-    "typo3/cms-extensionmanager": "^10.4",
-    "typo3/cms-filelist": "^10.4",
-    "typo3/cms-fluid": "^10.4",
-    "typo3/cms-fluid-styled-content": "^10.4",
-    "typo3/cms-form": "^10.4",
-    "typo3/cms-frontend": "^10.4",
-    "typo3/cms-impexp": "^10.4",
-    "typo3/cms-info": "^10.4",
-    "typo3/cms-install": "^10.4",
-    "typo3/cms-lowlevel": "^10.4",
-    "typo3/cms-opendocs": "^10.4",
-    "typo3/cms-recordlist": "^10.4",
-    "typo3/cms-recycler": "^10.4",
-    "typo3/cms-redirects": "^10.4",
-    "typo3/cms-reports": "^10.4",
-    "typo3/cms-rte-ckeditor": "^10.4",
-    "typo3/cms-scheduler": "^10.4",
-    "typo3/cms-seo": "^10.4",
-    "typo3/cms-setup": "^10.4",
-    "typo3/cms-tstemplate": "^10.4",
-    "typo3/cms-viewpage": "^10.4",
-    "helhum/typo3-console": "^6.7"
+    "typo3/cms-about": "^11.5",
+    "typo3/cms-adminpanel": "^11.5",
+    "typo3/cms-backend": "^11.5",
+    "typo3/cms-belog": "^11.5",
+    "typo3/cms-beuser": "^11.5",
+    "typo3/cms-extbase": "^11.5",
+    "typo3/cms-extensionmanager": "^11.5",
+    "typo3/cms-filelist": "^11.5",
+    "typo3/cms-fluid": "^11.5",
+    "typo3/cms-fluid-styled-content": "^11.5",
+    "typo3/cms-form": "^11.5",
+    "typo3/cms-frontend": "^11.5",
+    "typo3/cms-impexp": "^11.5",
+    "typo3/cms-info": "^11.5",
+    "typo3/cms-install": "^11.5",
+    "typo3/cms-lowlevel": "^11.5",
+    "typo3/cms-opendocs": "^11.5",
+    "typo3/cms-recordlist": "^11.5",
+    "typo3/cms-recycler": "^11.5",
+    "typo3/cms-redirects": "^11.5",
+    "typo3/cms-reports": "^11.5",
+    "typo3/cms-rte-ckeditor": "^11.5",
+    "typo3/cms-scheduler": "^11.5",
+    "typo3/cms-seo": "^11.5",
+    "typo3/cms-setup": "^11.5",
+    "typo3/cms-tstemplate": "^11.5",
+    "typo3/cms-viewpage": "^11.5",
+    "helhum/typo3-console": "^7.1"
   },
 
   "autoload": {
@@ -71,7 +71,11 @@
   },
   "config": {
     "vendor-dir": ".Build/vendor",
-    "bin-dir": ".Build/bin"
+    "bin-dir": ".Build/bin",
+    "allow-plugins": {
+      "typo3/class-alias-loader": true,
+      "typo3/cms-composer-installers": true
+    }
   },
   "scripts": {
     "post-autoload-dump": [
@@ -80,7 +84,6 @@
       "@package-states"
     ],
     "package-states": [
-      ".Build/bin/typo3cms install:generatepackagestates",
       ".Build/bin/typo3cms install:fixfolderstructure"
     ]
   }
