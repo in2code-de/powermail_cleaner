@@ -11,3 +11,15 @@ module.tx_powermail {
 		cleanupAge = 31536000
 	}
 }
+
+config.tx_extbase {
+	persistence {
+		classes {
+			In2code\PowermailCleaner\Domain\Model\Mail {
+				mapping {
+					tableName = tx_powermail_domain_model_mail
+				}
+			}
+		}
+	}
+}

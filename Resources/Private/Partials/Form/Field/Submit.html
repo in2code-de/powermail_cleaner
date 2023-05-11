@@ -1,0 +1,28 @@
+<div class="powermail_fieldwrap powermail_fieldwrap_type_submit powermail_fieldwrap_{field.marker} {field.css} {settings.styles.framework.fieldAndLabelWrappingClasses}">
+    <f:if condition="{settings.powermailCleaner.deletionBehavior} && {settings.powermailCleaner.deletionBehavior} != ''">
+        <h5>Datenschutz-Hinweis</h5>
+        <f:variable name="llArgs" value="{0: settings.powermailCleaner.deletionPeriod}"></f:variable>
+        <f:if condition="{settings.powermailCleaner.deletionBehavior} == 'deletionDate'">
+            <f:variable name="llArgs" value="{0: '{settings.powermailCleaner.deletionDate -> f:format.date(format: \'d.m.Y\')}'}"></f:variable>
+        </f:if>
+        <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior_long.{settings.powermailCleaner.deletionBehavior}" arguments="{llArgs}">deletion</f:translate>
+
+        <f:if condition="{settings.powermailCleaner.deletionContact}">
+            <f:format.raw>
+                {settings.powermailCleaner.deletionContact}
+            </f:format.raw>
+        </f:if>
+    </f:if>
+
+    <div class="{settings.styles.framework.fieldWrappingClasses} {settings.styles.framework.offsetClasses}">
+        <f:form.submit value="{field.title}" class="{settings.styles.framework.submitClasses}" />
+    </div>
+
+    <f:if condition="{settings.powermailCleaner.deletionBehavior} && {settings.powermailCleaner.deletionBehavior} != ''">
+        <f:if condition="{settings.powermailCleaner.deletionDetails}">
+            <f:format.raw>
+                {settings.powermailCleaner.deletionDetails}
+            </f:format.raw>
+        </f:if>
+    </f:if>
+</div>

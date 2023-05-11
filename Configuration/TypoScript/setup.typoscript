@@ -1,0 +1,15 @@
+plugin.tx_powermail {
+    view {
+        templateRootPaths {
+            10 = EXT:powermail_cleaner/Resources/Private/Templates/
+        }
+
+        partialRootPaths {
+            10 = EXT:powermail_cleaner/Resources/Private/Partials/
+        }
+
+        layoutRootPaths {
+            10 = EXT:powermail_cleaner/Resources/Private/Layouts/
+        }
+    }
+}

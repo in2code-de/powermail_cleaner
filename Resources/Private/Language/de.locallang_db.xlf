@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext"
+		 original="EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf"
+		 date="2022-03-21T12:00:00Z" product-name="powermail_cleaner">
+		<header/>
+		<body>
+			<trans-unit id="tabs.powermailCleaner">
+				<source>Data protection / Clean-up</source>
+				<target state="translated">Datenschutz / Löschen</target>
+			</trans-unit>
+
+			<trans-unit id="deletionBehavior">
+				<source>Clean-up of form data</source>
+				<target state="translated">Löschen von Formulardaten</target>
+			</trans-unit>
+			<trans-unit id="deletionBehavior.0">
+				<source>Please select</source>
+				<target state="translated">Bitte auswählen</target>
+			</trans-unit>
+			<trans-unit id="deletionBehavior.dbDisable">
+				<source>Data is not stored in database</source>
+				<target state="translated">Daten werden nicht in Datenbank gespeichert</target>
+			</trans-unit>
+			<trans-unit id="deletionBehavior.deletionPeriod">
+				<source>Data will be cleaned after the specified deletion period</source>
+				<target state="translated">Daten werden nach angegebener Löschfrist gelöscht</target>
+			</trans-unit>
+			<trans-unit id="deletionBehavior.deletionDate">
+				<source>Data will be cleaned after specified date</source>
+				<target state="translated">Daten werden nach angegebenem Datum gelöscht</target>
+			</trans-unit>
+			<trans-unit id="deletionPeriod">
+				<source>Clean-up period (in days)</source>
+				<target state="translated">Löschfrist (in Tagen)</target>
+			</trans-unit>
+			<trans-unit id="deletionDate">
+				<source>Clean-up after the specified date</source>
+				<target state="translated">Löschen nach dem angegebenen Datum</target>
+			</trans-unit>
+			<trans-unit id="deletionContact">
+				<source>Contact for objection and deletion option</source>
+				<target state="translated">Kontakt für Widerspruchs- und Beseitigungsmöglichkeit</target>
+			</trans-unit>
+			<trans-unit id="deletionDetails">
+				<source>Amendments to the Data Protection Policy</source>
+				<target state="translated">Ergänzungen zur Datenschutzerklärung</target>
+			</trans-unit>
+
+			<trans-unit id="hintTransl.Orig">
+				<source>Setting is taken from standard language</source>
+				<target state="translated">Einstellung wird aus Standardsprache übernommen</target>
+			</trans-unit>
+
+
+			<trans-unit id="pluginInfo.deletion">
+				<source>Deletion behaviour</source>
+				<target state="translated">Löschen von Daten</target>
+			</trans-unit>
+
+			<trans-unit id="pluginInfo.deletionBehavior.dbDisable">
+				<source>Data is not stored in database</source>
+				<target state="translated">Daten werden nicht in Datenbank gespeichert</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior_long.dbDisable">
+				<source>The data you submitted to this form will not be stored in the database.</source>
+				<target state="translated">Ihre Eingaben in diesem Formular werden nicht in unserer Datenbank gespeichert.</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior.deletionPeriod">
+				<source>Data is deleted after %d days</source>
+				<target state="translated">Daten werden nach %d Tagen gelöscht</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior_long.deletionPeriod">
+				<source>The data you submitted to this form will be deleted after a period of %d days.</source>
+				<target state="translated">Ihre Eingaben in diesem Formular werden nach %d Tagen gelöscht.</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior.deletionDate">
+				<source>Data will be deleted on %s</source>
+				<target state="translated">Daten werden am %s gelöscht</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior_long.deletionDate">
+				<source>The data you submitted to this form will be deleted on %s.</source>
+				<target state="translated">Ihre Eingaben in diesem Formular werden am %s gelöscht.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

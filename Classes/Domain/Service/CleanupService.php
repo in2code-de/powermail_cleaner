@@ -4,113 +4,138 @@ declare(strict_types=1);
 
 namespace In2code\PowermailCleaner\Domain\Service;
 
-use Doctrine\DBAL\ConnectionException;
-use Doctrine\DBAL\Driver\Statement;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 class CleanupService
 {
-    /** @var array */
-    public $settings;
+    /**
+     * @var Connection|null
+     */
+    protected $connection = null;
 
-    /** @param ConfigurationManager $configurationManager */
-    public function injectConfigurationManager(ConfigurationManager $configurationManager): void
+    public function cleanup($formId, $pluginId, $cleanupConfiguration)
     {
-        $this->settings = $configurationManager->getConfiguration(
-            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS
-        );
+        switch ($cleanupConfiguration['deletionBehavior']) {
+            case 'dbDisable':
+                $this->dbDisable($formId, $pluginId);
+                break;
+            case 'deletionPeriod':
+                $this->deletionPeriod($formId, $pluginId, $cleanupConfiguration);
+                break;
+            case 'deletionDate':
+                $this->deletionDate($formId, $pluginId, $cleanupConfiguration);
+                break;
+        }
     }
 
-    public function deleteMailsOlderThanAgeInPid(int $age, int $pid = null): array
+    /**
+     * Method to handle the "never save to database" deletion behavior
+     *
+     * @param $formId
+     * @param $pluginId
+     * @return void
+     */
+    protected function dbDisable($formId, $pluginId)
     {
-        $tempPath = $this->createTemporaryFolder();
-        $uploadPath = $this->getFileUploadFolder();
+        $mails = $this->getMailsWithCrdate($formId, $pluginId);
 
-        $connection = GeneralUtility::makeInstance(ConnectionPool::class)
-                                    ->getConnectionForTable('tx_powermail_domain_model_mail');
+        $mails = array_map(function ($mail) {
+            return $mail['uid'];
+        }, $mails);
 
-        $statement = $this->selectMailsOlderThanAgeInPid($connection, $age, $pid);
+        $this->deleteMails($mails);
+    }
 
-        // Collect moved files to easily rollback changes in the FS if the DB transaction fails.
-        $movedFiles = [];
+    /**
+     * Method to handle the "delete mails after period" deletion behavior
+     *
+     * @param $formId
+     * @param $pluginId
+     * @param $cleanupConfiguration
+     * @return void
+     */
+    protected function deletionPeriod($formId, $pluginId, $cleanupConfiguration)
+    {
+        $mails = $this->getMailsWithCrdate($formId, $pluginId);
 
-        $stats = [
-            'mails' => 0,
-            'answers' => 0,
-            'files' => 0,
-        ];
+        $mails = array_filter($mails, function ($mail) use ($cleanupConfiguration) {
+            return $mail['crdate'] < (time() - ((int)$cleanupConfiguration['deletionPeriod'] * 86400));
+        });
 
-        $connection->beginTransaction();
+        $mails = array_map(function ($mail) {
+            return $mail['uid'];
+        }, $mails);
 
-        foreach ($statement as $mail) {
-            // Select answers to type "file" fields to identify the files that have to be removed.
-            $subQuery = $connection->createQueryBuilder();
-            $subQuery->getRestrictions()->removeAll();
-            $subQuery->select('answer.value', 'answer.uid')
-                     ->from('tx_powermail_domain_model_answer', 'answer')
-                     ->leftJoin('answer', 'tx_powermail_domain_model_field', 'field', 'answer.field = field.uid')
-                     ->where($subQuery->expr()->eq('answer.mail', $subQuery->createNamedParameter($mail['uid'])))
-                     ->andWhere($subQuery->expr()->eq('field.type', $subQuery->createNamedParameter('file')));
-            $subStatement = $subQuery->execute();
-            foreach ($subStatement as $answer) {
-                foreach (json_decode($answer['value']) as $fileName) {
-                    $uploadedFile = $uploadPath . $fileName;
-                    if (file_exists($uploadedFile)) {
-                        $movedFiles[] = $fileName;
-                        rename($uploadedFile, $tempPath . $fileName);
-                        $stats['files']++;
-                    }
-                }
-                $stats['answers'] += $connection->delete('tx_powermail_domain_model_answer', ['mail' => $mail['uid']]);
-            }
-            $stats['mails'] += $connection->delete('tx_powermail_domain_model_mail', ['uid' => $mail['uid']]);
+        $this->deleteMails($mails);
+    }
+
+    /**
+     * Method to handle the "delete mails older than date" deletion behavior
+     *
+     * @param $formId
+     * @param $pluginId
+     * @param $cleanupConfiguration
+     * @return void
+     */
+    protected function deletionDate($formId, $pluginId, $cleanupConfiguration)
+    {
+        $mails = $this->getMailsWithCrdate($formId, $pluginId);
+
+        // check if deletion date is in the future
+        if ((int)$cleanupConfiguration['deletionDate'] > time()) {
+            return;
         }
 
-        try {
-            $connection->commit();
-        } catch (ConnectionException $exception) {
-            foreach ($movedFiles as $fileName) {
-                $uploadedFile = $uploadPath . $fileName;
-                rename($tempPath . $fileName, $uploadedFile);
-            }
-            throw $exception;
+        $mails = array_filter($mails, function ($mail) use ($cleanupConfiguration) {
+            return $mail['crdate'] < (int)$cleanupConfiguration['deletionDate'];
+        });
+
+        $mails = array_map(function ($mail) {
+            return $mail['uid'];
+        }, $mails);
+
+        $this->deleteMails($mails);
+    }
+
+    protected function getMailsWithCrdate($formId, $pluginId)
+    {
+        $connection = $this->getConnection();
+
+        $queryBuilder = $connection->createQueryBuilder();
+        $mails = $queryBuilder->select('uid', 'crdate')
+            ->from('tx_powermail_domain_model_mail')
+            ->where($queryBuilder->expr()->eq('form', $queryBuilder->createNamedParameter($formId)))
+            ->andWhere($queryBuilder->expr()->eq('plugin', $queryBuilder->createNamedParameter($pluginId)))
+            ->execute()
+            ->fetchAll();
+
+        return $mails;
+    }
+
+    protected function deleteMails($uidList)
+    {
+        $connection = $this->getConnection();
+
+        if (empty($uidList)) {
+            return;
         }
 
-        // Don't use rmdir, it is very slow!
-        exec('rm -rf ' . escapeshellarg($tempPath));
-
-        return $stats;
+        $queryBuilder = $connection->createQueryBuilder();
+        $queryBuilder
+            ->update('tx_powermail_domain_model_mail')
+            ->set('deleted', 1)
+            ->where($queryBuilder->expr()->in('uid', $uidList))
+            ->execute();
     }
 
-    protected function createTemporaryFolder(): string
-    {
-        do {
-            $tempPath = rtrim(PATH_site, '/') . '/typo3temp/var/powermail/' . uniqid('cleanup_tmp_', true) . '/';
-        } while (is_dir($tempPath));
-        GeneralUtility::mkdir_deep($tempPath);
-        return $tempPath;
-    }
-
-    protected function getFileUploadFolder(): string
-    {
-        return rtrim(PATH_site, '/') . '/' . trim($this->settings['uploadPath'], '/') . '/';
-    }
-
-    protected function selectMailsOlderThanAgeInPid(Connection $connection, int $age, ?int $pid): Statement
-    {
-        $query = $connection->createQueryBuilder();
-        $query->getRestrictions()->removeAll();
-        $crdate = $GLOBALS['EXEC_TIME'] - $age;
-        $query->select('uid')
-              ->from('tx_powermail_domain_model_mail')
-              ->where($query->expr()->lte('crdate', $query->createNamedParameter($crdate)));
-        if (null !== $pid) {
-            $query->andWhere($query->expr()->eq('pid', $query->createNamedParameter($pid)));
+    protected function getConnection() {
+        if ($this->connection == null) {
+            $this->connection = GeneralUtility::makeInstance(ConnectionPool::class)
+                ->getConnectionForTable('tx_powermail_domain_model_mail');
         }
-        return $query->execute();
+
+        return $this->connection;
     }
 }
