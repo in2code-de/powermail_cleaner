@@ -20,4 +20,3 @@ dynamicReturnTypeMeta.json
 /Documentation-GENERATED-temp/
 docker-compose.yml
 .php_cs.cache
-config/
