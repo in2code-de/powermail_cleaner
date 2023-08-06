@@ -1,13 +1,9 @@
 {namespace vh=In2code\Powermail\ViewHelpers}
-<vh:Be.Container
+<f:Be.Container
 		includeCssFiles="{0: '{f:uri.resource(path:\'Css/Backend.css\')}'}"
 		includeRequireJsModules="{0: 'TYPO3/CMS/Powermail/Powermail/Backend.min'}"
-		enableClickMenu="false"
-		loadExtJs="false"
-		loadExtJsTheme="false"
-		enableExtJsDebug="false"
-		loadJQuery="true"
-		jQueryNamespace="defaultNoConflict"
+		addJsInlineLabels="{0:''}"
+		includeJsFiles="{0:''}"
 		pageTitle="powermail">
 
 	<div class="module">
@@ -62,4 +58,4 @@
 			<f:render section="content" />
 		</div>
 	</div>
-</vh:Be.Container>
+</f:Be.Container>
