@@ -1,0 +1,17 @@
+#!/bin/bash
+
+## Description: import given test data into ddev (database and configurations)
+## Usage: initialize
+## Example: "ddev initialize"
+
+if ! command -v "git-lfs" &> /dev/null
+then
+    echo "COMMAND "git lfs" could not be found"
+    echo "Please install git-lfs support, see: https://git-lfs.github.com/"
+    exit
+fi
+
+git lfs pull
+ddev import-db --file=.project/data/db.sql.gz
+ddev composer install
+cp .Build/Web/typo3/sysext/install/Resources/Private/FolderStructureTemplateFiles/root-htaccess .Build/Web/.htaccess
