@@ -22,8 +22,8 @@ class BackendUtility
     public static function getL18nParentFlexformFieldData(int $l18nParent, string $field): string
     {
         $l18nParent   = BackendUtilityCore::getRecord('tt_content', $l18nParent, 'pi_flexform');
-        $flexFormData = GeneralUtility::xml2array($l18nParent['pi_flexform']);
-        $flexFormData = $flexFormData['data']['powermailCleaner']['lDEF'];
+        $flexFormData = (isset($l18nParent['pi_flexform'])) ? GeneralUtility::xml2array($l18nParent['pi_flexform']) : [];
+        $flexFormData = $flexFormData['data']['powermailCleaner']['lDEF'] ?? [];
 
         if (empty($flexFormData['settings.flexform.powermailCleaner.' . $field]['vDEF'])) {
             return '';
