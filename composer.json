@@ -80,7 +80,7 @@
   "scripts": {
     "post-autoload-dump": [
       "mkdir -p .Build/Web/typo3conf/ext/",
-      "[ -L .Build/Web/typo3conf/ext/powermail_cleaner ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/powermail_cleaner",
+      "[ -L .Build/Web/typo3conf/ext/powermail_cleaner ] || ln -snvf ../../../../. powermail_cleaner",
       "@package-states"
     ],
     "package-states": [
