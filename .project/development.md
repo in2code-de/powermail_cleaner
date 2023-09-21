@@ -2,7 +2,18 @@
 
 DDEV is used for development setup. 
 
-In .project/data example data are given. BE Login is done via admin/password
+For basic installation see https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/ 
+
+To setup a development environment for `powermail_cleaner`, just run the following commands:
+
+```
+git clone git@github.com:in2code-pro/powermail_cleaner.git
+cd powermail_cleaner
+ddev start
+ddev initialize 
+```
+
+The backend login available with user `admin` and password `password`.
 
 ## Test cases
 
