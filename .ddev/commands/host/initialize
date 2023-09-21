@@ -11,7 +11,23 @@ then
     exit
 fi
 
+echo "Fetching database"
 git lfs pull
-ddev import-db --file=.project/data/db.sql.gz
+
+echo "Copy configuration"
+mkdir -p .build/config/sites/main
+cp .project/config/typo3/config.yaml config/sites/main/
+mkdir -p .build/public
+cp .project/config/typo3/.htaccess .build/public/
+mkdir -p .build/public/typo3conf/AdditionalConfiguration/
+cp .project/config/typo3/LocalConfiguration.php .build/public/typo3conf
+cp .project/config/typo3/AdditionalConfiguration.php .build/public/typo3conf
+
+echo "Importing database"
+ddev import-db --src=.project/data/db.sql.gz
+
+echo "Run 'composer install'"
 ddev composer install
-cp .Build/Web/typo3/sysext/install/Resources/Private/FolderStructureTemplateFiles/root-htaccess .Build/Web/.htaccess
+ddev describe
+
+echo "Thanks for supporting 'EXT:powermail_cleaner"

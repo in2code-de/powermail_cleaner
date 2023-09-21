@@ -3,8 +3,7 @@ return [
     'BE' => [
         'debug' => false,
         'explicitADmode' => 'explicitAllow',
-        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$bTIybmJzWjVkdlE2OVJNLg$pUNzAAB7/68XzmpDgyg2XZP9dDgwJLbOhXyNl3KxnSA',
-        'loginSecurityLevel' => 'normal',
+        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$Y0Zkc2tFVUFzaWs3S1JUMA$VUYXEG49usrpbDP9cKfC0GrhRAtGICi5B7HGJ4LVYtg',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
@@ -27,14 +26,6 @@ return [
             ],
         ],
     ],
-    'EXT' => [],
-    'EXTCONF' => [
-        'lang' => [
-            'availableLanguages' => [
-                'de',
-            ],
-        ],
-    ],
     'EXTENSIONS' => [
         'backend' => [
             'backendFavicon' => '',
@@ -43,20 +34,18 @@ return [
             'loginFootnote' => '',
             'loginHighlightColor' => '',
             'loginLogo' => '',
+            'loginLogoAlt' => '',
         ],
         'extensionmanager' => [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
         ],
-        'powermail' => [
-            'disableBackendModule' => '0',
-            'disableIpLog' => '1',
-            'disableMarketingInformation' => '0',
-            'disablePluginInformation' => '0',
-            'disablePluginInformationMailPreview' => '0',
-            'enableCaching' => '0',
-            'l10n_mode_merge' => '0',
-            'replaceIrreWithElementBrowser' => '0',
+        'in2studyfinder' => [
+            'enableBackendModule' => '1',
+            'enableCaching' => '1',
+            'enableCategories' => '0',
+            'enableGlobalData' => '0',
+            'enablePersistentFilter' => '0',
         ],
         'scheduler' => [
             'maxLifetime' => '1440',
@@ -65,17 +54,17 @@ return [
     ],
     'FE' => [
         'debug' => false,
-        'loginSecurityLevel' => 'normal',
+        'disableNoCacheParameter' => true,
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
         ],
     ],
     'GFX' => [
-        'processor' => 'GraphicsMagick',
+        'processor' => 'ImageMagick',
         'processor_allowTemporaryMasksAsPng' => false,
-        'processor_colorspace' => 'RGB',
-        'processor_effects' => false,
+        'processor_colorspace' => 'sRGB',
+        'processor_effects' => true,
         'processor_enabled' => true,
         'processor_path' => '/usr/bin/',
         'processor_path_lzw' => '/usr/bin/',
@@ -85,7 +74,7 @@ return [
             'CMS' => [
                 'deprecations' => [
                     'writerConfiguration' => [
-                        5 => [
+                        'notice' => [
                             'TYPO3\CMS\Core\Log\Writer\FileWriter' => [
                                 'disabled' => true,
                             ],
@@ -104,18 +93,48 @@ return [
         'transport_smtp_username' => '',
     ],
     'SYS' => [
+        'caching' => [
+            'cacheConfigurations' => [
+                'hash' => [
+                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
+                ],
+                'imagesizes' => [
+                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
+                    'options' => [
+                        'compression' => true,
+                    ],
+                ],
+                'pages' => [
+                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
+                    'options' => [
+                        'compression' => true,
+                    ],
+                ],
+                'pagesection' => [
+                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
+                    'options' => [
+                        'compression' => true,
+                    ],
+                ],
+                'rootline' => [
+                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
+                    'options' => [
+                        'compression' => true,
+                    ],
+                ],
+            ],
+        ],
         'devIPmask' => '',
         'displayErrors' => 0,
-        'encryptionKey' => '9e92f58657c1d66fdcee99a6b72b7453509ab93d397053005bce58027b42e1f0b1fe3f1dae7ac4b0318580facc0333e9',
+        'encryptionKey' => 'd38c6c3eba5b63a952a6c91238205abd7fa52e89d4ae98cb66dcd908f0ce441570b26ad56c54417947f2bf09d2897e69',
         'exceptionalErrors' => 4096,
         'features' => [
-            'newTranslationServer' => true,
             'unifiedPageTranslationHandling' => true,
+            'yamlImportsFollowDeclarationOrder' => true,
         ],
-        'sitename' => 'powermail cleaner',
+        'sitename' => 'Powermail Cleaner -- DDEV',
         'systemMaintainers' => [
             1,
         ],
-        'trustedHostsPattern' => '.*',
     ],
 ];
