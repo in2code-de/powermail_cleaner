@@ -1,7 +1,7 @@
 <?php
-if (!defined('TYPO3_MODE')) {
-    die('Access denied.');
-}
+
+defined('TYPO3') || die('Access denied.');
+
 call_user_func(
     function () {
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['extbase']['extensions']['Powermail']['modules']['web_PowermailM1']['controllers']['In2code\Powermail\Controller\ModuleController']['actions'][] = 'cleanup';
