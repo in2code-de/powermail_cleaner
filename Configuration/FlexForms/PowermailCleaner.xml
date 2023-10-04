@@ -1,142 +1,126 @@
 <powermailCleaner>
     <ROOT>
-        <TCEforms>
-            <sheetTitle>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:tabs.powermailCleaner</sheetTitle>
-        </TCEforms>
+        <sheetTitle>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:tabs.powermailCleaner</sheetTitle>
         <type>array</type>
         <el>
             <settings.flexform.powermailCleaner.deletionBehavior>
-                <TCEforms>
-                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior</label>
-                    <onChange>reload</onChange>
-                    <config>
-                        <type>select</type>
-                        <renderType>selectSingle</renderType>
-                        <items>
-                            <numIndex index="0">
-                                <numIndex index="0">LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior.0</numIndex>
-                                <numIndex index="1"/>
-                            </numIndex>
-                            <numIndex index="1">
-                                <numIndex index="0">LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior.dbDisable</numIndex>
-                                <numIndex index="1">dbDisable</numIndex>
-                            </numIndex>
-                            <numIndex index="2">
-                                <numIndex index="0">LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior.deletionPeriod</numIndex>
-                                <numIndex index="1">deletionPeriod</numIndex>
-                            </numIndex>
-                            <numIndex index="3">
-                                <numIndex index="0">LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior.deletionDate</numIndex>
-                                <numIndex index="1">deletionDate</numIndex>
-                            </numIndex>
-                        </items>
-                    </config>
-                    <displayCond>FIELD:parentRec.l18n_parent:REQ:false</displayCond>
-                </TCEforms>
+                <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior</label>
+                <onChange>reload</onChange>
+                <config>
+                    <type>select</type>
+                    <renderType>selectSingle</renderType>
+                    <items>
+                        <numIndex index="0">
+                            <numIndex index="label">LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior.0</numIndex>
+                            <numIndex index="value"/>
+                        </numIndex>
+                        <numIndex index="1">
+                            <numIndex index="label">LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior.dbDisable</numIndex>
+                            <numIndex index="value">dbDisable</numIndex>
+                        </numIndex>
+                        <numIndex index="2">
+                            <numIndex index="label">LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior.deletionPeriod</numIndex>
+                            <numIndex index="value">deletionPeriod</numIndex>
+                        </numIndex>
+                        <numIndex index="3">
+                            <numIndex index="label">LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior.deletionDate</numIndex>
+                            <numIndex index="value">deletionDate</numIndex>
+                        </numIndex>
+                    </items>
+                </config>
+                <displayCond>FIELD:parentRec.l18n_parent:REQ:false</displayCond>
             </settings.flexform.powermailCleaner.deletionBehavior>
             <settings.flexform.powermailCleaner.deletionBehavior_l10n>
-                <TCEforms>
-                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior</label>
-                    <description>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:hintTransl.Orig</description>
-                    <config>
-                        <type>select</type>
-                        <renderType>selectSingle</renderType>
-                        <items type="array"/>
-                        <itemsProcFunc>In2code\PowermailCleaner\Tca\FormSelectorUserFunc->getDeletionBehaviorL10nItems</itemsProcFunc>
-                        <readOnly>1</readOnly>
-                    </config>
-                    <displayCond>FIELD:parentRec.l18n_parent:REQ:true</displayCond>
-                </TCEforms>
+                <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior</label>
+                <description>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:hintTransl.Orig</description>
+                <config>
+                    <type>select</type>
+                    <renderType>selectSingle</renderType>
+                    <items type="array"/>
+                    <itemsProcFunc>In2code\PowermailCleaner\Tca\FormSelectorUserFunc->getDeletionBehaviorL10nItems</itemsProcFunc>
+                    <readOnly>1</readOnly>
+                </config>
+                <displayCond>FIELD:parentRec.l18n_parent:REQ:true</displayCond>
             </settings.flexform.powermailCleaner.deletionBehavior_l10n>
             <settings.flexform.powermailCleaner.deletionPeriod>
-                <TCEforms>
-                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionPeriod</label>
-                    <config>
-                        <type>input</type>
-                        <eval>trim,int,required</eval>
-                        <default>14</default>
-                    </config>
-                    <displayCond>
-                        <AND>
-                            <numIndex index="0">FIELD:parentRec.l18n_parent:REQ:false</numIndex>
-                            <numIndex index="1">FIELD:settings.flexform.powermailCleaner.deletionBehavior:=:deletionPeriod</numIndex>
-                        </AND>
-                    </displayCond>
-                </TCEforms>
+                <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionPeriod</label>
+                <config>
+                    <type>input</type>
+                    <eval>trim,int,required</eval>
+                    <default>14</default>
+                </config>
+                <displayCond>
+                    <AND>
+                        <numIndex index="0">FIELD:parentRec.l18n_parent:REQ:false</numIndex>
+                        <numIndex index="1">FIELD:settings.flexform.powermailCleaner.deletionBehavior:=:deletionPeriod</numIndex>
+                    </AND>
+                </displayCond>
             </settings.flexform.powermailCleaner.deletionPeriod>
             <settings.flexform.powermailCleaner.deletionPeriod_l10n>
-                <TCEforms>
-                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionPeriod</label>
-                    <description>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:hintTransl.Orig</description>
-                    <config>
-                        <type>select</type>
-                        <renderType>selectSingle</renderType>
-                        <items type="array"/>
-                        <itemsProcFunc>In2code\PowermailCleaner\Tca\FormSelectorUserFunc->getDeletionPeriodL10nItems</itemsProcFunc>
-                        <readOnly>1</readOnly>
-                    </config>
-                    <displayCond>
-                        <AND>
-                            <numIndex index="0">FIELD:parentRec.l18n_parent:REQ:true</numIndex>
-                            <numIndex index="1">USER:In2code\PowermailCleaner\Tca\DisplayCondUserFunc->getDeletionPeriodCondition</numIndex>
-                        </AND>
-                    </displayCond>
-                </TCEforms>
+                <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionPeriod</label>
+                <description>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:hintTransl.Orig</description>
+                <config>
+                    <type>select</type>
+                    <renderType>selectSingle</renderType>
+                    <items type="array"/>
+                    <itemsProcFunc>In2code\PowermailCleaner\Tca\FormSelectorUserFunc->getDeletionPeriodL10nItems</itemsProcFunc>
+                    <readOnly>1</readOnly>
+                </config>
+                <displayCond>
+                    <AND>
+                        <numIndex index="0">FIELD:parentRec.l18n_parent:REQ:true</numIndex>
+                        <numIndex index="1">USER:In2code\PowermailCleaner\Tca\DisplayCondUserFunc->getDeletionPeriodCondition</numIndex>
+                    </AND>
+                </displayCond>
             </settings.flexform.powermailCleaner.deletionPeriod_l10n>
             <settings.flexform.powermailCleaner.deletionDate>
-                <TCEforms>
-                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionDate</label>
-                    <config>
-                        <type>input</type>
-                        <renderType>inputDateTime</renderType>
-                        <eval>trim,date,required</eval>
-                    </config>
-                    <displayCond>
-                        <AND>
-                            <numIndex index="0">FIELD:parentRec.l18n_parent:REQ:false</numIndex>
-                            <numIndex index="1">FIELD:settings.flexform.powermailCleaner.deletionBehavior:=:deletionDate</numIndex>
-                        </AND>
-                    </displayCond>
-                </TCEforms>
+                <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionDate</label>
+                <config>
+                    <type>datetime</type>
+                    <format>date</format>
+                    <required>true</required>
+                    <size>20</size>
+                    <default>0</default>
+                </config>
+                <displayCond>
+                    <AND>
+                        <numIndex index="0">FIELD:parentRec.l18n_parent:REQ:false</numIndex>
+                        <numIndex index="1">FIELD:settings.flexform.powermailCleaner.deletionBehavior:=:deletionDate</numIndex>
+                    </AND>
+                </displayCond>
             </settings.flexform.powermailCleaner.deletionDate>
             <settings.flexform.powermailCleaner.deletionDate_l10n>
-                <TCEforms>
-                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionDate</label>
-                    <description>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:hintTransl.Orig</description>
-                    <config>
-                        <type>select</type>
-                        <renderType>selectSingle</renderType>
-                        <items type="array"/>
-                        <itemsProcFunc>In2code\PowermailCleaner\Tca\FormSelectorUserFunc->getDeletionDateL10nItems</itemsProcFunc>
-                        <readOnly>1</readOnly>
-                    </config>
-                    <displayCond>
-                        <AND>
-                            <numIndex index="0">FIELD:parentRec.l18n_parent:REQ:true</numIndex>
-                            <numIndex index="1">USER:In2code\PowermailCleaner\Tca\DisplayCondUserFunc->getDeletionDateCondition</numIndex>
-                        </AND>
-                    </displayCond>
-                </TCEforms>
+                <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionDate</label>
+                <description>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:hintTransl.Orig</description>
+                <config>
+                    <type>select</type>
+                    <renderType>selectSingle</renderType>
+                    <items type="array"/>
+                    <itemsProcFunc>In2code\PowermailCleaner\Tca\FormSelectorUserFunc->getDeletionDateL10nItems</itemsProcFunc>
+                    <readOnly>1</readOnly>
+                </config>
+                <displayCond>
+                    <AND>
+                        <numIndex index="0">FIELD:parentRec.l18n_parent:REQ:true</numIndex>
+                        <numIndex index="1">USER:In2code\PowermailCleaner\Tca\DisplayCondUserFunc->getDeletionDateCondition</numIndex>
+                    </AND>
+                </displayCond>
             </settings.flexform.powermailCleaner.deletionDate_l10n>
             <settings.flexform.powermailCleaner.deletionContact>
-                <TCEforms>
-                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionContact</label>
-                    <config>
-                        <type>text</type>
-                        <enableRichtext>1</enableRichtext>
-                    </config>
-                    <displayCond>USER:In2code\PowermailCleaner\Tca\DisplayCondUserFunc->getDeletionContactCondition</displayCond>
-                </TCEforms>
+                <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionContact</label>
+                <config>
+                    <type>text</type>
+                    <enableRichtext>1</enableRichtext>
+                </config>
+                <displayCond>USER:In2code\PowermailCleaner\Tca\DisplayCondUserFunc->getDeletionContactCondition</displayCond>
             </settings.flexform.powermailCleaner.deletionContact>
             <settings.flexform.powermailCleaner.deletionDetails>
-                <TCEforms>
-                    <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionDetails</label>
-                    <config>
-                        <type>text</type>
-                        <enableRichtext>1</enableRichtext>
-                    </config>
-                    <displayCond>USER:In2code\PowermailCleaner\Tca\DisplayCondUserFunc->getDeletionDetailsCondition</displayCond>
-                </TCEforms>
+                <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionDetails</label>
+                <config>
+                    <type>text</type>
+                    <enableRichtext>1</enableRichtext>
+                </config>
+                <displayCond>USER:In2code\PowermailCleaner\Tca\DisplayCondUserFunc->getDeletionDetailsCondition</displayCond>
             </settings.flexform.powermailCleaner.deletionDetails>
         </el>
     </ROOT>
