@@ -21,3 +21,7 @@ services:
         identifier: 'powermailcleaner:modify-data-structure'
         after: 'powermail-modify-data-structure'
 
+  In2code\PowermailCleaner\EventListener\BackendPageModulePreviewContentEventListener:
+    tags:
+      - name: 'event.listener'
+        identifier: 'powermailcleaner:page-layout-preview'

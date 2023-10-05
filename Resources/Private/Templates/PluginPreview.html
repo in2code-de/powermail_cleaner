@@ -1,0 +1,35 @@
+<html
+    lang=""
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+    <f:spaceless>
+        <h3>Powermail Cleaner</h3>
+        <p>
+            <strong>
+                <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletion">deletion</f:translate>:
+            </strong>
+            <f:switch expression="{deletionBehavior}">
+                <f:case value="dbDisable">
+                    <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior.dbDisable">deletion</f:translate>
+                </f:case>
+                <f:case value="deletionPeriod">
+                    <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior.deletionPeriod" arguments="{0: deletionPeriod}">
+                        Mails will be deleleted after {deletionPeriod} days
+                    </f:translate>
+                </f:case>
+                <f:case value="deletionDate">
+                    <f:variable name="dateFormatted">{deletionDate -> f:format.date(format: 'd.m.Y')}</f:variable>
+                    <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior.deletionDate" arguments="{0: dateFormatted}">
+                        Mails will be deleted on {deletionDate -> f:format.date(format: 'd.m.Y')}
+                    </f:translate>
+                </f:case>
+                <f:defaultCase>
+                    <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior.wrongConfiguration">
+                        Wrong plugin configuration
+                    </f:translate>
+                </f:defaultCase>
+            </f:switch>
+        </p>
+    </f:spaceless>
+</html>
