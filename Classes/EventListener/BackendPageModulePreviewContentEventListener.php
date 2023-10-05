@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace In2code\PowermailCleaner\EventListener;
 
 use In2code\Powermail\Events\BackendPageModulePreviewContentEvent;
+use In2code\PowermailCleaner\Utility\BackendUtility;
 use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
@@ -19,11 +20,11 @@ final class BackendPageModulePreviewContentEventListener
         $record = $event->getItem()->getRecord();
         $flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
 
-        $flexforms = $flexFormService->convertFlexFormContentToArray($record['pi_flexform']);
-
-        if ($flexforms['settings']['flexform']['powermailCleaner']['deletionBehavior'] !== '') {
-            $event->setPreview(
-        $existingPreview . $this->getCleanerPreview($flexforms['settings']['flexform']['powermailCleaner'])
+        if ($record['l18n_parent'] === 0) {
+            $flexforms = $flexFormService->convertFlexFormContentToArray($record['pi_flexform']);
+        } else {
+            $flexforms = $flexFormService->convertFlexFormContentToArray(
+                BackendUtility::getL18nParentFlexForm($record['l18n_parent'])
             );
         }
     }

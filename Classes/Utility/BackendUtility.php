@@ -31,4 +31,10 @@ class BackendUtility
 
         return $flexFormData['settings.flexform.powermailCleaner.' . $field]['vDEF'];
     }
+
+    public static function getL18nParentFlexForm(int $l18nParent): string
+    {
+        $l18nParentRecord = BackendUtilityCore::getRecord('tt_content', $l18nParent, 'pi_flexform');
+        return $l18nParentRecord['pi_flexform'];
+    }
 }
