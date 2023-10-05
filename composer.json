@@ -53,7 +53,8 @@
     "typo3/cms-setup": "^12.4",
     "typo3/cms-tstemplate": "^12.4",
     "typo3/cms-viewpage": "^12.4",
-    "helhum/typo3-console": "^8.0"
+    "helhum/typo3-console": "^8.0",
+    "undefined/translate-locallang": "^2.9"
   },
   "repositories": [
     {
