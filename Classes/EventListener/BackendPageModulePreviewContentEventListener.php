@@ -7,6 +7,7 @@ namespace In2code\PowermailCleaner\EventListener;
 use In2code\Powermail\Events\BackendPageModulePreviewContentEvent;
 use In2code\PowermailCleaner\Utility\BackendUtility;
 use TYPO3\CMS\Core\Service\FlexFormService;
+use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
@@ -26,6 +27,16 @@ final class BackendPageModulePreviewContentEventListener
             $flexforms = $flexFormService->convertFlexFormContentToArray(
                 BackendUtility::getL18nParentFlexForm($record['l18n_parent'])
             );
+        }
+
+        if (ArrayUtility::isValidPath($flexforms, 'settings/flexform/powermailCleaner')){
+            $cleanerSettings = $flexforms['settings']['flexform']['powermailCleaner'];
+
+            if ($cleanerSettings['deletionBehavior'] !== '') {
+                $event->setPreview(
+                    $existingPreview . $this->getCleanerPreview($cleanerSettings)
+                );
+            }
         }
     }
 
