@@ -7,14 +7,31 @@
     "mailform",
     "spamprevention"
   ],
+  "homepage": "https://www.in2code.de/",
+  "support": {
+    "issues": "https://github.com/in2code-pro/powermail_cleaner/issues",
+    "source": "https://github.com/in2code-pro/powermail_cleaner/"
+  },
   "authors": [
     {
-      "name": "Oliver Eglseder",
-      "email": "oliver.eglseder@in2code.de"
+      "name": "Marcus Schwemer",
+      "email": "marcus.schwemer@in2code.de",
+      "role": "Product Owner, Developer"
     },
     {
       "name": "Stefan Busemann",
-      "email": "stefan.busemann@in2code.de"
+      "email": "stefan.busemann@in2code.de",
+      "role": "Developer"
+    },
+    {
+      "name": "Daniel Hoffmann",
+      "email": "daniel.hofmann@in2code.de",
+      "role": "Developer"
+    },
+    {
+      "name": "Andreas Nedbal",
+      "email": "andreas.nedbal@in2code.de",
+      "role": "Developer"
     }
   ],
   "type": "typo3-cms-extension",
