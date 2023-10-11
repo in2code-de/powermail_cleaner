@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" datatype="plaintext" original="EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf" date="2023-10-05T07:44:11Z" product-name="powermail_cleaner">
+	<file source-language="en" datatype="plaintext" original="EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf" date="2023-10-11T13:51:44Z" product-name="powermail_cleaner">
 		<header/>
 		<body>
 			<trans-unit id="tabs.powermailCleaner" resname="tabs.powermailCleaner">
@@ -60,11 +60,32 @@
 			<trans-unit id="pluginInfo.deletionBehavior_long.deletionDate" resname="pluginInfo.deletionBehavior_long.deletionDate">
 				<source>The data you submitted to this form will be deleted on %s.</source>
 			</trans-unit>
-			<trans-unit id="mail.related-plugin">
+			<trans-unit id="mail.related-plugin" resname="mail.related-plugin">
 				<source>Related plugin</source>
 			</trans-unit>
-			<trans-unit id="module.header">
+			<trans-unit id="module.cleanup.header" resname="module.cleanup.header">
 				<source>Powermail Cleaner</source>
+			</trans-unit>
+			<trans-unit id="module.cleanup.done" resname="module.cleanup.done">
+				<source>Cleanup finished</source>
+			</trans-unit>
+			<trans-unit id="module.cleanup.statistics" resname="module.cleanup.statistics">
+				<source>Cleanup Statistics: %d mails, %d answers, %d files</source>
+			</trans-unit>
+			<trans-unit id="module.cleanup.age" resname="module.cleanup.age">
+				<source>Age in seconds</source>
+			</trans-unit>
+			<trans-unit id="module.cleanup.ageExplanation" resname="module.cleanup.ageExplanation">
+				<source>Examples: &quot;5184000&quot; equals 60 days, &quot;31536000&quot; equals 1 year</source>
+			</trans-unit>
+			<trans-unit id="module.cleanup.pid" resname="module.cleanup.pid">
+				<source>Optional: Restrict the cleanup to a specific PID</source>
+			</trans-unit>
+			<trans-unit id="module.cleanup.pidExplanation" resname="module.cleanup.pidExplanation">
+				<source>If not set, all e-mails and answers in the whole TYPO3 instances will be cleaned up!</source>
+			</trans-unit>
+			<trans-unit id="module.cleanup.submitButton" resname="module.cleanup.submitButton">
+				<source>Cleanup!</source>
 			</trans-unit>
 		</body>
 	</file>

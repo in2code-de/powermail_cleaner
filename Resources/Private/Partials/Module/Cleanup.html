@@ -4,12 +4,12 @@
 	<div class="alert alert-success">
 		<div class="header-container">
 			<h4 class="message-header">
-				<f:translate extensionName="powermail_cleaner" key="BackendCleanupDone">Cleanup finished</f:translate>
+				<f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:module.cleanup.done">Cleanup finished</f:translate>
 			</h4>
 		</div>
 		<div class="message-body">
 			<p>
-				<f:translate extensionName="powermail_cleaner" key="BackendCleanupStatistics" arguments="{0: stats.mails, 1: stats.answers, 2: stats.files}" />
+				<f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:module.cleanup.statistics" arguments="{0: stats.mails, 1: stats.answers, 2: stats.files}" />
 			</p>
 		</div>
 	</div>
@@ -18,20 +18,20 @@
 <f:form action="cleanup" method="post">
 	<fieldset>
 		<div class="form-group">
-			<label for="cleanup_age"><f:translate extensionName="powermail_cleaner" key="BackendCleanupAge">Age in seconds</f:translate></label>
+			<label for="cleanup_age"><f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:module.cleanup.age">Age in seconds</f:translate></label>
 			<f:form.textfield id="cleanup_age" class="form-control" name="age" type="number"
 							  additionalAttributes="{min: 1}" value="{age}" required="true"/>
-			<small><f:translate extensionName="powermail_cleaner" key="BackendCleanupAgeExplanation">Examples: "5184000" equals 60 days, "31536000" = 1 year</f:translate></small>
+			<small><f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:module.cleanup.ageExplanation">Examples: "5184000" equals 60 days, "31536000" = 1 year</f:translate></small>
 		</div>
 		<div class="form-group">
-			<label for="cleanup_age"><f:translate extensionName="powermail_cleaner" key="BackendCleanupPid">Optional: Restrict the cleanup to a specific PID</f:translate></label>
+			<label for="cleanup_age"><f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:module.cleanup.pid">Optional: Restrict the cleanup to a specific PID</f:translate></label>
 			<f:form.textfield id="cleanup_pid" class="form-control" name="pid" type="number"
 							  additionalAttributes="{min: 0}" value="{pid}"/>
-			<small><f:translate extensionName="powermail_cleaner" key="BackendCleanupPidExplanation" /></small>
+			<small><f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:module.cleanup.pidExplanation" /></small>
 		</div>
 
 		<div class="form-group">
-			<f:form.submit class="btn btn-primary" value="Cleanup"/>
+			<f:form.submit class="btn btn-primary" value="{f:translate(key:'LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:module.cleanup.submitButton')}"/>
 		</div>
 	</fieldset>
 </f:form>

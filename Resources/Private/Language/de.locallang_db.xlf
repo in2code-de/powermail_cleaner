@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" target-language="de" datatype="plaintext" original="EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf" date="2023-10-05T07:44:11Z" product-name="powermail_cleaner">
+	<file source-language="en" target-language="de" datatype="plaintext" original="EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf" date="2023-10-11T13:51:44Z" product-name="powermail_cleaner">
 		<header/>
 		<body>
 			<trans-unit id="tabs.powermailCleaner" resname="tabs.powermailCleaner">
@@ -79,16 +79,42 @@
 				<source>The data you submitted to this form will be deleted on %s.</source>
 				<target>Ihre Eingaben in diesem Formular werden am %s gelöscht.</target>
 			</trans-unit>
-
-			<trans-unit id="mail.related-plugin">
+			<trans-unit id="mail.related-plugin" resname="mail.related-plugin">
 				<source>Related plugin</source>
 				<target>Plugin</target>
 			</trans-unit>
-
-			<trans-unit id="module.header">
+			<trans-unit id="module.cleanup.header" resname="module.cleanup.header">
 				<source>Powermail Cleaner</source>
+				<target>Powermail Cleaner</target>
 			</trans-unit>
-
+			<trans-unit id="module.cleanup.done" resname="module.cleanup.done">
+				<source>Cleanup finished</source>
+				<target>Aufräumen beendet</target>
+			</trans-unit>
+			<trans-unit id="module.cleanup.statistics" resname="module.cleanup.statistics">
+				<source>Cleanup Statistics: %d mails, %d answers, %d files</source>
+				<target>Statistik: %d E-Mails, %d Antworten, %d Dateien</target>
+			</trans-unit>
+			<trans-unit id="module.cleanup.age" resname="module.cleanup.age">
+				<source>Age in seconds</source>
+				<target>Alter in Sekunden</target>
+			</trans-unit>
+			<trans-unit id="module.cleanup.ageExplanation" resname="module.cleanup.ageExplanation">
+				<source>Examples: &quot;5184000&quot; equals 60 days, &quot;31536000&quot; equals 1 year</source>
+				<target>Beispiele: &quot;5184000&quot; entspricht 60 Tagen, &quot;31536000&quot;  enspricht 1 Jahr</target>
+			</trans-unit>
+			<trans-unit id="module.cleanup.pid" resname="module.cleanup.pid">
+				<source>Optional: Restrict the cleanup to a specific PID</source>
+				<target>Optional: Begrenze das Aufräumen auf eine bestimmte Seiten-ID</target>
+			</trans-unit>
+			<trans-unit id="module.cleanup.pidExplanation" resname="module.cleanup.pidExplanation">
+				<source>If not set, all e-mails and answers in the whole TYPO3 instances will be cleaned up!</source>
+				<target>Falls der Wert nicht gesetzt ist, werden alle E-Mails und Antworten in der gesamten TYPO3-Instanz aufgeräumt.</target>
+			</trans-unit>
+			<trans-unit id="module.cleanup.submitButton" resname="module.cleanup.submitButton">
+				<source>Cleanup!</source>
+				<target>Aufräumen!</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
