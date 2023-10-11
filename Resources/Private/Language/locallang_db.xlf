@@ -63,6 +63,9 @@
 			<trans-unit id="mail.related-plugin">
 				<source>Related plugin</source>
 			</trans-unit>
+			<trans-unit id="module.header">
+				<source>Powermail Cleaner</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

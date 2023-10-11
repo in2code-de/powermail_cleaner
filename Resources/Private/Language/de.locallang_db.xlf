@@ -85,6 +85,10 @@
 				<target>Plugin</target>
 			</trans-unit>
 
+			<trans-unit id="module.header">
+				<source>Powermail Cleaner</source>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>
