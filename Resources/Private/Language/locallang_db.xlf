@@ -60,6 +60,9 @@
 			<trans-unit id="pluginInfo.deletionBehavior_long.deletionDate" resname="pluginInfo.deletionBehavior_long.deletionDate">
 				<source>The data you submitted to this form will be deleted on %s.</source>
 			</trans-unit>
+			<trans-unit id="mail.related-plugin">
+				<source>Related plugin</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
