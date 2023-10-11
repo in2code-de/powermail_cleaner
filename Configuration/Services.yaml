@@ -25,3 +25,8 @@ services:
     tags:
       - name: 'event.listener'
         identifier: 'powermailcleaner:page-layout-preview'
+
+  In2code\PowermailCleaner\EventListener\FormControllerCreateActionBeforeRenderViewEventListener:
+    tags:
+      - name: 'event.listener'
+        identifier: 'powermailcleaner:powermail-mail-add-fields'
