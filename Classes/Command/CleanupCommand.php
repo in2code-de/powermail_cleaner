@@ -27,7 +27,7 @@ class CleanupCommand extends Command
     {
         $mailRepository = GeneralUtility::makeInstance(MailRepository::class);
         $mailsToDelete = $mailRepository->findAllDeletionTimeStampOlderThan(time());
-        $mails['all'] = 0;
+        $mails = 0;
 
         foreach ($mailsToDelete as $mail) {
             $mailRepository->removeFromDatabase($mail->getUid());
