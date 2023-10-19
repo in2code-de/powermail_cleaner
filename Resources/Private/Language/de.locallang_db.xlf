@@ -83,6 +83,10 @@
 				<source>Related plugin</source>
 				<target>Plugin</target>
 			</trans-unit>
+			<trans-unit id="mail.deletionDate">
+				<source>Stored deletion date</source>
+				<target>Gespeichertes Löschdatum</target>
+			</trans-unit>
 			<trans-unit id="module.cleanup.header" resname="module.cleanup.header">
 				<source>Powermail Cleaner</source>
 				<target>Powermail Cleaner</target>
