@@ -49,8 +49,8 @@ final class BackendPageModulePreviewContentEventListener
         $standaloneView->assignMultiple(
             [
                 'deletionBehavior' => $cleanerConfiguration['deletionBehavior'],
-                'deletionDate' => $cleanerConfiguration['deletionDate'],
-                'deletionPeriod' => $cleanerConfiguration['deletionPeriod'],
+                'deletionDate' => $cleanerConfiguration['deletionDate'] ?? '',
+                'deletionPeriod' => $cleanerConfiguration['deletionPeriod'] ?? '',
             ]
         );
         return $standaloneView->render();
