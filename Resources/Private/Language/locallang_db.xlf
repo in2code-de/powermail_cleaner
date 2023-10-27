@@ -36,6 +36,18 @@
 			<trans-unit id="hintTransl.Orig" resname="hintTransl.Orig">
 				<source>Setting is taken from standard language</source>
 			</trans-unit>
+			<trans-unit id="informReceiversBeforeDeletion.label">
+				<source>Inform receivers before deletion</source>
+			</trans-unit>
+			<trans-unit id="informReceiversBeforeDeletion.yes">
+				<source>Yes</source>
+			</trans-unit>
+			<trans-unit id="informReceiversBeforeDeletion.no">
+				<source>No</source>
+			</trans-unit>
+			<trans-unit id="informReceiversBeforeDeletionPeriod.label">
+				<source>When shall receivers be informed? (Period in days before deletion)</source>
+			</trans-unit>
 			<trans-unit id="pluginInfo.deletion" resname="pluginInfo.deletion">
 				<source>Deletion behaviour</source>
 			</trans-unit>
@@ -59,6 +71,18 @@
 			</trans-unit>
 			<trans-unit id="pluginInfo.deletionBehavior_long.deletionDate" resname="pluginInfo.deletionBehavior_long.deletionDate">
 				<source>The data you submitted to this form will be deleted on %s.</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.label">
+				<source>Notificaton of receivers</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.yes">
+				<source>Yes</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.no">
+				<source>No</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.period" resname="pluginInfo.informReceiversBeforeDeletion.period">
+				<source>Receivers will be informed %s days prior to deletion</source>
 			</trans-unit>
 			<trans-unit id="mail.related-plugin" resname="mail.related-plugin">
 				<source>Related plugin</source>

@@ -5,7 +5,7 @@
 
     <f:spaceless>
         <h3>Powermail Cleaner</h3>
-        <p>
+        <div>
             <strong>
                 <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletion">deletion</f:translate>:
             </strong>
@@ -17,12 +17,14 @@
                     <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior.deletionPeriod" arguments="{0: deletionPeriod}">
                         Mails will be deleleted after {deletionPeriod} days
                     </f:translate>
+                    <f:render section="informReceivers" arguments="{_all}" />
                 </f:case>
                 <f:case value="deletionDate">
                     <f:variable name="dateFormatted">{deletionDate -> f:format.date(format: 'd.m.Y')}</f:variable>
                     <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior.deletionDate" arguments="{0: dateFormatted}">
                         Mails will be deleted on {deletionDate -> f:format.date(format: 'd.m.Y')}
                     </f:translate>
+                    <f:render section="informReceivers" arguments="{_all}" />
                 </f:case>
                 <f:defaultCase>
                     <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior.wrongConfiguration">
@@ -30,6 +32,20 @@
                     </f:translate>
                 </f:defaultCase>
             </f:switch>
-        </p>
+        </div>
     </f:spaceless>
+
+<f:section name="informReceivers">
+    <div>
+        <strong><f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.informReceiversBeforeDeletion.label">Inform Users:</f:translate></strong>
+        <f:if condition="{informReceiversBeforeDeletion} == 1">
+            <f:then>
+                <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.informReceiversBeforeDeletion.period" arguments="{0:informReceiversBeforeDeletionPeriod}">
+                    Receivers will be informed {informReceiversBeforeDeletionPeriod} before deletion.
+                </f:translate>
+            </f:then>
+            <f:else><f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.informReceiversBeforeDeletion.no">No</f:translate>.</f:else>
+        </f:if>
+    </div>
+</f:section>
 </html>

@@ -60,6 +60,7 @@ class DisplayCondUserFunc
         return ($deletionBehavior === $field);
     }
 
+
     /**
      * DisplayCondfor field `deletionContact`
      *
@@ -77,6 +78,26 @@ class DisplayCondUserFunc
         $deletionBehavior = BackendUtility::getL18nParentFlexformFieldData((int)$keyRecord, 'deletionBehavior');
 
         return ($deletionBehavior === 'deletionPeriod' OR $deletionBehavior === 'deletionDate');
+    }
+
+    public static function getInformReceiversBeforeDeletionCondition(array $params): bool
+    {
+        if (empty($params['record']['l18n_parent'][0])) {
+            $keyRecord = $params['record']['uid'];
+        } else {
+            $keyRecord = $params['record']['l18n_parent'][0];
+        }
+
+        $informReceiversBeforeDeletion = BackendUtility::getL18nParentFlexformFieldData(
+            (int)$keyRecord,
+            'informReceiversBeforeDeletion'
+        );
+        $deletionBehavior = BackendUtility::getL18nParentFlexformFieldData((int)$keyRecord, 'deletionBehavior');
+
+        return (
+            !empty($informReceiversBeforeDeletion)
+            && ($deletionBehavior === 'deletionPeriod' || $deletionBehavior === 'deletionDate')
+        );
     }
 
     /**

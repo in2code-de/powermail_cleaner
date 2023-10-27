@@ -51,6 +51,8 @@ final class BackendPageModulePreviewContentEventListener
                 'deletionBehavior' => $cleanerConfiguration['deletionBehavior'],
                 'deletionDate' => $cleanerConfiguration['deletionDate'] ?? '',
                 'deletionPeriod' => $cleanerConfiguration['deletionPeriod'] ?? '',
+                'informReceiversBeforeDeletion' => $cleanerConfiguration['informReceiversBeforeDeletion'] ?? '',
+                'informReceiversBeforeDeletionPeriod' => $cleanerConfiguration['informReceiversBeforeDeletionPeriod'] ?? '',
             ]
         );
         return $standaloneView->render();

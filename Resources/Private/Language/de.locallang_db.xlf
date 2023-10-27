@@ -47,6 +47,22 @@
 				<source>Setting is taken from standard language</source>
 				<target>Einstellung wird aus Standardsprache übernommen</target>
 			</trans-unit>
+			<trans-unit id="informReceiversBeforeDeletion.yes">
+				<source>Yes</source>
+				<target>Ja</target>
+			</trans-unit>
+			<trans-unit id="informReceiversBeforeDeletion.no">
+				<source>No</source>
+				<target>Nein</target>
+			</trans-unit>
+			<trans-unit id="informReceiversBeforeDeletion.label">
+				<source>Inform receivers before deletion</source>
+				<target>Sollen die Empfänger vorab über die Löschung informiert werden?</target>
+			</trans-unit>
+			<trans-unit id="informReceiversBeforeDeletionPeriod.label">
+				<source>When shall receivers be informed? (Period in days before deletion)</source>
+				<target>Wann sollen die Empfänger informiert werden (Zeitraum in Tage vor der Löschung)</target>
+			</trans-unit>
 			<trans-unit id="pluginInfo.deletion" resname="pluginInfo.deletion">
 				<source>Deletion behaviour</source>
 				<target>Löschen von Daten</target>
@@ -78,6 +94,22 @@
 			<trans-unit id="pluginInfo.deletionBehavior_long.deletionDate" resname="pluginInfo.deletionBehavior_long.deletionDate">
 				<source>The data you submitted to this form will be deleted on %s.</source>
 				<target>Ihre Eingaben in diesem Formular werden am %s gelöscht.</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.label">
+				<source>Notificaton of receivers</source>
+				<target>Information an E-Mail-Empfänger</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.yes">
+				<source>Yes</source>
+				<target>Ja</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.no">
+				<source>No</source>
+				<target>Nein</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.period" resname="pluginInfo.informReceiversBeforeDeletion.period">
+				<source>Receivers will be informed %s days prior to deletion</source>
+				<target>Empfänger werden %s Tage vor der Löschung benachrichtigt</target>
 			</trans-unit>
 			<trans-unit id="mail.related-plugin" resname="mail.related-plugin">
 				<source>Related plugin</source>
