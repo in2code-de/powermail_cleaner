@@ -2,7 +2,6 @@
 return [
     'BE' => [
         'debug' => false,
-        'explicitADmode' => 'explicitAllow',
         'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$Y0Zkc2tFVUFzaWs3S1JUMA$VUYXEG49usrpbDP9cKfC0GrhRAtGICi5B7HGJ4LVYtg',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
@@ -40,16 +39,31 @@ return [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
         ],
-        'in2studyfinder' => [
-            'enableBackendModule' => '1',
-            'enableCaching' => '1',
-            'enableCategories' => '0',
-            'enableGlobalData' => '0',
-            'enablePersistentFilter' => '0',
+        'powermail' => [
+            'disableBackendModule' => '0',
+            'disableIpLog' => '1',
+            'disableMarketingInformation' => '0',
+            'disablePluginInformation' => '0',
+            'disablePluginInformationMailPreview' => '0',
+            'enableCaching' => '0',
+            'replaceIrreWithElementBrowser' => '0',
         ],
         'scheduler' => [
             'maxLifetime' => '1440',
             'showSampleTasks' => '1',
+        ],
+        'translate_locallang' => [
+            'allowedExts' => '*',
+            'allowedFiles' => '',
+            'clearCache' => '0',
+            'defaultLangKey' => 'en',
+            'extFilter' => '*',
+            'langKeys' => 'de,fr,it',
+            'modifyDefaultLang' => '0',
+            'modifyKeys' => '0',
+            'sortOnSave' => '0',
+            'translatorInfo' => '',
+            'useL10n' => '0',
         ],
     ],
     'FE' => [
@@ -67,7 +81,6 @@ return [
         'processor_effects' => true,
         'processor_enabled' => true,
         'processor_path' => '/usr/bin/',
-        'processor_path_lzw' => '/usr/bin/',
     ],
     'LOG' => [
         'TYPO3' => [
@@ -110,12 +123,6 @@ return [
                         'compression' => true,
                     ],
                 ],
-                'pagesection' => [
-                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
-                    'options' => [
-                        'compression' => true,
-                    ],
-                ],
                 'rootline' => [
                     'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
                     'options' => [
@@ -129,6 +136,7 @@ return [
         'encryptionKey' => 'd38c6c3eba5b63a952a6c91238205abd7fa52e89d4ae98cb66dcd908f0ce441570b26ad56c54417947f2bf09d2897e69',
         'exceptionalErrors' => 4096,
         'features' => [
+            'security.usePasswordPolicyForFrontendUsers' => true,
             'unifiedPageTranslationHandling' => true,
             'yamlImportsFollowDeclarationOrder' => true,
         ],
