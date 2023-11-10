@@ -53,7 +53,8 @@
     "typo3/cms-setup": "^11.5",
     "typo3/cms-tstemplate": "^11.5",
     "typo3/cms-viewpage": "^11.5",
-    "helhum/typo3-console": "^7.1"
+    "helhum/typo3-console": "^7.1",
+    "undefined/translate-locallang": "^2.9"
   },
 
   "autoload": {
