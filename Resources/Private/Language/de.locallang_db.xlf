@@ -82,6 +82,12 @@
 				<source>The data you submitted to this form will be deleted on %s.</source>
 				<target state="translated">Ihre Eingaben in diesem Formular werden am %s gelöscht.</target>
 			</trans-unit>
+
+			<trans-unit id="mail.related-plugin">
+				<source>Related plugin</source>
+				<target>Plugin</target>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>
