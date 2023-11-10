@@ -132,7 +132,7 @@ return [
             'unifiedPageTranslationHandling' => true,
             'yamlImportsFollowDeclarationOrder' => true,
         ],
-        'sitename' => 'Powermail Cleaner -- DDEV',
+        'sitename' => 'Powermail Cleaner V11-- DDEV',
         'systemMaintainers' => [
             1,
         ],
