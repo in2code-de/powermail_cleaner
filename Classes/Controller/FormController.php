@@ -12,4 +12,5 @@ class FormController extends \In2code\Powermail\Controller\FormController {
     public function getContentObject() {
         return $this->contentObject;
     }
+
 }
