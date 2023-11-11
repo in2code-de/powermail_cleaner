@@ -6,7 +6,6 @@ namespace In2code\PowermailCleaner\EventListener;
 
 use In2code\Powermail\Utility\HashUtility;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 final class FormControllerCreateActionBeforeRenderViewEventListener
 {
