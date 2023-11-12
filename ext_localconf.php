@@ -4,6 +4,14 @@ if (!defined('TYPO3_MODE')) {
 }
 
 call_user_func(function () {
+    $GLOBALS['TYPO3_CONF_VARS']['LOG']['In2code']['PowermailCleaner']['Command']['CleanupCommand']['writerConfiguration'] = [
+        \Psr\Log\LogLevel::INFO => [
+            \TYPO3\CMS\Core\Log\Writer\FileWriter::class => [
+                'logFile' => \TYPO3\CMS\Core\Core\Environment::getVarPath() . '/log/powermail-cleaner_7ac500bce5.log'
+            ],
+        ]
+    ];
+
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][\TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools::class]['flexParsing'][]
         = \In2code\PowermailCleaner\Hooks\FlexFormHook::class;
 
