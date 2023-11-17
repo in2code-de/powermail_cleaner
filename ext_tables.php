@@ -13,5 +13,8 @@ call_user_func(
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Domain\Repository\MailRepository::class] = [
             'className' => \In2code\PowermailCleaner\Domain\Repository\MailRepository::class
         ];
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Domain\Service\Mail\ReceiverMailReceiverPropertiesService::class] = [
+            'className' => \In2code\PowermailCleaner\Domain\Service\ReceiverAddressService::class
+        ];
     }
 );

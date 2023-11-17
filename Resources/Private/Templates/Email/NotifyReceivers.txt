@@ -1,0 +1,12 @@
+Dear receivers
+
+the admin team would like to inform you, that some mails are going to be deleted. Please see below for details:
+
+
+Plugin: {plugin.content_header} (UID: {plugin.content_uid})
+Page: {plugin.page_title}
+Mails to be deletet: {mailCount}
+Timeframe for deleted mails: <f:format.date format="%d. %m. %Y %H:%M">{notificationTimeframe.start}</f:format.date> - <f:format.date  format="%d. %m. %Y %H:%M">{notificationTimeframe.end -1} </f:format.date>
+
+Best regards
+the admin team

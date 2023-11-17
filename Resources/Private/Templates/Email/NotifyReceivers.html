@@ -1,0 +1,23 @@
+<html
+        lang=""
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+
+Dear receivers
+<br />
+<br />
+the admin team would like to inform you, that some mails are going to be deleted.
+<br />
+Please see below for details:
+<br />
+<br />
+Plugin: {plugin.content_header} / (UID: {plugin.content_uid})<br />
+Page: {plugin.page_title} <br />
+Mails to be deletet: {mailCount}<br />
+Timeframe for deleted mails: <f:format.date format="%d. %m. %Y %H:%M">{notificationTimeframe.start}</f:format.date> - <f:format.date  format="%d. %m. %Y %H:%M">{notificationTimeframe.end -1} </f:format.date>
+<br />
+<br />
+Best regards <br />
+the admin team
+
+</html>

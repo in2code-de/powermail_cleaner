@@ -15,6 +15,12 @@ services:
         command: 'powermail_cleaner:cleanup'
         description: 'Cleans up powermail mails based on on the saved deletion date'
 
+  In2code\PowermailCleaner\Command\InformReceiversCommand:
+    tags:
+      - name: console.command
+        command: 'powermail_cleaner:informReceivers'
+        description: 'Informs receivers about upcoming deletion of powermail mails'
+
   In2code\PowermailCleaner\EventListener\FlexFormParsingModifyEventListener:
     tags:
       - name: 'event.listener'

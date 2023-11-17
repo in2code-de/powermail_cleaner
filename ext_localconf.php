@@ -10,4 +10,10 @@ call_user_func(function () {
             ],
         ]
     ];
+
+    $GLOBALS['TYPO3_CONF_VARS']['MAIL']['templateRootPaths'][1699609953] =
+        'EXT:powermail_cleaner/Resources/Private/Templates/Email';
+
+    $GLOBALS['TYPO3_CONF_VARS']['MAIL']['layoutRootPaths'][1699609953] =
+        'EXT:powermail_cleaner/Resources/Private/Layouts/Email';
 });
