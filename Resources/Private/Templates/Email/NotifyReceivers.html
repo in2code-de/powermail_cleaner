@@ -3,7 +3,7 @@
         xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
         data-namespace-typo3-fluid="true">
 
-Dear receivers
+Dear receiver
 <br />
 <br />
 the admin team would like to inform you, that some mails are going to be deleted.
@@ -11,13 +11,17 @@ the admin team would like to inform you, that some mails are going to be deleted
 Please see below for details:
 <br />
 <br />
-Plugin: {plugin.content_header} / (UID: {plugin.content_uid})<br />
-Page: {plugin.page_title} <br />
-Mails to be deletet: {mailCount}<br />
-Timeframe for deleted mails: <f:format.date format="%d. %m. %Y %H:%M">{notificationTimeframe.start}</f:format.date> - <f:format.date  format="%d. %m. %Y %H:%M">{notificationTimeframe.end -1} </f:format.date>
+<f:for as="plugin" each="{plugins}">
+    Content element: {f:if(condition: '{plugin.plugin.content_header}', then: '{plugin.plugin.content_header} / ')}UID: {plugin.plugin.content_uid}<br />
+    Page: {f:if(condition: '{plugin.plugin.page_title}', then: '{plugin.plugin.page_title} / ')}UID: {plugin.plugin.page_uid} <br />
+    Number of mails to be deleted: {plugin.mailCount}<br />
+    Timeframe for deleted mails: <f:format.date format="%d. %m. %Y %H:%M">{plugin.notificationTimeframe.start}</f:format.date> - <f:format.date  format="%d. %m. %Y %H:%M">{plugin.notificationTimeframe.end -1} </f:format.date>
+    <br />
+    <br />
+</f:for>
 <br />
 <br />
 Best regards <br />
-the admin team
+the Admin Team
 
 </html>

@@ -31,6 +31,7 @@ class InformReceiversCommand extends Command
     private FlexFormService $flexFormService;
     private Mail $mail;
     private TimeCalculationService $timeCalculationService;
+    private array $receiversList = [];
 
     /**
      * @throws InvalidConfigurationTypeException
@@ -69,6 +70,11 @@ class InformReceiversCommand extends Command
         foreach ($this->getAllPowermailPi1PluginsWithDeletionRestriction() as $plugin) {
             $this->processPlugin($plugin);
         }
+
+        foreach ($this->receiversList as $receiver) {
+            $this->informReceiver($receiver);
+        }
+
         return Command::SUCCESS;
     }
 
@@ -117,44 +123,53 @@ class InformReceiversCommand extends Command
         return $addressService->getReceiverEmails();
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     * @throws Exception
-     */
     private function processPlugin(array $plugin): void
     {
         $flexform = $this->flexFormService->convertFlexFormContentToArray($plugin['pi_flexform']);
-        $notificationTimeframe = TimeCalculationService::calculateNotificationTimeframe((int)$plugin['period']);
+        $notificationTimeframe = $this->timeCalculationService->calculateNotificationTimeframe((int)$plugin['period']);
 
         $mailCount = $this->mailRepository->countMailsForPluginAndTranslatedWithinTimeframe($plugin['content_uid'], $notificationTimeframe);
         if ($mailCount > 0) {
             $receivers = $this->findReceivers($flexform['settings']['flexform']);
             if (count($receivers) > 0) {
-                $email = GeneralUtility::makeInstance(FluidEmail::class);
-                $email
-                    ->to(
-                        new Address(
-                            $this->powermailCleanerTyposcript['to.']['address'], $this->powermailCleanerTyposcript['to.']['name']
-                        )
-                    )
-                    ->from(
-                        new Address(
-                            $this->powermailCleanerTyposcript['from.']['address'], $this->powermailCleanerTyposcript['from.']['name']
-                        )
-                    )
-                    ->subject($this->powermailCleanerTyposcript['subject'])
-                    ->format(FluidEmail::FORMAT_BOTH)
-                    ->setTemplate($this->powermailCleanerTyposcript['template'])
-                    ->assignMultiple([
-                        'plugin' => $plugin,
-                        'mailCount' => $mailCount,
-                        'notificationTimeframe' => $notificationTimeframe
-                    ]);
                 foreach ($receivers as $receiver) {
-                    $email->addBcc($receiver);
+                    $receiverDetails = [
+                      $receiver => [
+                          'address' => $receiver,
+                          'plugins' => [
+                              $plugin['content_uid'] => [
+                                  'plugin' => $plugin,
+                                  'mailCount' => $mailCount,
+                                  'notificationTimeframe' => $notificationTimeframe
+                              ],
+                          ],
+                      ],
+                    ];
+                    ArrayUtility::mergeRecursiveWithOverrule($this->receiversList, $receiverDetails);
                 }
-                GeneralUtility::makeInstance(MailerInterface::class)->send($email);
             }
         }
+    }
+
+    /**
+     * @throws TransportExceptionInterface
+     */
+    private function informReceiver(array $receiverInfo): void
+    {
+        $email = GeneralUtility::makeInstance(FluidEmail::class);
+        $email
+            ->to(new Address($receiverInfo['address']))
+            ->from(
+                new Address(
+                    $this->powermailCleanerTyposcript['from.']['address'],
+                    $this->powermailCleanerTyposcript['from.']['name']
+                )
+            )
+            ->subject($this->powermailCleanerTyposcript['subject'])
+            ->format(FluidEmail::FORMAT_BOTH)
+            ->setTemplate($this->powermailCleanerTyposcript['template'])
+            ->assign('plugins', $receiverInfo['plugins']);
+
+        GeneralUtility::makeInstance(MailerInterface::class)->send($email);
     }
 }

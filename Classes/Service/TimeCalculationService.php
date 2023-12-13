@@ -5,7 +5,7 @@ namespace In2code\PowermailCleaner\Service;
 class TimeCalculationService
 {
 
-    public static function calculateNotificationTimeframe(int $informReceiversBeforeDeletionPeriod): array
+    public function calculateNotificationTimeframe(int $informReceiversBeforeDeletionPeriod): array
     {
         $notificationLimit = [];
         $beginOfDay = strtotime('today +' . $informReceiversBeforeDeletionPeriod . 'days', time());
