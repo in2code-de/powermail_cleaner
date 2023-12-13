@@ -8,6 +8,7 @@ use In2code\PowermailCleaner\Domain\Model\Mail;
 use In2code\PowermailCleaner\Domain\Repository\MailRepository;
 use In2code\PowermailCleaner\Domain\Service\ReceiverAddressService;
 use In2code\PowermailCleaner\Utility\DatabaseUtility;
+use In2code\PowermailCleaner\Service\TimeCalculationService;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -29,6 +30,7 @@ class InformReceiversCommand extends Command
     private MailRepository $mailRepository;
     private FlexFormService $flexFormService;
     private Mail $mail;
+    private TimeCalculationService $timeCalculationService;
 
     /**
      * @throws InvalidConfigurationTypeException
@@ -44,6 +46,7 @@ class InformReceiversCommand extends Command
         $this->flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
         /** @var Mail $mail */
         $this->mail = GeneralUtility::makeInstance(Mail::class);
+        $this->timeCalculationService = new TimeCalculationService();
     }
 
     protected function configure(): void
@@ -92,16 +95,6 @@ class InformReceiversCommand extends Command
         return $powermailPi1PluginsWithDeletionRestrictions;
     }
 
-    private function calculateNotificationTimeframe(int $informReceiversBeforeDeletionPeriod): array
-    {
-        $notificationLimit = [];
-        $beginOfDay = strtotime('today +' . $informReceiversBeforeDeletionPeriod . 'days', time());
-        $notificationLimit['start'] = strtotime('today', $beginOfDay);
-        $notificationLimit['end'] = $notificationLimit['start'] + 86400;
-
-        return $notificationLimit;
-    }
-
     /**
      * @throws InvalidConfigurationTypeException
      */
@@ -131,7 +124,7 @@ class InformReceiversCommand extends Command
     private function processPlugin(array $plugin): void
     {
         $flexform = $this->flexFormService->convertFlexFormContentToArray($plugin['pi_flexform']);
-        $notificationTimeframe = $this->calculateNotificationTimeframe((int)$plugin['period']);
+        $notificationTimeframe = TimeCalculationService::calculateNotificationTimeframe((int)$plugin['period']);
 
         $mailCount = $this->mailRepository->countMailsForPluginAndTranslatedWithinTimeframe($plugin['content_uid'], $notificationTimeframe);
         if ($mailCount > 0) {
