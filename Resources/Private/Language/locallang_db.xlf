@@ -1,67 +1,118 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0">
-	<file source-language="en" datatype="plaintext"
-		 original="EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf"
-		 date="2022-03-21T12:00:00Z" product-name="powermail_cleaner">
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf" date="2023-10-11T13:51:44Z" product-name="powermail_cleaner">
 		<header/>
 		<body>
-			<trans-unit id="tabs.powermailCleaner">
+			<trans-unit id="tabs.powermailCleaner" resname="tabs.powermailCleaner">
 				<source>Data protection / Clean-up</source>
 			</trans-unit>
-
-			<trans-unit id="deletionBehavior">
+			<trans-unit id="deletionBehavior" resname="deletionBehavior">
 				<source>Clean-up of form data</source>
 			</trans-unit>
-			<trans-unit id="deletionBehavior.0">
+			<trans-unit id="deletionBehavior.0" resname="deletionBehavior.0">
 				<source>Please select</source>
 			</trans-unit>
-			<trans-unit id="deletionBehavior.dbDisable">
+			<trans-unit id="deletionBehavior.dbDisable" resname="deletionBehavior.dbDisable">
 				<source>Data is not stored in database</source>
 			</trans-unit>
-			<trans-unit id="deletionBehavior.deletionPeriod">
+			<trans-unit id="deletionBehavior.deletionPeriod" resname="deletionBehavior.deletionPeriod">
 				<source>Data will be cleaned after the specified deletion period</source>
 			</trans-unit>
-			<trans-unit id="deletionBehavior.deletionDate">
+			<trans-unit id="deletionBehavior.deletionDate" resname="deletionBehavior.deletionDate">
 				<source>Data will be cleaned after specified date</source>
 			</trans-unit>
-			<trans-unit id="deletionPeriod">
+			<trans-unit id="deletionPeriod" resname="deletionPeriod">
 				<source>Clean-up period (in days)</source>
 			</trans-unit>
-			<trans-unit id="deletionDate">
+			<trans-unit id="deletionDate" resname="deletionDate">
 				<source>Clean-up after the specified date</source>
 			</trans-unit>
-			<trans-unit id="deletionContact">
+			<trans-unit id="deletionContact" resname="deletionContact">
 				<source>Contact for objection and deletion option</source>
 			</trans-unit>
-			<trans-unit id="deletionDetails">
+			<trans-unit id="deletionDetails" resname="deletionDetails">
 				<source>Amendments to the Data Protection Policy</source>
 			</trans-unit>
-
-			<trans-unit id="hintTransl.Orig">
+			<trans-unit id="hintTransl.Orig" resname="hintTransl.Orig">
 				<source>Setting is taken from standard language</source>
 			</trans-unit>
-
-			<trans-unit id="pluginInfo.deletion">
+			<trans-unit id="informReceiversBeforeDeletion.label">
+				<source>Inform receivers before deletion</source>
+			</trans-unit>
+			<trans-unit id="informReceiversBeforeDeletion.yes">
+				<source>Yes</source>
+			</trans-unit>
+			<trans-unit id="informReceiversBeforeDeletion.no">
+				<source>No</source>
+			</trans-unit>
+			<trans-unit id="informReceiversBeforeDeletionPeriod.label">
+				<source>When shall receivers be informed? (Period in days before deletion)</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletion" resname="pluginInfo.deletion">
 				<source>Deletion behaviour</source>
 			</trans-unit>
-
-			<trans-unit id="pluginInfo.deletionBehavior.dbDisable">
+			<trans-unit id="pluginInfo.deletionBehavior.dbDisable" resname="pluginInfo.deletionBehavior.dbDisable">
 				<source>Data is not stored in database</source>
 			</trans-unit>
-			<trans-unit id="pluginInfo.deletionBehavior_long.dbDisable">
+			<trans-unit id="pluginInfo.deletionBehavior_long.dbDisable" resname="pluginInfo.deletionBehavior_long.dbDisable">
 				<source>The data you submitted to this form will not be stored in the database.</source>
 			</trans-unit>
-			<trans-unit id="pluginInfo.deletionBehavior.deletionPeriod">
+			<trans-unit id="pluginInfo.deletionBehavior.deletionPeriod" resname="pluginInfo.deletionBehavior.deletionPeriod">
 				<source>Data is deleted after %d days</source>
 			</trans-unit>
-			<trans-unit id="pluginInfo.deletionBehavior_long.deletionPeriod">
+			<trans-unit id="pluginInfo.deletionBehavior_long.deletionPeriod" resname="pluginInfo.deletionBehavior_long.deletionPeriod">
 				<source>The data you submitted to this form will be deleted after a period of %d days.</source>
 			</trans-unit>
-			<trans-unit id="pluginInfo.deletionBehavior.deletionDate">
+			<trans-unit id="pluginInfo.deletionBehavior.wrongConfiguration" resname="pluginInfo.deletionBehavior.wrongConfiguration">
+				<source>Wrong configuration. Please check plugin settings</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior.deletionDate" resname="pluginInfo.deletionBehavior.deletionDate">
 				<source>Data will be deleted on %s</source>
 			</trans-unit>
-			<trans-unit id="pluginInfo.deletionBehavior_long.deletionDate">
+			<trans-unit id="pluginInfo.deletionBehavior_long.deletionDate" resname="pluginInfo.deletionBehavior_long.deletionDate">
 				<source>The data you submitted to this form will be deleted on %s.</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.label">
+				<source>Notificaton of receivers</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.yes">
+				<source>Yes</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.no">
+				<source>No</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.period" resname="pluginInfo.informReceiversBeforeDeletion.period">
+				<source>Receivers will be informed %s days prior to deletion</source>
+			</trans-unit>
+			<trans-unit id="mail.related-plugin" resname="mail.related-plugin">
+				<source>Related plugin</source>
+			</trans-unit>
+			<trans-unit id="mail.deletionDate">
+				<source>Stored deletion date</source>
+			</trans-unit>
+			<trans-unit id="module.cleanup.header" resname="module.cleanup.header">
+				<source>Powermail Cleaner</source>
+			</trans-unit>
+			<trans-unit id="module.cleanup.done" resname="module.cleanup.done">
+				<source>Cleanup finished</source>
+			</trans-unit>
+			<trans-unit id="module.cleanup.statistics" resname="module.cleanup.statistics">
+				<source>Cleanup Statistics: %d mails, %d answers, %d files</source>
+			</trans-unit>
+			<trans-unit id="module.cleanup.age" resname="module.cleanup.age">
+				<source>Age in seconds</source>
+			</trans-unit>
+			<trans-unit id="module.cleanup.ageExplanation" resname="module.cleanup.ageExplanation">
+				<source>Examples: &quot;5184000&quot; equals 60 days, &quot;31536000&quot; equals 1 year</source>
+			</trans-unit>
+			<trans-unit id="module.cleanup.pid" resname="module.cleanup.pid">
+				<source>Optional: Restrict the cleanup to a specific PID</source>
+			</trans-unit>
+			<trans-unit id="module.cleanup.pidExplanation" resname="module.cleanup.pidExplanation">
+				<source>If not set, all e-mails and answers in the whole TYPO3 instances will be cleaned up!</source>
+			</trans-unit>
+			<trans-unit id="module.cleanup.submitButton" resname="module.cleanup.submitButton">
+				<source>Cleanup!</source>
 			</trans-unit>
 		</body>
 	</file>

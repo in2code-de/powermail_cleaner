@@ -1,0 +1,34 @@
+base: 'https://powermail-cleaner.ddev.site/'
+errorHandling: {  }
+languages:
+  -
+    title: English
+    enabled: true
+    base: /
+    typo3Language: default
+    locale: en_US.UTF-8
+    iso-639-1: en
+    websiteTitle: Powermail Cleaner -- Developmennt
+    navigationTitle: English
+    hreflang: en-US
+    direction: ltr
+    flag: en-us-gb
+    languageId: '0'
+  -
+    title: German
+    enabled: true
+    base: /de
+    typo3Language: de
+    locale: de_DE
+    iso-639-1: de
+    websiteTitle: Powermail Cleaner -- Developmennt
+    navigationTitle: Deutsch
+    hreflang: de-DE
+    direction: ''
+    fallbackType: strict
+    fallbacks: ''
+    flag: de
+    languageId: '1'
+rootPageId: 1
+routes: {  }
+websiteTitle: ''

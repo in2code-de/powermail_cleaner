@@ -4,4 +4,4 @@
 ## Usage: typo3cms [args]
 ## Example: "ddev typo3cms install:setup"
 
-.Build/bin/typo3cms "$@"
+.build/bin/typo3cms "$@"

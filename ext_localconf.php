@@ -1,21 +1,19 @@
 <?php
-if (!defined('TYPO3_MODE')) {
-    die('Access denied.');
-}
+
+defined('TYPO3') || die('Access denied.');
 
 call_user_func(function () {
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][\TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools::class]['flexParsing'][]
-        = \In2code\PowermailCleaner\Hooks\FlexFormHook::class;
+    $GLOBALS['TYPO3_CONF_VARS']['LOG']['In2code']['PowermailCleaner']['Command']['CleanupCommand']['writerConfiguration'] = [
+        \Psr\Log\LogLevel::INFO => [
+            \TYPO3\CMS\Core\Log\Writer\FileWriter::class => [
+                'logFile' => \TYPO3\CMS\Core\Core\Environment::getVarPath() . '/log/powermail-cleaner_7ac500bce5.log'
+            ],
+        ]
+    ];
 
-    $cmsLayout = 'cms/layout/class.tx_cms_layout.php';
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$cmsLayout]['tt_content_drawItem']['powermail'] =
-        \In2code\PowermailCleaner\Hooks\PluginPreview::class;
+    $GLOBALS['TYPO3_CONF_VARS']['MAIL']['templateRootPaths'][1699609953] =
+        'EXT:powermail_cleaner/Resources/Private/Templates/Email';
 
-    $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class);
-    $signalSlotDispatcher->connect(
-        \In2code\Powermail\Controller\FormController::class,  // Signal class name
-        'createActionAfterMailDbSaved',                                  // Signal name
-        \In2code\PowermailCleaner\Hooks\AfterMailSave::class,        // Slot class name
-        'attachPlugin'                               // Slot name
-    );
+    $GLOBALS['TYPO3_CONF_VARS']['MAIL']['layoutRootPaths'][1699609953] =
+        'EXT:powermail_cleaner/Resources/Private/Layouts/Email';
 });

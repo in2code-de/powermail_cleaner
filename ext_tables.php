@@ -1,21 +1,20 @@
 <?php
-if (!defined('TYPO3_MODE')) {
-    die('Access denied.');
-}
+
+defined('TYPO3') || die('Access denied.');
+
 call_user_func(
     function () {
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['extbase']['extensions']['Powermail']['modules']['web_PowermailM1']['controllers']['Module']['actions'][] = 'cleanup';
-
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Controller\ModuleController::class] = [
-            'className' => \In2code\PowermailCleaner\Controller\ModuleController::class
-        ];
-
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Controller\FormController::class] = [
             'className' => \In2code\PowermailCleaner\Controller\FormController::class
         ];
-
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Domain\Model\Mail::class] = [
             'className' => \In2code\PowermailCleaner\Domain\Model\Mail::class
+        ];
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Domain\Repository\MailRepository::class] = [
+            'className' => \In2code\PowermailCleaner\Domain\Repository\MailRepository::class
+        ];
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Domain\Service\Mail\ReceiverMailReceiverPropertiesService::class] = [
+            'className' => \In2code\PowermailCleaner\Domain\Service\ReceiverAddressService::class
         ];
     }
 );

@@ -99,4 +99,49 @@ class FormSelectorUserFunc
             '',
         ];
     }
+
+    public function getInformReceiversBeforeDeletionL10nItem(array &$params): void
+    {
+        // Don't handle records without l18n parent
+        if (empty($params['flexParentDatabaseRow']['l18n_parent'])) {
+            return;
+        }
+
+        $params['items'] = [];
+
+        // get L18n parent record
+        $informReceiversBeforeDeletion = BackendUtility::getL18nParentFlexformFieldData(
+            (int)$params['flexParentDatabaseRow']['l18n_parent'],
+            'informReceiversBeforeDeletion'
+        );
+
+        if (!empty($informReceiversBeforeDeletion)) {
+            $params['items'][] = [
+                'label' => 'LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:informReceiversBeforeDeletion.yes',
+            ];
+        } else {
+            $params['items'][] = [
+                'label' => 'LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:informReceiversBeforeDeletion.no',
+            ];
+        }
+    }
+    public function getInformReceiversBeforeDeletionPeriodL10nItem(array &$params): void
+    {
+        // Don't handle records without l18n parent
+        if (empty($params['flexParentDatabaseRow']['l18n_parent'])) {
+            return;
+        }
+
+        $params['items'] = [];
+
+        // get L18n parent record
+        $informReceiversBeforeDeletionPeriod = BackendUtility::getL18nParentFlexformFieldData(
+            (int)$params['flexParentDatabaseRow']['l18n_parent'],
+            'informReceiversBeforeDeletionPeriod'
+        );
+
+        $params['items'][] = [
+            'label' => $informReceiversBeforeDeletionPeriod,
+        ];
+    }
 }

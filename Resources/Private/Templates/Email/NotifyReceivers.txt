@@ -1,0 +1,15 @@
+Dear receivers
+
+the admin team would like to inform you, that some mails are going to be deleted. Please see below for details:
+
+<f:for as="plugin" each="{plugins}">
+Content element: {f:if(condition: '{plugin.plugin.content_header}', then: '{plugin.plugin.content_header} / ')}UID: {plugin.plugin.content_uid}
+Page: {f:if(condition: '{plugin.plugin.page_title}', then: '{plugin.plugin.page_title} / ')}UID: {plugin.plugin.page_uid}
+Number of mails to be deleted: {plugin.mailCount}
+Timeframe for deleted mails: <f:format.date format="%d. %m. %Y %H:%M">{plugin.notificationTimeframe.start}</f:format.date> - <f:format.date  format="%d. %m. %Y %H:%M">{plugin.notificationTimeframe.end -1} </f:format.date>
+
+
+</f:for>
+
+Best regards
+the admin team

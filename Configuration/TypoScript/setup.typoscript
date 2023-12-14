@@ -13,3 +13,24 @@ plugin.tx_powermail {
         }
     }
 }
+
+plugin.tx_powermail_cleaner {
+    settings {
+        to {
+            name = Example
+            address = noreply@example.com
+        }
+        from {
+            name = Example
+            address = noreply@example.com
+        }
+        additionalBcc {
+            0 {
+                name = Example
+                address = noreply@example.com
+            }
+        }
+        subject = Information about e-mails to be deleted
+        template = NotifyReceivers
+    }
+}

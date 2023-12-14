@@ -13,4 +13,26 @@ services:
     tags:
       - name: console.command
         command: 'powermail_cleaner:cleanup'
-        description: 'Cleans up powermail mails based on configuration set in plugins'
+        description: 'Cleans up powermail mails based on on the saved deletion date'
+
+  In2code\PowermailCleaner\Command\InformReceiversCommand:
+    tags:
+      - name: console.command
+        command: 'powermail_cleaner:informReceivers'
+        description: 'Informs receivers about upcoming deletion of powermail mails'
+
+  In2code\PowermailCleaner\EventListener\FlexFormParsingModifyEventListener:
+    tags:
+      - name: 'event.listener'
+        identifier: 'powermailcleaner:modify-data-structure'
+        after: 'powermail-modify-data-structure'
+
+  In2code\PowermailCleaner\EventListener\BackendPageModulePreviewContentEventListener:
+    tags:
+      - name: 'event.listener'
+        identifier: 'powermailcleaner:page-layout-preview'
+
+  In2code\PowermailCleaner\EventListener\FormControllerCreateActionBeforeRenderViewEventListener:
+    tags:
+      - name: 'event.listener'
+        identifier: 'powermailcleaner:powermail-mail-add-fields'
