@@ -47,7 +47,7 @@ class InformReceiversCommand extends Command
         $this->flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
         /** @var Mail $mail */
         $this->mail = GeneralUtility::makeInstance(Mail::class);
-        $this->timeCalculationService = new TimeCalculationService();
+        $this->timeCalculationService = GeneralUtility::makeInstance(TimeCalculationService::class);
     }
 
     protected function configure(): void
@@ -161,13 +161,13 @@ class InformReceiversCommand extends Command
             ->to(new Address($receiverInfo['address']))
             ->from(
                 new Address(
-                    $this->powermailCleanerTyposcript['from.']['address'],
-                    $this->powermailCleanerTyposcript['from.']['name']
+                    $this->powermailCleanerTyposcript['reminderMail']['from.']['address'],
+                    $this->powermailCleanerTyposcript['reminderMail']['from.']['name']
                 )
             )
-            ->subject($this->powermailCleanerTyposcript['subject'])
+            ->subject($this->powermailCleanerTyposcript['reminderMail']['subject'])
             ->format(FluidEmail::FORMAT_BOTH)
-            ->setTemplate($this->powermailCleanerTyposcript['template'])
+            ->setTemplate($this->powermailCleanerTyposcript['reminderMail']['template'])
             ->assign('plugins', $receiverInfo['plugins']);
 
         GeneralUtility::makeInstance(MailerInterface::class)->send($email);
