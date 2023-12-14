@@ -35,15 +35,4 @@ Example Backend Cleaner view
 Configuration
 -------------
 
-The clean up age can be set via three ways:
-
-typoScript (Module Settings):
-module.tx_powermailcleanupAge = 31536000
-
-UserTS / PageTS
-tx_powermail.settings.cleanupAge = XXX
-
-Order of processing:
-* typoScript
-* PageTS
-* UserTS
+See readme.md in the root folder of this extension.
