@@ -16,16 +16,20 @@ git lfs pull
 
 echo "Symlink configuration"
 mkdir -p .build/config/sites/main
-ln -snf ../../../.project/config/typo3/config.yaml config/sites/main/config.yaml
+ln -snf ../../../../.project/config/typo3/config.yaml .build/config/sites/main/config.yaml
 mkdir -p .build/config/system
-ln -snf ../../.project/config/typo3/settings.php config/system/settings.php
-ln -snf ../../.project/config/typo3/additional.php config/system.additional.php
+ln -snf ../../../.project/config/typo3/settings.php .build/config/system/settings.php
+ln -snf ../../../.project/config/typo3/additional.php .build/config/system/additional.php
 
 echo "Importing database"
 ddev import-db --file=.project/data/db.sql.gz
 
 echo "Run 'composer install'"
 ddev composer install
+
+echo "Link .htaccess"
+cp .build/vendor/typo3/cms-install/Resources/Private/FolderStructureTemplateFiles/root-htaccess .build/public/.htaccess
+
 ddev describe
 
 echo "Thanks for supporting 'EXT:powermail_cleaner"
