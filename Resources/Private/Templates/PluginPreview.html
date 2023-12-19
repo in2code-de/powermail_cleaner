@@ -33,6 +33,11 @@
                 </f:defaultCase>
             </f:switch>
         </div>
+        <f:if condition="{optinVsDbDelete}">
+            <div class="mt-2">
+                <f:be.infobox title="{f:translate(key: 'LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.optinVsDbDelete.title', default: 'Configuration error')}" state="2">{f:translate(key: 'LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.optinVsDbDelete.message', default: 'It is not possible to use "Do not store in database" together with OptIn')}</f:be.infobox>
+            </div>
+        </f:if>
     </f:spaceless>
 
 <f:section name="informReceivers">

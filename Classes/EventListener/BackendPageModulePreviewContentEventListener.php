@@ -9,6 +9,9 @@ use In2code\PowermailCleaner\Utility\BackendUtility;
 use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\BackendConfigurationManager;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 final class BackendPageModulePreviewContentEventListener
@@ -31,6 +34,7 @@ final class BackendPageModulePreviewContentEventListener
 
         if (ArrayUtility::isValidPath($flexforms, 'settings/flexform/powermailCleaner')){
             $cleanerSettings = $flexforms['settings']['flexform']['powermailCleaner'];
+            $cleanerSettings['optin'] = $flexforms['settings']['flexform']['main']['optin'];
 
             if ($cleanerSettings['deletionBehavior'] !== '') {
                 $event->setPreview(
@@ -42,6 +46,8 @@ final class BackendPageModulePreviewContentEventListener
 
     protected function getCleanerPreview(array $cleanerConfiguration)
     {
+
+
         /** @var StandaloneView $standaloneView */
         $standaloneView = GeneralUtility::makeInstance(StandaloneView::class);
         $standaloneView->setFormat('html');
@@ -55,6 +61,16 @@ final class BackendPageModulePreviewContentEventListener
                 'informReceiversBeforeDeletionPeriod' => $cleanerConfiguration['informReceiversBeforeDeletionPeriod'] ?? '',
             ]
         );
+        if ('dbDisable' === $cleanerConfiguration['deletionBehavior'] && $cleanerConfiguration['optin'] === '1') {
+            $standaloneView->assign('optinVsDbDelete', true);
+        } elseif ('dbDisable' === $cleanerConfiguration['deletionBehavior']) {
+            $backendConfigurationManager = GeneralUtility::makeInstance(BackendConfigurationManager::class);
+            $typoScript = $backendConfigurationManager->getTypoScriptSetup();
+            if ($typoScript['plugin.']['tx_powermail.']['settings.']['setup.']['main.']['optin'] === '1') {
+                $standaloneView->assign('optinVsDbDelete', true);
+            }
+        }
+
         return $standaloneView->render();
     }
 }

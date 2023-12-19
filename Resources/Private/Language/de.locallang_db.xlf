@@ -111,6 +111,14 @@
 				<source>Receivers will be informed %s days prior to deletion</source>
 				<target>Empfänger werden %s Tage vor der Löschung benachrichtigt</target>
 			</trans-unit>
+			<trans-unit id="pluginInfo.optinVsDbDelete.title" resname="pluginInfo.optinVsDbDelete.title">
+				<source>Configuration error</source>
+				<target>Konfigurationsfehler</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.optinVsDbDelete.message" resname="pluginInfo.optinVsDbDelete.message">
+				<source>It is not possible to use "Do not store in database" together with OptIn.</source>
+				<target>Es ist nicht möglich "Nicht in der Datenbank speichern" zusammen mit OptIn zu benutzen.</target>
+			</trans-unit>
 			<trans-unit id="mail.related-plugin" resname="mail.related-plugin">
 				<source>Related plugin</source>
 				<target>Plugin</target>

@@ -13,7 +13,15 @@
             </f:format.raw>
         </f:if>
     </f:if>
-
+    <f:if condition="{settings.powermailCleaner.deletionBehavior} == 'dbDisable' && {settings.main.optin} == 1 ">
+        <div>
+            <p>
+                <strong>
+                    <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.optinVsDbDelete.title">error in configuration</f:translate>
+                </strong>
+            </p>
+        </div>
+    </f:if>
     <div class="{settings.styles.framework.fieldWrappingClasses} {settings.styles.framework.offsetClasses}">
         <f:form.submit value="{field.title}" class="{settings.styles.framework.submitClasses}" />
     </div>
