@@ -10,8 +10,7 @@ use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\BackendConfigurationManager;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 final class BackendPageModulePreviewContentEventListener
@@ -46,8 +45,6 @@ final class BackendPageModulePreviewContentEventListener
 
     protected function getCleanerPreview(array $cleanerConfiguration)
     {
-
-
         /** @var StandaloneView $standaloneView */
         $standaloneView = GeneralUtility::makeInstance(StandaloneView::class);
         $standaloneView->setFormat('html');
