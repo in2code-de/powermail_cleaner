@@ -36,3 +36,8 @@ services:
     tags:
       - name: 'event.listener'
         identifier: 'powermailcleaner:powermail-mail-add-fields'
+
+  In2code\PowermailCleaner\EventListener\CheckIfMailIsAllowedToSaveEventListener:
+    tags:
+      - name: 'event.listener'
+        identifier: 'powermailcleaner:check-if-mail-is-allowed-to-save'
