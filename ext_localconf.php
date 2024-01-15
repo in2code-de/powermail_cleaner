@@ -43,4 +43,11 @@ call_user_func(function () {
         \In2code\PowermailCleaner\Hooks\CheckIfMailIsAllowedToSave::class,        // Slot class name
         'check'                               // Slot name
     );
+
+    $signalSlotDispatcher->connect(
+        \In2code\Powermail\Controller\FormController::class,  // Signal class name
+        'createActionBeforeRenderView',
+        \In2code\PowermailCleaner\Hooks\DeletionTimeStampCalculationHook::class,
+        'invoke'
+    );
 });
