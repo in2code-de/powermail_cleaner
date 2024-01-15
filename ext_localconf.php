@@ -4,6 +4,16 @@ if (!defined('TYPO3_MODE')) {
 }
 
 call_user_func(function () {
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Controller\FormController::class] = [
+        'className' => \In2code\PowermailCleaner\Controller\FormController::class
+    ];
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Domain\Model\Mail::class] = [
+        'className' => \In2code\PowermailCleaner\Domain\Model\Mail::class
+    ];
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Domain\Repository\MailRepository::class] = [
+        'className' => \In2code\PowermailCleaner\Domain\Repository\MailRepository::class
+    ];
+
     $GLOBALS['TYPO3_CONF_VARS']['LOG']['In2code']['PowermailCleaner']['Command']['CleanupCommand']['writerConfiguration'] = [
         \Psr\Log\LogLevel::INFO => [
             \TYPO3\CMS\Core\Log\Writer\FileWriter::class => [
@@ -25,5 +35,12 @@ call_user_func(function () {
         'createActionAfterMailDbSaved',                                  // Signal name
         \In2code\PowermailCleaner\Hooks\AfterMailSave::class,        // Slot class name
         'attachPlugin'                               // Slot name
+    );
+
+    $signalSlotDispatcher->connect(
+        \In2code\Powermail\Controller\FormController::class,  // Signal class name
+        'checkIfMailIsAllowedToSave',                                  // Signal name
+        \In2code\PowermailCleaner\Hooks\CheckIfMailIsAllowedToSave::class,        // Slot class name
+        'check'                               // Slot name
     );
 });
