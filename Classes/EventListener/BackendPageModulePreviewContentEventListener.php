@@ -27,7 +27,7 @@ final class BackendPageModulePreviewContentEventListener
             $flexforms = $flexFormService->convertFlexFormContentToArray($record['pi_flexform']);
         } else {
             $flexforms = $flexFormService->convertFlexFormContentToArray(
-                BackendUtility::getL18nParentFlexForm($record['l18n_parent'])
+                BackendUtility::getL18nParentFlexForm($record['l18n_parent']),
             );
         }
 
@@ -35,11 +35,9 @@ final class BackendPageModulePreviewContentEventListener
             $cleanerSettings = $flexforms['settings']['flexform']['powermailCleaner'];
             $cleanerSettings['optin'] = $flexforms['settings']['flexform']['main']['optin'];
 
-            if ($cleanerSettings['deletionBehavior'] !== '') {
-                $event->setPreview(
-                    $existingPreview . $this->getCleanerPreview($cleanerSettings)
-                );
-            }
+            $event->setPreview(
+                $existingPreview . $this->getCleanerPreview($cleanerSettings),
+            );
         }
     }
 
@@ -56,7 +54,7 @@ final class BackendPageModulePreviewContentEventListener
                 'deletionPeriod' => $cleanerConfiguration['deletionPeriod'] ?? '',
                 'informReceiversBeforeDeletion' => $cleanerConfiguration['informReceiversBeforeDeletion'] ?? '',
                 'informReceiversBeforeDeletionPeriod' => $cleanerConfiguration['informReceiversBeforeDeletionPeriod'] ?? '',
-            ]
+            ],
         );
         if ('dbDisable' === $cleanerConfiguration['deletionBehavior'] && $cleanerConfiguration['optin'] === '1') {
             $standaloneView->assign('optinVsDbDelete', true);

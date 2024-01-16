@@ -6,9 +6,11 @@
     <f:spaceless>
         <h3>Powermail Cleaner</h3>
         <div>
-            <strong>
-                <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletion">deletion</f:translate>:
-            </strong>
+            <f:if condition="{deletionBehavior} != ''">
+                <strong>
+                    <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletion">deletion</f:translate>:
+                </strong>
+            </f:if>
             <f:switch expression="{deletionBehavior}">
                 <f:case value="dbDisable">
                     <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior.dbDisable">deletion</f:translate>
@@ -27,9 +29,11 @@
                     <f:render section="informReceivers" arguments="{_all}" />
                 </f:case>
                 <f:defaultCase>
-                    <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior.wrongConfiguration">
-                        Wrong plugin configuration
-                    </f:translate>
+                    <div class="mt-2">
+                        <f:be.infobox title="{f:translate(key: 'LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.optinVsDbDelete.title', default: 'Configuration error')}" state="2">
+                            {f:translate(key: 'LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior.wrongConfiguration', default: 'Wrong plugin configuration')}
+                        </f:be.infobox>
+                    </div>
                 </f:defaultCase>
             </f:switch>
         </div>
