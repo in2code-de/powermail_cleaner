@@ -94,7 +94,7 @@
 				<source>Configuration error</source>
 			</trans-unit>
 			<trans-unit id="pluginInfo.noCleanerConfiguration.message" resname="pluginInfo.noCleanerConfiguration.message">
-				<source>Powermail Cleaner configuration is not properly set. Pleas check plugin configuration.</source>
+				<source>Powermail Cleaner configuration is not properly set. Please check plugin configuration.</source>
 			</trans-unit>
 			<trans-unit id="mail.related-plugin" resname="mail.related-plugin">
 				<source>Related plugin</source>
