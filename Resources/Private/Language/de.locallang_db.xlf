@@ -119,6 +119,14 @@
 				<source>It is not possible to use "Do not store in database" together with OptIn.</source>
 				<target>Es ist nicht möglich "Nicht in der Datenbank speichern" zusammen mit OptIn zu benutzen.</target>
 			</trans-unit>
+			<trans-unit id="pluginInfo.noCleanerConfiguration.title" resname="pluginInfo.noCleanerConfiguration.title">
+				<source>Configuration error</source>
+				<target>Konfigurationsfehler</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.noCleanerConfiguration.message" resname="pluginInfo.noCleanerConfiguration.message">
+				<source>Die Powermail Cleaner-Konfiguration ist nicht richtig eingestellt. Bitte überprüfen Sie die Konfiguration des Plugins.</source>
+				<target></target>
+			</trans-unit>
 			<trans-unit id="mail.related-plugin" resname="mail.related-plugin">
 				<source>Related plugin</source>
 				<target>Plugin</target>

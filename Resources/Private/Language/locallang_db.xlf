@@ -90,6 +90,12 @@
 			<trans-unit id="pluginInfo.optinVsDbDelete.message" resname="pluginInfo.optinVsDbDelete.message">
 				<source>It is not possible to use "Do not store in database" together with OptIn.</source>
 			</trans-unit>
+			<trans-unit id="pluginInfo.noCleanerConfiguration.title" resname="pluginInfo.noCleanerConfiguration.title">
+				<source>Configuration error</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.noCleanerConfiguration.message" resname="pluginInfo.noCleanerConfiguration.message">
+				<source>Powermail Cleaner configuration is not properly set. Pleas check plugin configuration.</source>
+			</trans-unit>
 			<trans-unit id="mail.related-plugin" resname="mail.related-plugin">
 				<source>Related plugin</source>
 			</trans-unit>
