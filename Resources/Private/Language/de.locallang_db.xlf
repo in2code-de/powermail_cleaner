@@ -119,6 +119,14 @@
 				<source>Cleanup!</source>
 				<target>Aufräumen!</target>
 			</trans-unit>
+			<trans-unit id="pluginInfo.noCleanerConfiguration.title" resname="pluginInfo.noCleanerConfiguration.title">
+				<source>Configuration error</source>
+				<target>Konfigurationsfehler</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.noCleanerConfiguration.message" resname="pluginInfo.noCleanerConfiguration.message">
+				<source>Powermail Cleaner configuration is not properly set. Please check plugin configuration.</source>
+				<target>Die Powermail Cleaner-Konfiguration ist nicht richtig eingestellt. Bitte überprüfen Sie die Konfiguration des Plugins.</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

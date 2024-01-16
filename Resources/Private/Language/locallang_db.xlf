@@ -90,6 +90,12 @@
 			<trans-unit id="module.cleanup.submitButton" resname="module.cleanup.submitButton">
 				<source>Cleanup!</source>
 			</trans-unit>
+			<trans-unit id="pluginInfo.noCleanerConfiguration.title" resname="pluginInfo.noCleanerConfiguration.title">
+				<source>Configuration error</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.noCleanerConfiguration.message" resname="pluginInfo.noCleanerConfiguration.message">
+				<source>Powermail Cleaner configuration is not properly set. Please check plugin configuration.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
