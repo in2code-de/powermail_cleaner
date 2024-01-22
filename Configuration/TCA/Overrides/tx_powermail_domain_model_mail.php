@@ -19,11 +19,10 @@ $columns = [
         'exclude' => 1,
         'label' => 'LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:mail.related-plugin',
         'config' => [
-            'type' => 'inline',
+            'type' => 'select',
+            'renderType' => 'selectSingle',
             'foreign_table' => 'tt_content',
-            'behaviour' => [
-              'enableCascadingDelete' => false,
-            ],
+            'foreign_table_where' => 'and tt_content.deleted = 0 order by tt_content.header',
             'readOnly' => true,
         ],
     ],
