@@ -1,4 +1,4 @@
-name: powermail-cleaner
+name: powermail-cleaner-v12
 type: typo3
 docroot: .build/public
 php_version: "8.1"

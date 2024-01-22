@@ -1,4 +1,4 @@
-base: 'https://powermail-cleaner.ddev.site/'
+base: 'https://powermail-cleaner-v12.ddev.site/'
 errorHandling: {  }
 languages:
   -

@@ -27,7 +27,7 @@ if (getenv('IS_DDEV_PROJECT') == 'true') {
                 'transport' => 'smtp',
                 'transport_smtp_encrypt' => false,
                 'transport_smtp_server' => 'localhost:1025',
-                'defaultMailFromAddress' => 'powermail_cleaner@powermail-cleaner.ddev.site'
+                'defaultMailFromAddress' => 'powermail_cleaner@powermail-cleaner-v12.ddev.site'
             ],
             'SYS' => [
                 'trustedHostsPattern' => '.*.*',
