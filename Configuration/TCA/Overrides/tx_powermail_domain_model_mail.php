@@ -23,9 +23,12 @@ $columns = [
         'config' => [
             'type' => 'inline',
             'foreign_table' => 'tt_content',
+            'behaviour' => [
+              'enableCascadingDelete' => false,
+            ],
             'readOnly' => true,
         ],
-    ]
+    ],
 ];
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(Mail::TABLE_NAME, $columns);
