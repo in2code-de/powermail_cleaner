@@ -24,7 +24,7 @@ cp .project/config/typo3/LocalConfiguration.php .build/public/typo3conf
 cp .project/config/typo3/AdditionalConfiguration.php .build/public/typo3conf
 
 echo "Importing database"
-ddev import-db --src=.project/data/db.sql.gz
+ddev import-db --file=.project/data/db.sql.gz
 
 echo "Run 'composer install'"
 ddev composer install

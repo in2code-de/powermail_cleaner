@@ -1,7 +1,7 @@
 base: 'https://powermail-cleaner-v11.ddev.site/'
 errorHandling: {  }
 languages:
--
+  -
     title: English
     enabled: true
     base: /
