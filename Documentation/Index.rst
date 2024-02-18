@@ -10,10 +10,10 @@ powermail cleaner
 .. only:: html
 
 	:Copyright:
-		2021
+		2024
 
 	:Classification:
-		powermail
+		powermail cleaner
 
 	:Version:
 		1
@@ -25,7 +25,7 @@ powermail cleaner
 		powermail, GDRP Cleaner
 
 	:Author:
-		Olvier Eglseder, Stefan Busemann
+		Olvier Eglseder, Stefan Busemann, Marcus Schwemer, Daniel Hofmann
 
 	:Email:
 		info@in2code.de

@@ -13,9 +13,24 @@
             </f:format.raw>
         </f:if>
     </f:if>
-
     <div class="{settings.styles.framework.fieldWrappingClasses} {settings.styles.framework.offsetClasses}">
-        <f:form.submit value="{field.title}" class="{settings.styles.framework.submitClasses}" />
+        <f:if condition="{settings.powermailCleaner.deletionBehavior} == 'deletionDate'">
+            <f:then>
+                <f:if condition="{f:format.date(date: 'now', format: 'Ymd')} > {f:format.date(date: settings.powermailCleaner.deletionDate, format: 'Ymd')}">
+                    <f:then>
+                        <ul class="powermail_message powermail_message_error"><li><f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionPeriod.message">deletionPeriod.message</f:translate></li></ul>
+                    </f:then>
+                    <f:else>
+                        <f:form.submit value="{field.title}" class="{settings.styles.framework.submitClasses}" />
+                    </f:else>
+                </f:if>
+            </f:then>
+            <f:else>
+                <f:form.submit value="{field.title}" class="{settings.styles.framework.submitClasses}" />
+            </f:else>
+        </f:if>
+
+
     </div>
 
     <f:if condition="{settings.powermailCleaner.deletionBehavior} && {settings.powermailCleaner.deletionBehavior} != ''">

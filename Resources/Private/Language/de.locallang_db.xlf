@@ -127,6 +127,10 @@
 				<source>Powermail Cleaner configuration is not properly set. Please check plugin configuration.</source>
 				<target>Die Powermail Cleaner-Konfiguration ist nicht richtig eingestellt. Bitte überprüfen Sie die Konfiguration des Plugins.</target>
 			</trans-unit>
+			<trans-unit id="pluginInfo.deletionPeriod.message" resname="pluginInfo.deletionPeriod.message">
+				<source>This form is disabled, as the deletion period is reached. Please inform the editor of this form.</source>
+				<target>Dieses Formular ist deaktiviert, da die Löschungsfrist erreicht ist. Bitte informiere die Redaktion über dieses Formular.</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
