@@ -25,7 +25,7 @@ powermail cleaner
 		powermail, GDRP Cleaner
 
 	:Author:
-		Olvier Eglseder, Stefan Busemann, Marcus Schwemer, Daniel Hofmann
+		Oliver Eglseder, Stefan Busemann, Marcus Schwemer, Daniel Hofmann
 
 	:Email:
 		info@in2code.de
