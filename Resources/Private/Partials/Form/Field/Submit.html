@@ -21,18 +21,15 @@
                         <ul class="powermail_message powermail_message_error"><li><f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionPeriod.message">deletionPeriod.message</f:translate></li></ul>
                     </f:then>
                     <f:else>
-                        <f:form.submit value="{field.title}" class="{settings.styles.framework.submitClasses}" />
+                        <f:render section="submitButton" arguments="{_all}" />
                     </f:else>
                 </f:if>
             </f:then>
             <f:else>
-                <f:form.submit value="{field.title}" class="{settings.styles.framework.submitClasses}" />
+                <f:render section="submitButton" arguments="{_all}" />
             </f:else>
         </f:if>
-
-
     </div>
-
     <f:if condition="{settings.powermailCleaner.deletionBehavior} && {settings.powermailCleaner.deletionBehavior} != ''">
         <f:if condition="{settings.powermailCleaner.deletionDetails}">
             <f:format.raw>
@@ -41,3 +38,7 @@
         </f:if>
     </f:if>
 </div>
+
+<f:section name="submitButton">
+    <f:form.submit value="{field.title}" class="{settings.styles.framework.submitClasses}" />
+</f:section>
