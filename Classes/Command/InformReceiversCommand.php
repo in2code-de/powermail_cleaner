@@ -92,8 +92,9 @@ class InformReceiversCommand extends Command
             if (ArrayUtility::isValidPath($flexform, 'settings/flexform/powermailCleaner')) {
                 $cleanerSettings = $flexform['settings']['flexform']['powermailCleaner'];
 
-                if ($cleanerSettings['informReceiversBeforeDeletion'] === '1') {
-                    $plugin['period'] = $cleanerSettings['informReceiversBeforeDeletionPeriod'];
+                $informReceivers = $cleanerSettings['informReceiversBeforeDeletion'] ?? '';
+                $plugin['period'] = (int)($cleanerSettings['informReceiversBeforeDeletionPeriod'] ?? 0);
+                if ($informReceivers === '1' && $plugin['period'] > 0) {
                     $powermailPi1PluginsWithDeletionRestrictions[] = $plugin;
                 }
             }
