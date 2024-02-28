@@ -11,6 +11,19 @@ call_user_func(function () {
         ]
     ];
 
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Controller\FormController::class] = [
+        'className' => \In2code\PowermailCleaner\Controller\FormController::class
+    ];
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Domain\Model\Mail::class] = [
+        'className' => \In2code\PowermailCleaner\Domain\Model\Mail::class
+    ];
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Domain\Repository\MailRepository::class] = [
+        'className' => \In2code\PowermailCleaner\Domain\Repository\MailRepository::class
+    ];
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Domain\Service\Mail\ReceiverMailReceiverPropertiesService::class] = [
+        'className' => \In2code\PowermailCleaner\Domain\Service\ReceiverAddressService::class
+    ];
+
     $GLOBALS['TYPO3_CONF_VARS']['MAIL']['templateRootPaths'][1699609953] =
         'EXT:powermail_cleaner/Resources/Private/Templates/Email';
 
