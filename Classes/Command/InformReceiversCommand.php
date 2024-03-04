@@ -162,13 +162,13 @@ class InformReceiversCommand extends Command
             ->to(new Address($receiverInfo['address']))
             ->from(
                 new Address(
-                    $this->powermailCleanerTyposcript['reminderMail']['from.']['address'],
-                    $this->powermailCleanerTyposcript['reminderMail']['from.']['name']
+                    $this->powermailCleanerTyposcript['reminderMail.']['from.']['address'],
+                    $this->powermailCleanerTyposcript['reminderMail.']['from.']['name']
                 )
             )
-            ->subject($this->powermailCleanerTyposcript['reminderMail']['subject'])
+            ->subject($this->powermailCleanerTyposcript['reminderMail.']['subject'])
             ->format(FluidEmail::FORMAT_BOTH)
-            ->setTemplate($this->powermailCleanerTyposcript['reminderMail']['template'])
+            ->setTemplate($this->powermailCleanerTyposcript['reminderMail.']['template'])
             ->assign('plugins', $receiverInfo['plugins']);
 
         GeneralUtility::makeInstance(MailerInterface::class)->send($email);
