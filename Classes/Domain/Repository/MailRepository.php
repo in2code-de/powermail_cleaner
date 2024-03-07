@@ -5,6 +5,13 @@ declare(strict_types=1);
 namespace In2code\PowermailCleaner\Domain\Repository;
 
 use Doctrine\DBAL\Exception;
+use In2code\Powermail\Domain\Model\Answer;
+use In2code\Powermail\Domain\Model\File;
+use In2code\Powermail\Domain\Model\Mail;
+use In2code\Powermail\Utility\DatabaseUtility;
+use In2code\PowermailCleaner\Utility\ConfigurationUtility;
+use In2code\PowermailCleaner\Utility\FileUtility;
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -80,4 +87,108 @@ class MailRepository extends \In2code\Powermail\Domain\Repository\MailRepository
         ];
         return $query->matching($query->logicalAnd(...$and))->count();
     }
+
+    public function removeMail(int $mailIdentifier): void
+    {
+        // get plugin uid (later), if feature for customizable upload paths is available
+        // get path for saved files (via TypoScript [now] or plugin settings [see above])
+        // get all answers with value_type 3 (=== file); use powermail constants
+        // steps needed for deletion
+        // -- find in sys_file
+        // -- find in sys_file_reference (should be 0) if not skip next steps, add a warning where ever
+        // -- delete from sys_file
+        // -- delete from filesystem
+
+        $answersWithFiles = $this->getAnswersWithFiles($mailIdentifier);
+        $deleteReferencedFiles = ConfigurationUtility::getExtensionConfiguration()['deleteReferencedFiles'];
+
+        if (count($answersWithFiles) > 0) {
+            $uploadFolder = ConfigurationUtility::getPowermailUploadFolder();
+            $storage = FileUtility::getStorage($uploadFolder);
+
+            foreach ($answersWithFiles as $answer) {
+                if ($storage !== null) {
+                    $sysFileUids = FileUtility::getSysFileUids($answer['value'], $storage, $uploadFolder);
+                    foreach ($sysFileUids as $fileUid) {
+                        if ($deleteReferencedFiles === '0' && FileUtility::hasSysfileReference($fileUid) === true) {
+                            break;
+                        }
+                        FileUtility::deleteSysFileProcessedfile($fileUid, $storage);
+//                        FileUtility::deleteSysFileReference($fileUid);
+//                        FileUtility::deleteSysFile($fileUid);
+//                        FileUtility::deleteFromFilesystem($answer);
+                    }
+
+                    die('bla');
+                } else {
+                    FileUtility::deleteFromFilesystem($answer);
+                }
+            }
+        }
+
+        $queryBuilder = DatabaseUtility::getQueryBuilderForTable(Answer::TABLE_NAME);
+        $queryBuilder
+            ->delete(Answer::TABLE_NAME)
+            ->where(
+                $queryBuilder->expr()->eq(
+                    'mail',
+                    $queryBuilder->createNamedParameter($mailIdentifier, Connection::PARAM_INT)
+                )
+            )
+            ->executeStatement();
+
+        $queryBuilder = DatabaseUtility::getQueryBuilderForTable(Mail::TABLE_NAME);
+        $queryBuilder
+            ->delete(Mail::TABLE_NAME)
+            ->where(
+                $queryBuilder->expr()->eq(
+                    'uid',
+                    $queryBuilder->createNamedParameter($mailIdentifier, Connection::PARAM_INT)
+                )
+            )
+            ->executeStatement();
+    }
+
+    public function findMailsOlderThan(int $timestamp): array
+    {
+        $queryBuilder = DatabaseUtility::getQueryBuilderForTable(Mail::TABLE_NAME);
+        $queryBuilder->getRestrictions()->removeAll();
+        return $queryBuilder
+            ->select('*')
+            ->from(Mail::TABLE_NAME)
+            ->where(
+                $queryBuilder->expr()->lt(
+                    'crdate',
+                    $queryBuilder->createNamedParameter($timestamp, Connection::PARAM_INT)
+                )
+            )
+            ->executeQuery()
+            ->fetchAllAssociative();
+    }
+
+    /**
+     * @param int $mailIdentifier
+     * @return QueryBuilder
+     * @throws Exception
+     */
+    public function getAnswersWithFiles(int $mailIdentifier): array
+    {
+        $queryBuilder = DatabaseUtility::getQueryBuilderForTable(Answer::TABLE_NAME);
+        return $queryBuilder
+            ->select('uid', 'value')
+            ->from(Answer::TABLE_NAME)
+            ->where(
+                $queryBuilder->expr()->eq(
+                    'mail',
+                    $queryBuilder->createNamedParameter($mailIdentifier, Connection::PARAM_INT)
+                ),
+                $queryBuilder->expr()->eq(
+                    'value_type',
+                    $queryBuilder->createNamedParameter(Answer::VALUE_TYPE_UPLOAD, Connection::PARAM_INT)
+                )
+            )
+            ->executeQuery()
+            ->fetchAllAssociative();
+    }
+
 }
