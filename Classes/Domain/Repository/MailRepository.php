@@ -98,20 +98,17 @@ class MailRepository extends \In2code\Powermail\Domain\Repository\MailRepository
             $storage = FileUtility::getStorage($uploadFolder);
 
             foreach ($answersWithFiles as $answer) {
-                if ($storage !== null) {
-                    $filesInformation = FileUtility::getFilesInformation($answer['value'], $storage, $uploadFolder);
-                    foreach ($filesInformation as $file) {
-                        if ($deleteReferencedFiles === '0' && FileUtility::hasSysfileReference($file['uid']) === true) {
-                            break;
-                        }
+                $filesInformation = FileUtility::getFilesInformation($answer['value'], $uploadFolder, $storage);
+                foreach ($filesInformation as $file) {
+                    if ($deleteReferencedFiles === '0' && FileUtility::hasSysfileReference($file['uid']) === true) {
+                        break;
+                    }
+                    if ($file['uid'] !== false) {
                         FileUtility::deleteSysFileProcessedfile($file['uid'], $storage);
                         FileUtility::deleteSysFileReference($file['uid']);
                         FileUtility::deleteSysFile($file, $storage);
                     }
-
-                    die('bla');
-                } else {
-                    FileUtility::deleteFromFilesystem($answer);
+                    FileUtility::deleteFromFilesystem($file['identifier'], $storage);
                 }
             }
         }

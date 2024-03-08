@@ -12,9 +12,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class FileUtility
 {
-    public static function getFilesInformation(string $answerValue, ResourceStorage $storage, string $uploadFolder): array
+    public static function getFilesInformation(
+        string $answerValue,
+        string $uploadFolder,
+        ?ResourceStorage $storage = null
+    ): array
     {
-        $sysFileUids = array();
+        $fileInformation = [];
 
         // strip leading and closing characters from
         $answerValue = str_replace(['["', '"]'], '', $answerValue);
@@ -22,22 +26,26 @@ class FileUtility
         // split answer value into single filenames
         $files = GeneralUtility::trimExplode('","', $answerValue, true);
         foreach ($files as $file) {
-            $identifier = self::buildIdentifier($file, $storage, $uploadFolder);
-            $sysFileUid = self::getSysFileUid($storage->getUid(), $identifier);
-            if ($sysFileUid !== false) {
-                $fileInformation[] = [
-                    'fileuid' => $sysFileUid,
-                    'indentifier' => $identifier
-                ];
+            $identifier = self::buildIdentifier($file, $uploadFolder, $storage);
+            $sysFileUid = false;
+            if ($storage instanceof ResourceStorage) {
+                $sysFileUid = self::getSysFileUid($storage->getUid(), $identifier);
             }
+            $fileInformation[] = [
+                'uid' => $sysFileUid,
+                'identifier' => $identifier,
+            ];
         }
         return $fileInformation;
     }
 
-    private static function buildIdentifier(string $filename, ResourceStorage $storage, string $uploadFolder)
+    private static function buildIdentifier(string $filename, string $uploadFolder, ?ResourceStorage $storage = null)
     {
-        $uploadFolderWithoutResourcePath = self::stripResourcePath($storage, $uploadFolder);
-        $identifier = '/' . $uploadFolderWithoutResourcePath . '/' . $filename;
+        $uploadFolderWithoutResourcePath = trim($uploadFolder, '/');
+        if ($storage !== null) {
+            $uploadFolderWithoutResourcePath = self::stripResourcePath($storage, $uploadFolder);
+        }
+        $identifier = $uploadFolderWithoutResourcePath . '/' . $filename;
         return $identifier;
 
     }
@@ -70,11 +78,18 @@ class FileUtility
         return $result > 0 ? true : false;
     }
 
-    public static function deleteFromFilesystem(string $identifier, ResourceStorage $storage): void
+    public static function deleteFromFilesystem(string $identifier, ?ResourceStorage $storage): void
     {
+        if ($storage instanceof ResourceStorage) {
+            $resourceBasePath = $storage->getConfiguration()['basePath'];
+        }
+
         $publicPath = (GeneralUtility::makeInstance(Environment::class))->getPublicPath() . '/';
-        $resourceBasePath = $storage->getConfiguration()['basePath'];
-        $absoluteFilePath = $publicPath . $resourceBasePath . $identifier;
+        $absoluteFilePath = str_replace(
+            '//',
+            '/',
+            $publicPath . $resourceBasePath . $identifier
+        );
 
         unlink($absoluteFilePath);
     }
@@ -94,8 +109,6 @@ class FileUtility
                 )
             )
             ->executeStatement();
-
-        self::deleteFromFilesystem($file['identifier'], $storage);
     }
 
     private static function stripResourcePath(ResourceStorage $storage, string $uploadFolder): string
