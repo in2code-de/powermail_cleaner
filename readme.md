@@ -9,7 +9,8 @@ The features are:
 * add texts for GDPR purposes to send emails
 * set a date for deletion to emails (based on a fixed date or a period after sending)
 * delete emails based on the saved date via a command / scheduler task
-* inform receivers about upcoming deletions of mails 
+* inform receivers about upcoming deletions of mails
+* (force) delete old mails including files after a certain period of time vi command or scheduler task 
 
 
 ## Version Matrix
