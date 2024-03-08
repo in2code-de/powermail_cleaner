@@ -2,6 +2,7 @@
 
 namespace In2code\PowermailCleaner\Utility;
 
+use DASPRiD\Enum\Exception\CloneNotSupportedException;
 use TYPO3\CMS\Core\Configuration\SiteConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\Connection;
@@ -11,7 +12,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class FileUtility
 {
-    public static function getSysFileUids(string $answerValue, ResourceStorage $storage, string $uploadFolder): array
+    public static function getFilesInformation(string $answerValue, ResourceStorage $storage, string $uploadFolder): array
     {
         $sysFileUids = array();
 
@@ -24,10 +25,13 @@ class FileUtility
             $identifier = self::buildIdentifier($file, $storage, $uploadFolder);
             $sysFileUid = self::getSysFileUid($storage->getUid(), $identifier);
             if ($sysFileUid !== false) {
-                $sysFileUids[] = $sysFileUid;
+                $fileInformation[] = [
+                    'fileuid' => $sysFileUid,
+                    'indentifier' => $identifier
+                ];
             }
         }
-        return $sysFileUids;
+        return $fileInformation;
     }
 
     private static function buildIdentifier(string $filename, ResourceStorage $storage, string $uploadFolder)
@@ -66,15 +70,32 @@ class FileUtility
         return $result > 0 ? true : false;
     }
 
-    public static function deleteFromFilesystem(mixed $answer): void
+    public static function deleteFromFilesystem(string $identifier, ResourceStorage $storage): void
     {
-        // Delete from filesystem
-        // File =  Uploadfolder + answervalue
+        $publicPath = (GeneralUtility::makeInstance(Environment::class))->getPublicPath() . '/';
+        $resourceBasePath = $storage->getConfiguration()['basePath'];
+        $absoluteFilePath = $publicPath . $resourceBasePath . $identifier;
+
+        unlink($absoluteFilePath);
     }
 
-    public static function deleteSysfile(int $sysFileUid)
+    public static function deleteSysfile(array $file, ResourceStorage $storage): void
     {
-        // delete filerecord from sys_file table
+        $queryBuilder = DatabaseUtility::getQueryBuilderForTable('sys_file');
+        $queryBuilder
+            ->delete('sys_file')
+            ->where(
+                $queryBuilder->expr()->eq(
+                    'uid',
+                    $queryBuilder->createNamedParameter(
+                        $file['uid'],
+                        Connection::PARAM_INT
+                    )
+                )
+            )
+            ->executeStatement();
+
+        self::deleteFromFilesystem($file['identifier'], $storage);
     }
 
     private static function stripResourcePath(ResourceStorage $storage, string $uploadFolder): string
@@ -123,8 +144,7 @@ class FileUtility
             ->executeQuery()
             ->fetchAllAssociative();
 
-
-        $processedBasePath = trim($storage->getProcessingFolder()->getStorage()->getConfiguration()['basePath'], '/');
+        $processedBasePath = rtrim($storage->getProcessingFolder()->getStorage()->getConfiguration()['basePath'], '/');
         $environment = GeneralUtility::makeInstance(Environment::class);
         $publicPath = $environment->getPublicPath() . '/';
         foreach ($result as $processedFile) {
@@ -151,5 +171,19 @@ class FileUtility
                 )
                 ->executeStatement();
         }
+    }
+
+    public static function deleteSysFileReference(int $fileUid): void
+    {
+        $queryBuilder = DatabaseUtility::getQueryBuilderForTable('sys_file_reference');
+        $queryBuilder
+            ->delete('sys_file_reference')
+            ->where(
+                $queryBuilder->expr()->eq(
+                    'uid_local',
+                    $queryBuilder->createNamedParameter($fileUid,Connection::PARAM_INT)
+                )
+            )
+            ->executeStatement();
     }
 }

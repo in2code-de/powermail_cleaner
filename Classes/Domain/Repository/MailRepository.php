@@ -90,15 +90,6 @@ class MailRepository extends \In2code\Powermail\Domain\Repository\MailRepository
 
     public function removeMail(int $mailIdentifier): void
     {
-        // get plugin uid (later), if feature for customizable upload paths is available
-        // get path for saved files (via TypoScript [now] or plugin settings [see above])
-        // get all answers with value_type 3 (=== file); use powermail constants
-        // steps needed for deletion
-        // -- find in sys_file
-        // -- find in sys_file_reference (should be 0) if not skip next steps, add a warning where ever
-        // -- delete from sys_file
-        // -- delete from filesystem
-
         $answersWithFiles = $this->getAnswersWithFiles($mailIdentifier);
         $deleteReferencedFiles = ConfigurationUtility::getExtensionConfiguration()['deleteReferencedFiles'];
 
@@ -108,15 +99,14 @@ class MailRepository extends \In2code\Powermail\Domain\Repository\MailRepository
 
             foreach ($answersWithFiles as $answer) {
                 if ($storage !== null) {
-                    $sysFileUids = FileUtility::getSysFileUids($answer['value'], $storage, $uploadFolder);
-                    foreach ($sysFileUids as $fileUid) {
-                        if ($deleteReferencedFiles === '0' && FileUtility::hasSysfileReference($fileUid) === true) {
+                    $filesInformation = FileUtility::getFilesInformation($answer['value'], $storage, $uploadFolder);
+                    foreach ($filesInformation as $file) {
+                        if ($deleteReferencedFiles === '0' && FileUtility::hasSysfileReference($file['uid']) === true) {
                             break;
                         }
-                        FileUtility::deleteSysFileProcessedfile($fileUid, $storage);
-//                        FileUtility::deleteSysFileReference($fileUid);
-//                        FileUtility::deleteSysFile($fileUid);
-//                        FileUtility::deleteFromFilesystem($answer);
+                        FileUtility::deleteSysFileProcessedfile($file['uid'], $storage);
+                        FileUtility::deleteSysFileReference($file['uid']);
+                        FileUtility::deleteSysFile($file, $storage);
                     }
 
                     die('bla');
