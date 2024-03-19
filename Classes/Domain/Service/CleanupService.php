@@ -13,7 +13,9 @@ class CleanupService
     /**
      * @var Connection|null
      */
-    protected $connection = null;
+    protected $connectionForMails = null;
+
+    protected $connectionForAnswers = null;
 
     public function cleanup($formId, $pluginId, $cleanupConfiguration)
     {
@@ -101,41 +103,57 @@ class CleanupService
 
     protected function getMailsWithCrdate($formId, $pluginId)
     {
-        $connection = $this->getConnection();
+        $connectionForMails = $this->getConnectionForMails();
 
-        $queryBuilder = $connection->createQueryBuilder();
-        $mails = $queryBuilder->select('uid', 'crdate')
+        $queryBuilder = $connectionForMails->createQueryBuilder();
+        return $queryBuilder->select('uid', 'crdate')
             ->from('tx_powermail_domain_model_mail')
             ->where($queryBuilder->expr()->eq('form', $queryBuilder->createNamedParameter($formId)))
             ->andWhere($queryBuilder->expr()->eq('plugin', $queryBuilder->createNamedParameter($pluginId)))
             ->execute()
-            ->fetchAll();
-
-        return $mails;
+            ->fetchAllAssociative();
     }
 
     protected function deleteMails($uidList)
     {
-        $connection = $this->getConnection();
+        $connectionForMails = $this->getConnectionForMails();
+        $connectionForAnswers = $this->getConnectionForMails();
 
         if (empty($uidList)) {
             return;
         }
 
-        $queryBuilder = $connection->createQueryBuilder();
+        $queryBuilder = $connectionForMails->createQueryBuilder();
         $queryBuilder
             ->update('tx_powermail_domain_model_mail')
             ->set('deleted', 1)
             ->where($queryBuilder->expr()->in('uid', $uidList))
             ->execute();
+
+        $queryBuilder = $connectionForAnswers->createQueryBuilder();
+        $queryBuilder
+            ->update('tx_powermail_domain_model_answer')
+            ->set('deleted',1)
+            ->where($queryBuilder->expr()->in('mail', $uidList))
+            ->execute();
+
     }
 
-    protected function getConnection() {
-        if ($this->connection == null) {
-            $this->connection = GeneralUtility::makeInstance(ConnectionPool::class)
+    protected function getConnectionForMails() {
+        if ($this->connectionForMails == null) {
+            $this->connectionForMails = GeneralUtility::makeInstance(ConnectionPool::class)
                 ->getConnectionForTable('tx_powermail_domain_model_mail');
         }
 
-        return $this->connection;
+        return $this->connectionForMails;
+    }
+
+    protected function getConnectionForAnswers() {
+        if ($this->connectionForAnswers == null) {
+            $this->connectionForAnswers = GeneralUtility::makeInstance(ConnectionPool::class)
+                ->getConnectionForTable('tx_powermail_domain_model_answer');
+        }
+
+        return $this->connectionForAnswers;
     }
 }

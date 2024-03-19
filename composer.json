@@ -1,6 +1,5 @@
 {
   "name": "in2code/powermail_cleaner",
-  "version": "4.0.0",
   "description": "Powermail Cleaner helps to clean up quick and easy old requests",
   "keywords": [
     "typo3",
@@ -8,14 +7,36 @@
     "mailform",
     "spamprevention"
   ],
+  "homepage": "https://www.in2code.de/",
+  "support": {
+    "issues": "https://github.com/in2code-pro/powermail_cleaner/issues",
+    "source": "https://github.com/in2code-pro/powermail_cleaner/"
+  },
   "authors": [
     {
-      "name": "Oliver Eglseder",
-      "email": "oliver.eglseder@in2code.de"
+      "name": "Marcus Schwemer",
+      "email": "marcus.schwemer@in2code.de",
+      "role": "Product Owner, Developer"
     },
     {
       "name": "Stefan Busemann",
-      "email": "stefan.busemann@in2code.de"
+      "email": "stefan.busemann@in2code.de",
+      "role": "Developer"
+    },
+    {
+      "name": "Daniel Hoffmann",
+      "email": "daniel.hofmann@in2code.de",
+      "role": "Developer"
+    },
+    {
+      "name": "Andreas Nedbal",
+      "email": "andreas.nedbal@in2code.de",
+      "role": "Developer"
+    },
+    {
+      "name": "Oliver Eglseder",
+      "email": "oliver.eglseder@in2code.de",
+      "role": "Developer"
     }
   ],
   "type": "typo3-cms-extension",
@@ -54,7 +75,8 @@
     "typo3/cms-setup": "^11.5",
     "typo3/cms-tstemplate": "^11.5",
     "typo3/cms-viewpage": "^11.5",
-    "helhum/typo3-console": "^7.1"
+    "helhum/typo3-console": "^7.1",
+    "undefined/translate-locallang": "^2.9"
   },
 
   "autoload": {
@@ -64,14 +86,13 @@
   },
   "extra": {
     "typo3/cms": {
-      "cms-package-dir": "{$vendor-dir}/typo3/cms",
-      "web-dir": ".Build/Web",
+      "web-dir": ".build/public",
       "extension-key": "powermail_cleaner"
     }
   },
   "config": {
-    "vendor-dir": ".Build/vendor",
-    "bin-dir": ".Build/bin",
+    "vendor-dir": ".build/vendor",
+    "bin-dir": ".build/bin",
     "allow-plugins": {
       "typo3/class-alias-loader": true,
       "typo3/cms-composer-installers": true
@@ -79,12 +100,12 @@
   },
   "scripts": {
     "post-autoload-dump": [
-      "mkdir -p .Build/Web/typo3conf/ext/",
-      "[ -L .Build/Web/typo3conf/ext/powermail_cleaner ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/powermail_cleaner",
+      "mkdir -p .build/public/typo3conf/ext/",
+      "[ -L .build/public/typo3conf/ext/powermail_cleaner ] || ln -snvf ../../../../. .build/public/typo3conf/ext/powermail_cleaner",
       "@package-states"
     ],
     "package-states": [
-      ".Build/bin/typo3cms install:fixfolderstructure"
+      ".build/bin/typo3cms install:fixfolderstructure"
     ]
   }
 }

@@ -78,7 +78,9 @@
             <tr>
                 <td style="padding: 2px 10px 2px 5px">
                     <strong>
-                        <f:translate key="LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:pluginInfo.receiverName">receiverName</f:translate>
+                        <f:translate key="LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:pluginInfo.receiverName">
+                            receiverName
+                        </f:translate>
                     </strong>
                 </td>
                 <td>
@@ -100,36 +102,62 @@
             </tr>
         </f:if>
 
-        <f:if condition="{flexFormData.settings.flexform.powermailCleaner.deletionBehavior} != ''">
-            <tr>
-                <td style="padding: 2px 10px 2px 5px">
-                    <strong>
-                        <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletion">deletion</f:translate>
-                    </strong>
-                </td>
-                <td>
-                    <f:variable name="llArgs" value="{0: flexFormData.settings.flexform.powermailCleaner.deletionPeriod}"></f:variable>
-                    <f:if condition="{flexFormData.settings.flexform.powermailCleaner.deletionBehavior} == 'deletionDate'">
-                        <f:variable name="llArgs" value="{0: '{flexFormData.settings.flexform.powermailCleaner.deletionDate -> f:format.date(format: \'d.m.Y\')}'}"></f:variable>
-                    </f:if>
-                    <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior.{flexFormData.settings.flexform.powermailCleaner.deletionBehavior}" arguments="{llArgs}">deletion</f:translate>
-                </td>
-            </tr>
-        </f:if>
-
         <tr>
             <td style="padding: 2px 10px 2px 5px">
                 <strong>
-                    <f:translate key="LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:pluginInfo.confirmationPage">confirmationPage</f:translate>
+                    <f:translate
+                            key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletion">
+                        deletion
+                    </f:translate>
+                </strong>
+            </td>
+            <f:if condition="{flexFormData.settings.flexform.powermailCleaner.deletionBehavior} != ''">
+                <f:then>
+                    <td>
+                        <f:variable name="llArgs"
+                                    value="{0: flexFormData.settings.flexform.powermailCleaner.deletionPeriod}"></f:variable>
+                        <f:if condition="{flexFormData.settings.flexform.powermailCleaner.deletionBehavior} == 'deletionDate'">
+                            <f:variable name="llArgs"
+                                        value="{0: '{flexFormData.settings.flexform.powermailCleaner.deletionDate -> f:format.date(format: \'d.m.Y\')}'}"></f:variable>
+                        </f:if>
+                        <f:translate
+                                key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior.{flexFormData.settings.flexform.powermailCleaner.deletionBehavior}"
+                                arguments="{llArgs}">deletion
+                        </f:translate>
+                    </td>
+
+                </f:then>
+
+                <f:else>
+                    <td>
+                    <span style="color: red;">
+                        <strong>
+                            <f:translate
+                                    key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.noDeletionBehavior"
+                                    arguments="{llArgs}">Clean-up of form data ist not configured
+                            </f:translate>
+                        </strong>
+                    </span>
+                    </td>
+                </f:else>
+            </f:if>
+        </tr>
+        <tr>
+            <td style="padding: 2px 10px 2px 5px">
+                <strong>
+                    <f:translate
+                            key="LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:pluginInfo.confirmationPage">
+                        confirmationPage
+                    </f:translate>
                 </strong>
             </td>
             <td>
                 <f:if condition="{flexFormData.settings.flexform.main.confirmation}">
                     <f:then>
-                        <core:Icon identifier="status-status-permission-granted" />
+                        <core:Icon identifier="status-status-permission-granted"/>
                     </f:then>
                     <f:else>
-                        <core:Icon identifier="status-status-permission-denied" />
+                        <core:Icon identifier="status-status-permission-denied"/>
                     </f:else>
                 </f:if>
             </td>
