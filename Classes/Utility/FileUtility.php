@@ -91,7 +91,7 @@ class FileUtility
             $publicPath . $resourceBasePath . $identifier
         );
 
-        unlink($absoluteFilePath);
+        @unlink($absoluteFilePath);
     }
 
     public static function deleteSysfile(array $file, ResourceStorage $storage): void
@@ -162,7 +162,7 @@ class FileUtility
         $publicPath = $environment->getPublicPath() . '/';
         foreach ($result as $processedFile) {
             $absoluteFilePath = $publicPath . $processedBasePath . $processedFile['identifier'];
-            unlink($absoluteFilePath);
+            @unlink($absoluteFilePath);
             $queryBuilder = DatabaseUtility::getQueryBuilderForTable('sys_file_processedfile');
             $queryBuilder
                 ->delete('sys_file_processedfile')
