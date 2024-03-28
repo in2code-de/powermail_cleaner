@@ -39,6 +39,9 @@
 			<trans-unit id="pluginInfo.deletion" resname="pluginInfo.deletion">
 				<source>Deletion behaviour</source>
 			</trans-unit>
+			<trans-unit id="pluginInfo.hint" resname="pluginInfo.hint">
+				<source>Data protection notice</source>
+			</trans-unit>
 			<trans-unit id="pluginInfo.deletionBehavior.dbDisable" resname="pluginInfo.deletionBehavior.dbDisable">
 				<source>Data is not stored in database</source>
 			</trans-unit>

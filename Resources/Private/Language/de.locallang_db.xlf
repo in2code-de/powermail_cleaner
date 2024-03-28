@@ -51,6 +51,10 @@
 				<source>Deletion behaviour</source>
 				<target>Löschen von Daten</target>
 			</trans-unit>
+			<trans-unit id="pluginInfo.hint" resname="pluginInfo.hint">
+				<source>Data protection notice</source>
+				<target>Datenschutz-Hinweis</target>
+			</trans-unit>
 			<trans-unit id="pluginInfo.deletionBehavior.dbDisable" resname="pluginInfo.deletionBehavior.dbDisable">
 				<source>Data is not stored in database</source>
 				<target>Daten werden nicht in Datenbank gespeichert</target>
