@@ -43,7 +43,7 @@
   "license": "GPL-2.0-or-later",
   "require": {
     "typo3/cms-core": "^11.5",
-    "in2code/powermail": "^10.7",
+    "in2code/powermail": "^10.8",
     "ext-json": "*",
     "ext-gd": "*"
   },
