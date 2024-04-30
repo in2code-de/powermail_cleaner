@@ -51,7 +51,7 @@ call_user_func(function () {
         'invoke'
     );
 
-    // Update DeletionTimeStamp in mails after re-configuring Plug-in settings
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][]
-        = \In2code\PowermailCleaner\Hooks\UpdateDeletionTimeStampHook::class;
+    // Syncronize deletion behavior between translated plug-in records
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processCmdmapClass'][]
+        = \In2code\PowermailCleaner\Hooks\SynchronizeLocalizedRecordsHook::class;
 });
