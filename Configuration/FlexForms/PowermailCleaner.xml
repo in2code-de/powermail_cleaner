@@ -8,6 +8,7 @@
             <settings.flexform.powermailCleaner.deletionBehavior>
                 <TCEforms>
                     <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior</label>
+                    <description>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionBehavior.description</description>
                     <onChange>reload</onChange>
                     <config>
                         <type>select</type>
