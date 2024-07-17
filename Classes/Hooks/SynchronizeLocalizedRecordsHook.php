@@ -24,8 +24,6 @@ class SynchronizeLocalizedRecordsHook
     protected string           $table           = 'tt_content';
     protected array            $flexformConfig  = [];
     protected ?DataHandler     $dataHandler     = null;
-    protected ?FlexFormTools   $flexFormTools   = null;
-    protected ?FlexFormService $flexFormService = null;
     protected array            $currentRecord   = [];
     protected array            $syncFields      = ['deletionBehavior', 'deletionDate', 'deletionPeriod'];
 
@@ -58,13 +56,11 @@ class SynchronizeLocalizedRecordsHook
         }
 
         // Assign objects
-        $this->flexFormTools   = GeneralUtility::makeInstance(FlexFormTools::class);
         $this->dataHandler     = $dataHandler;
-        $this->flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
 
         if ((int)$this->currentRecord['sys_language_uid'] === 0 && empty($this->currentRecord['l18n_parent'])) {
             // Synchronize deletion behaviour settings to localized records
-            $this->synchronizeLocalizedRecordsToChildren();
+            $this->synchronizeLocalizedRecordToChildren();
         } else {
             // Synchronize deletion behaviour settings from parent
             $this->synchronizeLocalizedRecordsFromParent();
@@ -78,7 +74,7 @@ class SynchronizeLocalizedRecordsHook
      * @throws \Doctrine\DBAL\DBALException
      * @throws \Doctrine\DBAL\Driver\Exception
      */
-    protected function synchronizeLocalizedRecordsToChildren(): void
+    protected function synchronizeLocalizedRecordToChildren(): void
     {
         if (empty($this->currentRecord['pi_flexform']['data'])) {
             return;
@@ -91,7 +87,7 @@ class SynchronizeLocalizedRecordsHook
         $countRecords       = count($recordLocalization);
         if ($countRecords > 0) {
             foreach ($recordLocalization as $record) {
-                $this->updateLocalizedRecords($record);
+                $this->updateLocalizedRecord($record);
             }
         }
     }
@@ -101,7 +97,7 @@ class SynchronizeLocalizedRecordsHook
      *
      * @return void
      */
-    private function synchronizeLocalizedRecordsFromParent(): void
+    private function synchronizeLocalizedRecordFromParent(): void
     {
         // Get FlexForm config of l18n parent record
         $l18nParent = BackendUtility::getRecord($this->table, $this->currentRecord['l18n_parent']);
@@ -109,9 +105,10 @@ class SynchronizeLocalizedRecordsHook
             return;
         }
 
+        $flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
         $settings             = $this->flexFormService->convertFlexFormContentToArray($l18nParent['pi_flexform']);
         $this->flexformConfig = $settings['settings']['flexform']['powermailCleaner'];
-        $this->updateLocalizedRecords($this->currentRecord);
+        $this->updateLocalizedRecord($this->currentRecord);
     }
 
 
@@ -144,13 +141,13 @@ class SynchronizeLocalizedRecordsHook
      */
     private function convertFlexFormArray(array $flexformData): array
     {
-        $flexFormConfig = [];
+        $flexFormConfiguration = [];
         foreach ($this->syncFields as $field) {
-            $flexFormConfig[$field]
+            $flexFormConfiguration[$field]
                 = $flexformData['powermailCleaner']['lDEF']['settings.flexform.powermailCleaner.' . $field]['vDEF'];
         }
 
-        return $flexFormConfig;
+        return $flexFormConfiguration;
     }
 
     /**
@@ -207,7 +204,7 @@ class SynchronizeLocalizedRecordsHook
      *
      * @return void
      */
-    protected function updateLocalizedRecords(array $record): void
+    protected function updateLocalizedRecord(array $record): void
     {
         // Get FlexForm config of localized record
         $piFlexform  = (is_array($record['pi_flexform'])) ? $record['pi_flexform'] : GeneralUtility::xml2array(
@@ -220,7 +217,8 @@ class SynchronizeLocalizedRecordsHook
                 = $this->flexformConfig[$field];
         }
         // Convert array back to flexform XML
-        $piFlexform = $this->flexFormTools->flexArray2Xml($piFlexform, true);
+        $flexFormTools  = GeneralUtility::makeInstance(FlexFormTools::class);
+        $piFlexform = $flexFormTools->flexArray2Xml($piFlexform, true);
         // Update localized record
         $this->dataHandler->updateDB($this->table, (int)$record['uid'], ['pi_flexform' => $piFlexform]);
     }
