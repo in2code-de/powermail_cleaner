@@ -63,7 +63,7 @@ class SynchronizeLocalizedRecordsHook
             $this->synchronizeLocalizedRecordToChildren();
         } else {
             // Synchronize deletion behaviour settings from parent
-            $this->synchronizeLocalizedRecordsFromParent();
+            $this->synchronizeLocalizedRecordFromParent();
         }
     }
 
