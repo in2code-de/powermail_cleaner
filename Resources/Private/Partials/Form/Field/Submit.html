@@ -1,6 +1,6 @@
 <div class="powermail_fieldwrap powermail_fieldwrap_type_submit powermail_fieldwrap_{field.marker} {field.css} {settings.styles.framework.fieldAndLabelWrappingClasses}">
     <f:if condition="{settings.powermailCleaner.deletionBehavior} && {settings.powermailCleaner.deletionBehavior} != ''">
-        <h5>Datenschutz-Hinweis</h5>
+        <h5><f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.hint"/></h5>
         <f:variable name="llArgs" value="{0: settings.powermailCleaner.deletionPeriod}"></f:variable>
         <f:if condition="{settings.powermailCleaner.deletionBehavior} == 'deletionDate'">
             <f:variable name="llArgs" value="{0: '{settings.powermailCleaner.deletionDate -> f:format.date(format: \'d.m.Y\')}'}"></f:variable>
@@ -13,11 +13,23 @@
             </f:format.raw>
         </f:if>
     </f:if>
-
     <div class="{settings.styles.framework.fieldWrappingClasses} {settings.styles.framework.offsetClasses}">
-        <f:form.submit value="{field.title}" class="{settings.styles.framework.submitClasses}" />
+        <f:if condition="{settings.powermailCleaner.deletionBehavior} == 'deletionDate'">
+            <f:then>
+                <f:if condition="{f:format.date(date: 'now', format: 'Ymd')} > {f:format.date(date: settings.powermailCleaner.deletionDate, format: 'Ymd')}">
+                    <f:then>
+                        <ul class="powermail_message powermail_message_error"><li><f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionPeriod.message">deletionPeriod.message</f:translate></li></ul>
+                    </f:then>
+                    <f:else>
+                        <f:render section="submitButton" arguments="{_all}" />
+                    </f:else>
+                </f:if>
+            </f:then>
+            <f:else>
+                <f:render section="submitButton" arguments="{_all}" />
+            </f:else>
+        </f:if>
     </div>
-
     <f:if condition="{settings.powermailCleaner.deletionBehavior} && {settings.powermailCleaner.deletionBehavior} != ''">
         <f:if condition="{settings.powermailCleaner.deletionDetails}">
             <f:format.raw>
@@ -26,3 +38,7 @@
         </f:if>
     </f:if>
 </div>
+
+<f:section name="submitButton">
+    <f:form.submit value="{field.title}" class="{settings.styles.framework.submitClasses}" />
+</f:section>

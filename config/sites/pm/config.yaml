@@ -1,6 +1,4 @@
 base: /
-baseVariants: {  }
-errorHandling: {  }
 languages:
   -
     title: en
@@ -13,7 +11,7 @@ languages:
     hreflang: en-US
     direction: ''
     flag: en-us-gb
-    languageId: '0'
+    languageId: 0
   -
     title: Deutsch
     enabled: true
@@ -27,6 +25,6 @@ languages:
     fallbackType: strict
     fallbacks: ''
     flag: de
-    languageId: '1'
+    languageId: 1
 rootPageId: 1
-routes: {  }
+websiteTitle: 'Powermail Cleaner TYPO3 10'

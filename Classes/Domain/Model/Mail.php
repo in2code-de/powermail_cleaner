@@ -11,6 +11,8 @@ class Mail extends \In2code\Powermail\Domain\Model\Mail
      */
     protected $plugin;
 
+    protected int $deletionTimestamp = 0;
+
     /**
      * @return int
      */
@@ -25,5 +27,15 @@ class Mail extends \In2code\Powermail\Domain\Model\Mail
     public function setPlugin(int $plugin): void
     {
         $this->plugin = $plugin;
+    }
+
+    public function getDeletionTimestamp(): int
+    {
+        return $this->deletionTimestamp;
+    }
+
+    public function setDeletionTimestamp(int $deletionDate): void
+    {
+        $this->deletionTimestamp = $deletionDate;
     }
 }

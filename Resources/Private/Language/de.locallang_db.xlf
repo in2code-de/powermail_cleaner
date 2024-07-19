@@ -1,86 +1,145 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0">
-	<file source-language="en" datatype="plaintext"
-		 original="EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf"
-		 date="2022-03-21T12:00:00Z" product-name="powermail_cleaner">
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="de" datatype="plaintext" original="EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf" date="2023-10-11T13:51:44Z" product-name="powermail_cleaner">
 		<header/>
 		<body>
-			<trans-unit id="tabs.powermailCleaner">
+			<trans-unit id="tabs.powermailCleaner" resname="tabs.powermailCleaner">
 				<source>Data protection / Clean-up</source>
-				<target state="translated">Datenschutz / Löschen</target>
+				<target>Datenschutz / Löschen</target>
 			</trans-unit>
-
-			<trans-unit id="deletionBehavior">
+			<trans-unit id="deletionBehavior" resname="deletionBehavior">
 				<source>Clean-up of form data</source>
-				<target state="translated">Löschen von Formulardaten</target>
+				<target>Löschen von Formulardaten</target>
 			</trans-unit>
-			<trans-unit id="deletionBehavior.0">
+			<trans-unit id="deletionBehavior.description" resname="deletionBehavior.description">
+				<source>Please note:
+					Changing the deletion behavior only affects form data that is subsequently submitted!</source>
+				<target>Bitte beachten:
+					Änderungen an der Löschkonfiguration wirken sich nur auf Formulardaten aus, die anschließend übermittelt werden!</target>
+			</trans-unit>
+			<trans-unit id="deletionBehavior.0" resname="deletionBehavior.0">
 				<source>Please select</source>
-				<target state="translated">Bitte auswählen</target>
+				<target>Bitte auswählen</target>
 			</trans-unit>
-			<trans-unit id="deletionBehavior.dbDisable">
+			<trans-unit id="deletionBehavior.dbDisable" resname="deletionBehavior.dbDisable">
 				<source>Data is not stored in database</source>
-				<target state="translated">Daten werden nicht in Datenbank gespeichert</target>
+				<target>Daten werden nicht in Datenbank gespeichert</target>
 			</trans-unit>
-			<trans-unit id="deletionBehavior.deletionPeriod">
+			<trans-unit id="deletionBehavior.deletionPeriod" resname="deletionBehavior.deletionPeriod">
 				<source>Data will be cleaned after the specified deletion period</source>
-				<target state="translated">Daten werden nach angegebener Löschfrist gelöscht</target>
+				<target>Daten werden nach angegebener Löschfrist gelöscht</target>
 			</trans-unit>
-			<trans-unit id="deletionBehavior.deletionDate">
+			<trans-unit id="deletionBehavior.deletionDate" resname="deletionBehavior.deletionDate">
 				<source>Data will be cleaned after specified date</source>
-				<target state="translated">Daten werden nach angegebenem Datum gelöscht</target>
+				<target>Daten werden nach angegebenem Datum gelöscht</target>
 			</trans-unit>
-			<trans-unit id="deletionPeriod">
+			<trans-unit id="deletionPeriod" resname="deletionPeriod">
 				<source>Clean-up period (in days)</source>
-				<target state="translated">Löschfrist (in Tagen)</target>
+				<target>Löschfrist (in Tagen)</target>
 			</trans-unit>
-			<trans-unit id="deletionDate">
+			<trans-unit id="deletionDate" resname="deletionDate">
 				<source>Clean-up after the specified date</source>
-				<target state="translated">Löschen nach dem angegebenen Datum</target>
+				<target>Löschen nach dem angegebenen Datum</target>
 			</trans-unit>
-			<trans-unit id="deletionContact">
+			<trans-unit id="deletionContact" resname="deletionContact">
 				<source>Contact for objection and deletion option</source>
-				<target state="translated">Kontakt für Widerspruchs- und Beseitigungsmöglichkeit</target>
+				<target>Kontakt für Widerspruchs- und Beseitigungsmöglichkeit</target>
 			</trans-unit>
-			<trans-unit id="deletionDetails">
+			<trans-unit id="deletionDetails" resname="deletionDetails">
 				<source>Amendments to the Data Protection Policy</source>
-				<target state="translated">Ergänzungen zur Datenschutzerklärung</target>
+				<target>Ergänzungen zur Datenschutzerklärung</target>
 			</trans-unit>
-
-			<trans-unit id="hintTransl.Orig">
+			<trans-unit id="hintTransl.Orig" resname="hintTransl.Orig">
 				<source>Setting is taken from standard language</source>
-				<target state="translated">Einstellung wird aus Standardsprache übernommen</target>
+				<target>Einstellung wird aus Standardsprache übernommen</target>
 			</trans-unit>
-
-
-			<trans-unit id="pluginInfo.deletion">
-				<source>Deletion behaviour</source>
-				<target state="translated">Löschen von Daten</target>
+			<trans-unit id="pluginInfo.deletion" resname="pluginInfo.deletion">
+				<source>Deletion behavior</source>
+				<target>Löschen von Daten</target>
 			</trans-unit>
-
-			<trans-unit id="pluginInfo.deletionBehavior.dbDisable">
+			<trans-unit id="pluginInfo.hint" resname="pluginInfo.hint">
+				<source>Data protection notice</source>
+				<target>Datenschutz-Hinweis</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior.dbDisable" resname="pluginInfo.deletionBehavior.dbDisable">
 				<source>Data is not stored in database</source>
-				<target state="translated">Daten werden nicht in Datenbank gespeichert</target>
+				<target>Daten werden nicht in Datenbank gespeichert</target>
 			</trans-unit>
-			<trans-unit id="pluginInfo.deletionBehavior_long.dbDisable">
+			<trans-unit id="pluginInfo.deletionBehavior_long.dbDisable" resname="pluginInfo.deletionBehavior_long.dbDisable">
 				<source>The data you submitted to this form will not be stored in the database.</source>
-				<target state="translated">Ihre Eingaben in diesem Formular werden nicht in unserer Datenbank gespeichert.</target>
+				<target>Ihre Eingaben in diesem Formular werden nicht in unserer Datenbank gespeichert.</target>
 			</trans-unit>
-			<trans-unit id="pluginInfo.deletionBehavior.deletionPeriod">
+			<trans-unit id="pluginInfo.deletionBehavior.deletionPeriod" resname="pluginInfo.deletionBehavior.deletionPeriod">
 				<source>Data is deleted after %d days</source>
-				<target state="translated">Daten werden nach %d Tagen gelöscht</target>
+				<target>Daten werden nach %d Tagen gelöscht</target>
 			</trans-unit>
-			<trans-unit id="pluginInfo.deletionBehavior_long.deletionPeriod">
+			<trans-unit id="pluginInfo.deletionBehavior_long.deletionPeriod" resname="pluginInfo.deletionBehavior_long.deletionPeriod">
 				<source>The data you submitted to this form will be deleted after a period of %d days.</source>
-				<target state="translated">Ihre Eingaben in diesem Formular werden nach %d Tagen gelöscht.</target>
+				<target>Ihre Eingaben in diesem Formular werden nach %d Tagen gelöscht.</target>
 			</trans-unit>
-			<trans-unit id="pluginInfo.deletionBehavior.deletionDate">
+			<trans-unit id="pluginInfo.deletionBehavior.wrongConfiguration" resname="pluginInfo.deletionBehavior.wrongConfiguration">
+				<source>Wrong configuration. Please check plugin settings</source>
+				<target>Ungültige Konfiguration. Bitte Einstellungen prüfen. </target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletionBehavior.deletionDate" resname="pluginInfo.deletionBehavior.deletionDate">
 				<source>Data will be deleted on %s</source>
-				<target state="translated">Daten werden am %s gelöscht</target>
+				<target>Daten werden am %s gelöscht</target>
 			</trans-unit>
-			<trans-unit id="pluginInfo.deletionBehavior_long.deletionDate">
+			<trans-unit id="pluginInfo.deletionBehavior_long.deletionDate" resname="pluginInfo.deletionBehavior_long.deletionDate">
 				<source>The data you submitted to this form will be deleted on %s.</source>
-				<target state="translated">Ihre Eingaben in diesem Formular werden am %s gelöscht.</target>
+				<target>Ihre Eingaben in diesem Formular werden am %s gelöscht.</target>
+			</trans-unit>
+			<trans-unit id="mail.related-plugin" resname="mail.related-plugin">
+				<source>Related plugin</source>
+				<target>Plugin</target>
+			</trans-unit>
+			<trans-unit id="mail.deletionDate">
+				<source>Stored deletion date</source>
+				<target>Gespeichertes Löschdatum</target>
+			</trans-unit>
+			<trans-unit id="module.cleanup.header" resname="module.cleanup.header">
+				<source>Powermail Cleaner</source>
+				<target>Powermail Cleaner</target>
+			</trans-unit>
+			<trans-unit id="module.cleanup.done" resname="module.cleanup.done">
+				<source>Cleanup finished</source>
+				<target>Aufräumen beendet</target>
+			</trans-unit>
+			<trans-unit id="module.cleanup.statistics" resname="module.cleanup.statistics">
+				<source>Cleanup Statistics: %d mails, %d answers, %d files</source>
+				<target>Statistik: %d E-Mails, %d Antworten, %d Dateien</target>
+			</trans-unit>
+			<trans-unit id="module.cleanup.age" resname="module.cleanup.age">
+				<source>Age in seconds</source>
+				<target>Alter in Sekunden</target>
+			</trans-unit>
+			<trans-unit id="module.cleanup.ageExplanation" resname="module.cleanup.ageExplanation">
+				<source>Examples: &quot;5184000&quot; equals 60 days, &quot;31536000&quot; equals 1 year</source>
+				<target>Beispiele: &quot;5184000&quot; entspricht 60 Tagen, &quot;31536000&quot;  enspricht 1 Jahr</target>
+			</trans-unit>
+			<trans-unit id="module.cleanup.pid" resname="module.cleanup.pid">
+				<source>Optional: Restrict the cleanup to a specific PID</source>
+				<target>Optional: Begrenze das Aufräumen auf eine bestimmte Seiten-ID</target>
+			</trans-unit>
+			<trans-unit id="module.cleanup.pidExplanation" resname="module.cleanup.pidExplanation">
+				<source>If not set, all e-mails and answers in the whole TYPO3 instances will be cleaned up!</source>
+				<target>Falls der Wert nicht gesetzt ist, werden alle E-Mails und Antworten in der gesamten TYPO3-Instanz aufgeräumt.</target>
+			</trans-unit>
+			<trans-unit id="module.cleanup.submitButton" resname="module.cleanup.submitButton">
+				<source>Cleanup!</source>
+				<target>Aufräumen!</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.noCleanerConfiguration.title" resname="pluginInfo.noCleanerConfiguration.title">
+				<source>Configuration error</source>
+				<target>Konfigurationsfehler</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.noCleanerConfiguration.message" resname="pluginInfo.noCleanerConfiguration.message">
+				<source>Powermail Cleaner configuration is not properly set. Please check plugin configuration.</source>
+				<target>Die Powermail Cleaner-Konfiguration ist nicht richtig eingestellt. Bitte überprüfen Sie die Konfiguration des Plugins.</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.deletionPeriod.message" resname="pluginInfo.deletionPeriod.message">
+				<source>This form is disabled, as the deletion period is reached. Please inform the editor of this form.</source>
+				<target>Dieses Formular ist deaktiviert, da die Löschungsfrist erreicht ist. Bitte informiere die Redaktion über dieses Formular.</target>
 			</trans-unit>
 		</body>
 	</file>
