@@ -207,19 +207,22 @@ class SynchronizeLocalizedRecordsHook
     protected function updateLocalizedRecord(array $record): void
     {
         // Get FlexForm config of localized record
-        $piFlexform  = (is_array($record['pi_flexform'])) ? $record['pi_flexform'] : GeneralUtility::xml2array(
+        $piFlexform = (is_array($record['pi_flexform'])) ? $record['pi_flexform'] : GeneralUtility::xml2array(
             $record['pi_flexform']
         );
-        $cleanerConf =& $piFlexform['data']['powermailCleaner']['lDEF'];
-        // Override config with settings from l18n_parent
-        foreach ($this->syncFields as $field) {
-            $cleanerConf['settings.flexform.powermailCleaner.' . $field]['vDEF']
-                = $this->flexformConfig[$field];
+        // if the flexform is not filled, a string is returned, then we exit here
+        if (is_array($piFlexform['data']['powermailCleaner']['lDEF'])) {
+            $cleanerConf =& $piFlexform['data']['powermailCleaner']['lDEF'];
+            // Override config with settings from l18n_parent
+            foreach ($this->syncFields as $field) {
+                $cleanerConf['settings.flexform.powermailCleaner.' . $field]['vDEF']
+                    = $this->flexformConfig[$field];
+            }
+            // Convert array back to flexform XML
+            $flexFormTools = GeneralUtility::makeInstance(FlexFormTools::class);
+            $piFlexform = $flexFormTools->flexArray2Xml($piFlexform, true);
+            // Update localized record
+            $this->dataHandler->updateDB($this->table, (int)$record['uid'], ['pi_flexform' => $piFlexform]);
         }
-        // Convert array back to flexform XML
-        $flexFormTools  = GeneralUtility::makeInstance(FlexFormTools::class);
-        $piFlexform = $flexFormTools->flexArray2Xml($piFlexform, true);
-        // Update localized record
-        $this->dataHandler->updateDB($this->table, (int)$record['uid'], ['pi_flexform' => $piFlexform]);
     }
 }
