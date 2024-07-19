@@ -12,4 +12,5 @@ plugin.tx_powermail {
             10 = EXT:powermail_cleaner/Resources/Private/Layouts/
         }
     }
+    settings.setup.powermail_cleaner_enabled = 1
 }
