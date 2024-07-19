@@ -9,6 +9,10 @@
 			<trans-unit id="deletionBehavior" resname="deletionBehavior">
 				<source>Clean-up of form data</source>
 			</trans-unit>
+			<trans-unit id="deletionBehavior.description" resname="deletionBehavior.description">
+				<source>Please note:
+Changing the deletion behavior only affects form data that is subsequently submitted!</source>
+			</trans-unit>
 			<trans-unit id="deletionBehavior.0" resname="deletionBehavior.0">
 				<source>Please select</source>
 			</trans-unit>
@@ -37,7 +41,10 @@
 				<source>Setting is taken from standard language</source>
 			</trans-unit>
 			<trans-unit id="pluginInfo.deletion" resname="pluginInfo.deletion">
-				<source>Deletion behaviour</source>
+				<source>Deletion behavior</source>
+			</trans-unit>
+			<trans-unit id="pluginInfo.hint" resname="pluginInfo.hint">
+				<source>Data protection notice</source>
 			</trans-unit>
 			<trans-unit id="pluginInfo.deletionBehavior.dbDisable" resname="pluginInfo.deletionBehavior.dbDisable">
 				<source>Data is not stored in database</source>

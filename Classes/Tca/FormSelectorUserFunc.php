@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace In2code\PowermailCleaner\Tca;
 
-use In2code\PowermailCleaner\Utility\BackendUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
@@ -21,7 +20,7 @@ class FormSelectorUserFunc
      *
      * @return void
      */
-    public function getDeletionBehaviorL10nItems(array &$params): void
+    public function getDeletionBehaviorReadonlyItems(array &$params): void
     {
         // Don't handle records without l18n parent
         if (empty($params['flexParentDatabaseRow']['l18n_parent'])) {
@@ -31,10 +30,7 @@ class FormSelectorUserFunc
         $params['items'] = [];
 
         // get L18n parent record
-        $deletionBehavior = BackendUtility::getL18nParentFlexformFieldData(
-            (int)$params['flexParentDatabaseRow']['l18n_parent'],
-            'deletionBehavior'
-        );
+        $deletionBehavior = $params['row']['settings.flexform.powermailCleaner.deletionBehavior'];
         $deletionBehavior = (empty($deletionBehavior)) ? 0 : $deletionBehavior;
         $key              = 'LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db:deletionBehavior.'
                             . $deletionBehavior;
@@ -52,7 +48,7 @@ class FormSelectorUserFunc
      *
      * @return void
      */
-    public function getDeletionPeriodL10nItems(array &$params): void
+    public function getDeletionPeriodReadonlyItems(array &$params): void
     {
         // Don't handle records without l18n parent
         if (empty($params['flexParentDatabaseRow']['l18n_parent'])) {
@@ -62,10 +58,7 @@ class FormSelectorUserFunc
         $params['items'] = [];
 
         // get L18n parent record
-        $deletionPeriod = BackendUtility::getL18nParentFlexformFieldData(
-            (int)$params['flexParentDatabaseRow']['l18n_parent'],
-            'deletionPeriod'
-        );
+        $deletionPeriod = $params['row']['settings.flexform.powermailCleaner.deletionPeriod'];
         $params['items'][] = [
             $deletionPeriod,
             '',
@@ -80,7 +73,7 @@ class FormSelectorUserFunc
      *
      * @return void
      */
-    public function getDeletionDateL10nItems(array &$params): void
+    public function getDeletionDateReadonlyItems(array &$params): void
     {
         // Don't handle records without l18n parent
         if (empty($params['flexParentDatabaseRow']['l18n_parent'])) {
@@ -90,10 +83,7 @@ class FormSelectorUserFunc
         $params['items'] = [];
 
         // get L18n parent record
-        $deletionDate = BackendUtility::getL18nParentFlexformFieldData(
-            (int)$params['flexParentDatabaseRow']['l18n_parent'],
-            'deletionDate'
-        );
+        $deletionDate = $params['row']['settings.flexform.powermailCleaner.deletionDate'];
         $params['items'][] = [
             date('d-m-Y', (int)$deletionDate),
             '',
