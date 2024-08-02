@@ -16,7 +16,7 @@ languages:
     title: Deutsch
     enabled: true
     base: /de/
-    typo3Language: default
+    typo3Language: de
     locale: de_DE
     iso-639-1: de
     navigationTitle: Deutsch
@@ -26,5 +26,6 @@ languages:
     fallbacks: ''
     flag: de
     languageId: 1
+    websiteTitle: ''
 rootPageId: 1
 websiteTitle: 'Powermail Cleaner TYPO3 10'
