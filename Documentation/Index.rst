@@ -1,41 +1,61 @@
-.. include:: Includes.txt
-.. include:: Images.txt
+..  include:: /Includes.rst.txt
 
-|powermail_icon|
+.. _start:
 
-=================
-powermail cleaner
-=================
+=========
+Powermail Cleaner
+=========
 
-.. only:: html
+:Extension key:
+    <powermail_cleaner>
 
-	:Copyright:
-		2021
+:Package name:
+    <powermail_cleaner>
 
-	:Classification:
-		powermail
+:Version:
+    |3.0|
 
-	:Version:
-		1
+:Language:
+    en
 
-	:Language:
-		en
+:Author:
+    Marcus Schwemer, Stefan Busemann, Andreas Nedbal, Daniel Hoffmann
 
-	:Keywords:
-		powermail, GDRP Cleaner
+:License:
+    This document is published under the
+    `Creative Commons BY 4.0 <https://creativecommons.org/licenses/by/4.0/>`__
+    license.
 
-	:Author:
-		Olvier Eglseder, Stefan Busemann
+:Rendered:
+    |today|
 
-	:Email:
-		info@in2code.de
+----
+
+..  image:: /Images/powermail_icon.png
+    :alt: Powermail Cleaner Icon
+    :class: float-left
+
+A Powermail extension to clean up answers with files via Scheduler / Command line or Backend
 
 
-	**Table of Contents**
+----
 
-.. toctree::
-	:maxdepth: 3
-	:titlesonly:
-	:glob:
+**Table of Contents:**
 
-	Introduction/Index
+..  toctree::
+    :maxdepth: 2
+    :titlesonly:
+
+    Introduction/Index
+    Installation/Index
+    Configuration/Index
+    Editor/Index
+    Developer/Index
+    KnownProblems/Index
+
+..  Meta Menu
+
+..  toctree::
+    :hidden:
+
+    Sitemap
