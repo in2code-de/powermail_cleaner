@@ -22,26 +22,24 @@ class FormController extends \In2code\Powermail\Controller\FormController
 
     public function initializeFormAction()
     {
-        if (1 == 1) {
-            if (empty($this->settings['powermailCleaner']['deletionBehavior']) && ($this->settings['powermail_cleaner_enabled'] == 1)) {
-                $message = GeneralUtility::makeInstance(
-                    FlashMessage::class,
-                    LocalizationUtility::translate(
-                        'LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.noCleanerConfiguration.message'
-                    ),
-                    LocalizationUtility::translate(
-                        'LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.noCleanerConfiguration.title'
-                    ),
-                    FlashMessage::ERROR,
-                    true
-                );
+        if (empty($this->settings['powermailCleaner']['deletionBehavior']) && ($this->settings['powermail_cleaner_enabled'] == 1)) {
+            $message = GeneralUtility::makeInstance(
+                FlashMessage::class,
+                LocalizationUtility::translate(
+                    'LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.noCleanerConfiguration.message'
+                ),
+                LocalizationUtility::translate(
+                    'LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.noCleanerConfiguration.title'
+                ),
+                FlashMessage::ERROR,
+                true
+            );
 
-                $flashMessageService = GeneralUtility::makeInstance(FlashMessageService::class);
-                $messageQueue = $flashMessageService->getMessageQueueByIdentifier(
-                    'extbase.flashmessages.tx_powermail_pi1'
-                );
-                $messageQueue->addMessage($message);
-            }
+            $flashMessageService = GeneralUtility::makeInstance(FlashMessageService::class);
+            $messageQueue = $flashMessageService->getMessageQueueByIdentifier(
+                'extbase.flashmessages.tx_powermail_pi1'
+            );
+            $messageQueue->addMessage($message);
         }
     }
 
