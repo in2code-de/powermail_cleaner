@@ -106,9 +106,11 @@ class SynchronizeLocalizedRecordsHook
         }
 
         $flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
-        $settings             = $this->flexFormService->convertFlexFormContentToArray($l18nParent['pi_flexform']);
-        $this->flexformConfig = $settings['settings']['flexform']['powermailCleaner'];
-        $this->updateLocalizedRecord($this->currentRecord);
+        if (is_array($l18nParent['pi_flexform'])) {
+            $settings = $this->flexFormService->convertFlexFormContentToArray($l18nParent['pi_flexform']);
+            $this->flexformConfig = $settings['settings']['flexform']['powermailCleaner'];
+            $this->updateLocalizedRecord($this->currentRecord);
+        }
     }
 
 
