@@ -1,4 +1,0 @@
-.. |backend1|      image:: ../Images/cleaner.png
-   :width: 800
-.. :align: left
-.. :name: backend1

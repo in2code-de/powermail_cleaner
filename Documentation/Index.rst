@@ -3,9 +3,9 @@
 
 |powermail_icon|
 
-=================
-powermail cleaner
-=================
+=========
+Powermail Cleaner
+=========
 
 .. only:: html
 
@@ -23,12 +23,16 @@ powermail cleaner
 
 	:Keywords:
 		powermail, GDRP Cleaner
+:Author:
+    Marcus Schwemer, Stefan Busemann, Andreas Nedbal, Daniel Hoffmann
 
-	:Author:
-		Oliver Eglseder, Stefan Busemann, Marcus Schwemer, Daniel Hofmann
+:License:
+    This document is published under the
+    `Creative Commons BY 4.0 <https://creativecommons.org/licenses/by/4.0/>`__
+    license.
 
-	:Email:
-		info@in2code.de
+:Rendered:
+    |today|
 
 
 	**Table of Contents**

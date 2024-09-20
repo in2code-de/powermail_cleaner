@@ -1,6 +1,3 @@
-.. include:: ../Includes.txt
-.. include:: Images.txt
-
 .. _introduction:
 
 Introduction
@@ -19,6 +16,8 @@ Powermail Cleaner offers a new command (scheduler task) to delete old form answe
 Further you get a new option in the backend view to cleanup all answers (or only the selected page) restricted to a
 given time period in seconds.
 
+Detailed options for storing and deleting answers can be setup via Flexform for each Plugin.
+
 .. _screenshots:
 
 Example Screenshots
@@ -27,23 +26,8 @@ Example Screenshots
 Backend View
 ^^^^^^^^^^^^
 
-|backend1|
+..  image:: /Images/BackendView.png
+    :alt: Powermail Cleaner Icon
+    :class: float-left
 
 Example Backend Cleaner view
-
-
-Configuration
--------------
-
-The clean up age can be set via three ways:
-
-typoScript (Module Settings):
-module.tx_powermailcleanupAge = 31536000
-
-UserTS / PageTS
-tx_powermail.settings.cleanupAge = XXX
-
-Order of processing:
-* typoScript
-* PageTS
-* UserTS
