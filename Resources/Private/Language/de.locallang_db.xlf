@@ -13,9 +13,9 @@
 			</trans-unit>
 			<trans-unit id="deletionBehavior.description" resname="deletionBehavior.description">
 				<source>Please note:
-					Changing the deletion behavior only affects form data that is subsequently submitted!</source>
+Changing the deletion behavior only affects form data that is subsequently submitted!</source>
 				<target>Bitte beachten:
-					Änderungen an der Löschkonfiguration wirken sich nur auf Formulardaten aus, die anschließend übermittelt werden!</target>
+Änderungen an der Löschkonfiguration wirken sich nur auf Formulardaten aus, die anschließend übermittelt werden!</target>
 			</trans-unit>
 			<trans-unit id="deletionBehavior.0" resname="deletionBehavior.0">
 				<source>Please select</source>
@@ -60,6 +60,10 @@
 			<trans-unit id="pluginInfo.hint" resname="pluginInfo.hint">
 				<source>Data protection notice</source>
 				<target>Datenschutz-Hinweis</target>
+			</trans-unit>
+			<trans-unit id="pluginInfo.noDeletionBehavior" resname="pluginInfo.noDeletionBehavior">
+				<source>Clean-up of form data is not configured</source>
+				<target>Löschen von Formulardaten ist nicht eingerichtet</target>
 			</trans-unit>
 			<trans-unit id="pluginInfo.deletionBehavior.dbDisable" resname="pluginInfo.deletionBehavior.dbDisable">
 				<source>Data is not stored in database</source>
