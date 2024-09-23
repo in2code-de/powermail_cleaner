@@ -61,6 +61,10 @@ Changing the deletion behavior only affects form data that is subsequently submi
 				<source>Data protection notice</source>
 				<target>Datenschutz-Hinweis</target>
 			</trans-unit>
+			<trans-unit id="pluginInfo.noDeletionBehavior" resname="pluginInfo.noDeletionBehavior">
+				<source>Clean-up of form data is not configured</source>
+				<target>Löschen von Formulardaten ist nicht eingerichtet</target>
+			</trans-unit>
 			<trans-unit id="pluginInfo.deletionBehavior.dbDisable" resname="pluginInfo.deletionBehavior.dbDisable">
 				<source>Data is not stored in database</source>
 				<target>Daten werden nicht in Datenbank gespeichert</target>
