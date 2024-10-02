@@ -104,7 +104,7 @@ Changing the deletion behavior only affects form data that is subsequently submi
 				<source>Configuration error</source>
 			</trans-unit>
 			<trans-unit id="pluginInfo.noCleanerConfiguration.message" resname="pluginInfo.noCleanerConfiguration.message">
-				<source>Powermail Cleaner configuration is not properly set. Please check plugin configuration.</source>
+				<source>The form cannot be displayed until the necessary data protection information has been completed. Please use this form to inform the editorial team.</source>
 			</trans-unit>
 			<trans-unit id="pluginInfo.deletionPeriod.message" resname="pluginInfo.deletionPeriod.message">
 				<source>This form is disabled, as the deletion period is reached. Please inform the editor of this form.</source>
