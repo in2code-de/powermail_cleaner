@@ -138,12 +138,12 @@ Changing the deletion behavior only affects form data that is subsequently submi
 				<target>Konfigurationsfehler</target>
 			</trans-unit>
 			<trans-unit id="pluginInfo.noCleanerConfiguration.message" resname="pluginInfo.noCleanerConfiguration.message">
-				<source>Powermail Cleaner configuration is not properly set. Please check plugin configuration.</source>
-				<target>Die Powermail Cleaner-Konfiguration ist nicht richtig eingestellt. Bitte überprüfen Sie die Konfiguration des Plugins.</target>
+				<source>The form cannot be displayed until the necessary data protection information has been added. Please inform the editorial team about this form.</source>
+				<target>Das Formular kann nicht angezeigt werden, bevor notwendige Angaben zum Datenschutz ergänzt wurden. Bitte informieren Sie die Redaktion über dieses Formular.</target>
 			</trans-unit>
 			<trans-unit id="pluginInfo.deletionPeriod.message" resname="pluginInfo.deletionPeriod.message">
 				<source>This form is disabled, as the deletion period is reached. Please inform the editor of this form.</source>
-				<target>Dieses Formular ist deaktiviert, da die Löschungsfrist erreicht ist. Bitte informiere die Redaktion über dieses Formular.</target>
+				<target>Dieses Formular ist deaktiviert, da die Löschfrist erreicht ist. Bitte informieren Sie die Redaktion über dieses Formular.</target>
 			</trans-unit>
 		</body>
 	</file>
