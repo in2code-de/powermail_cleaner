@@ -3,32 +3,36 @@
 
 |powermail_icon|
 
-=================
-powermail cleaner
-=================
+=========
+Powermail Cleaner
+=========
 
 .. only:: html
 
 	:Copyright:
-		2021
+		2024
 
 	:Classification:
-		powermail
+		powermail cleaner
 
 	:Version:
-		1
+		5
 
 	:Language:
 		en
 
 	:Keywords:
 		powermail, GDRP Cleaner
+:Author:
+    Marcus Schwemer, Stefan Busemann, Andreas Nedbal, Daniel Hoffmann
 
-	:Author:
-		Olvier Eglseder, Stefan Busemann
+:License:
+    This document is published under the
+    `Creative Commons BY 4.0 <https://creativecommons.org/licenses/by/4.0/>`__
+    license.
 
-	:Email:
-		info@in2code.de
+:Rendered:
+    |today|
 
 
 	**Table of Contents**
