@@ -5,34 +5,17 @@
         links-are-relative="true"
 >
   <extension class="\T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"
-             project-home="&lt;project-home&gt;"
-             project-contact="&lt;project-contact&gt;"
-             project-repository="&lt;project-repository&gt;"
-             project-issues="https://github.com/TYPO3-Documentation/TYPO3CMS-Example-ExtensionManual/issues"
-             project-discussions="&lt;project-discussions&gt;"
-             edit-on-github-branch="main"
-             edit-on-github="TYPO3-Documentation/TYPO3CMS-Example-ExtensionManual"
+             project-home="https://extensions.typo3.org/extension/powermail_cleaner"
+             project-contact="https://typo3.slack.com/archives/C06P2DQG2"
+             project-repository="https://github.com/in2code-de/powermail_cleaner"
+             project-issues="https://github.com/in2code-de/powermail_cleaner/issues"
+             edit-on-github-branch="develop"
+             edit-on-github="in2code-de/powermail_cleaner"
              typo3-core-preferred="stable"
-             interlink-shortcode="typo3/guide-example-extension-manual"
+             interlink-shortcode="in2code/powermail_cleaner"
   />
-  <project title="&lt;project&gt;"
-           release="&lt;release&gt;"
-           version="&lt;version&gt;"
-           copyright="&lt;copyright&gt;"
-  />
-  <inventory id="t3coreapi"
-             url="https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/"
-  />
-  <inventory id="t3sitepackage"
-             url="https://docs.typo3.org/m/typo3/tutorial-sitepackage/main/en-us/"
-  />
-  <inventory id="t3viewhelper"
-             url="https://docs.typo3.org/other/typo3/view-helper-reference/main/en-us/"
-  />
-  <inventory id="t3upgrade"
-             url="https://docs.typo3.org/m/typo3/guide-installation/main/en-us/"
-  />
-  <inventory id="t3scheduler"
-             url="https://docs.typo3.org/c/typo3/cms-scheduler/10.4/en-us/Index.html"
+  <project title="Powermail Cleaner"
+           version="local"
+           copyright="Copyright 2021 - 2024 in2code GmbH"
   />
 </guides>
