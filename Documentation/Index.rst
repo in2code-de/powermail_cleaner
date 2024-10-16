@@ -43,3 +43,7 @@ Powermail Cleaner
 	:glob:
 
 	Introduction/Index
+  Installation/Index
+  Developer/Index
+  Editor/Index
+  KnownProblems/Index
