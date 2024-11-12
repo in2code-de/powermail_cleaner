@@ -111,6 +111,10 @@
 				<source>Receivers will be informed %s days prior to deletion</source>
 				<target>Empfänger werden %s Tage vor der Löschung benachrichtigt</target>
 			</trans-unit>
+			<trans-unit id="pluginInfo.title" resname="pluginInfo.title">
+				<source>Data protection notice</source>
+				<target>Datenschutz Hinweis</target>
+			</trans-unit>
 			<trans-unit id="pluginInfo.optinVsDbDelete.title" resname="pluginInfo.optinVsDbDelete.title">
 				<source>Configuration error</source>
 				<target>Konfigurationsfehler</target>

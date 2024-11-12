@@ -84,6 +84,9 @@
 			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.period" resname="pluginInfo.informReceiversBeforeDeletion.period">
 				<source>Receivers will be informed %s days prior to deletion</source>
 			</trans-unit>
+			<trans-unit id="pluginInfo.title" resname="pluginInfo.title">
+				<source>Data protection notice</source>
+			</trans-unit>
 			<trans-unit id="pluginInfo.optinVsDbDelete.title" resname="pluginInfo.optinVsDbDelete.title">
 				<source>Configuration error</source>
 			</trans-unit>
