@@ -1,3 +1,13 @@
+..  include:: /Includes.rst.txt
+..  _configuration-typoscript:
+
+TypoScript reference
+====================
+
+Please take care, that you include the typoScript Template for Powermail Cleaner and include it after the settings of Powermail.
+
+This is the default configuration:
+
 plugin.tx_powermail {
     view {
         templateRootPaths {
@@ -15,16 +25,9 @@ plugin.tx_powermail {
     settings.setup.powermail_cleaner_enabled = 1
 }
 
-plugin.tx_powermail_cleaner {
-    settings {
-        reminderMail {
-            from {
-                name = Example
-                address = noreply@example.com
-            }
 
-            subject = Information about e-mails to be deleted
-            template = NotifyReceivers
-        }
-    }
-}
+..  toctree::
+    :maxdepth: 5
+    :titlesonly:
+
+    Setup
