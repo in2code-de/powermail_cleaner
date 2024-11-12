@@ -8,9 +8,9 @@ Installation
 
 (1) Install the extension via Extension Manager (Classic Mode) or require it via composer._installation
 
- ..  code-block:: bash
+..  code-block:: bash
 
-            composer req in2code/powermail_cleaner
+    composer req in2code/powermail_cleaner
 
 Dependencies
 ------------
