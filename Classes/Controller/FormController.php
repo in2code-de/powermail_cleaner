@@ -20,7 +20,7 @@ class FormController extends \In2code\Powermail\Controller\FormController {
 
     public function initializeFormAction()
     {
-        if ((empty($this->settings['powermailCleaner']) || $this->settings['powermailCleaner']['deletionBehavior']==='') && ((int)$this->settings['powermail_cleaner_enabled'] === 1)) {
+       if ((empty($this->settings['powermailCleaner']) || $this->settings['powermailCleaner']['deletionBehavior']==='') && ((int)$this->settings['powermail_cleaner_enabled'] === 1)) {
             $message = GeneralUtility::makeInstance(FlashMessage::class,
                 LocalizationUtility::translate('LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.noCleanerConfiguration.message'),
                 LocalizationUtility::translate('LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.noCleanerConfiguration.title'),
@@ -28,7 +28,7 @@ class FormController extends \In2code\Powermail\Controller\FormController {
                 true
             );
             $flashMessageService = GeneralUtility::makeInstance(FlashMessageService::class);
-            $messageQueue = $flashMessageService->getMessageQueueByIdentifier('powermail');
+            $messageQueue = $flashMessageService->getMessageQueueByIdentifier('extbase.flashmessages.tx_powermail_pi1');
             $messageQueue->addMessage($message);
         }
     }
