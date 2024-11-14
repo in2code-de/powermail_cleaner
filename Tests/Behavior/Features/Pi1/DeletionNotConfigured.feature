@@ -4,4 +4,4 @@ Feature: Data won't be stored
 
   Scenario: Check if AllFields Form is rendered correctly
     Given I am on "plugin-not-configured"
-    Then I should see "Powermail Cleaner configuration is not properly set. Please check plugin configuration."
+    Then I should see "The form cannot be displayed until the necessary data protection information has been added. Please inform the editorial team about this form."
