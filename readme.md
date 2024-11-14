@@ -12,15 +12,29 @@ The features are:
 * inform receivers about upcoming deletions of mails
 * (force) delete old mails including files after a certain period of time vi command or scheduler task 
 
+> :warning: **TYPO3 13 compatibility**\
+> See [EAP page (DE)](https://www.in2code.de/agentur/typo3-extensions/early-access-programm/) or [EAP page (EN)](https://www.in2code.de/en/agency/typo3-extensions/early-access-program/) for more information how to get access to a TYPO3 13 version
+
+## Support
+This TYPO3 Extension is free to use. We as in2code and our developers highly appreciate your feedback and work hard to improve our extensions.
+To do so, in2code provides two extra days per month for coding and developing (Coding Night and Freaky Friday). During these days our more than 20 developers spend their time with improvements and updates for this and other extensions.
+
+You can support our work [here](https://www.in2code.de/extensionsupport).
+
+Thank you very much in advance.
+
+Your in2code Team
+
 
 ## Version Matrix
 
-| Branch     | PM - Cleaner | Powermail    | TYPO3 |
-|------------|--------------|--------------|-------| 
-| master     | 5.0.0        | ^12.0        | ^12.4 |
-| develop-v4 | 4.0.0        | ^10.7        | ^11.5 |
-| develop-v3 | 3.0.0        | ^8.0         | ^10.4 |
-| develop-v2 | 2.0.0        | ^6.2,  ^7.,4 | ^9.5  |
+| Branch | PM - Cleaner | Powermail    | TYPO3 |
+|--------|--------------|--------------|-------| 
+| master | 13           | ^13          | ^13   |
+| v12    | 12.0.0       | ^12.0        | ^12.4 |
+| v4     | 4.0.0        | ^10.7        | ^11.5 |
+| v3     | 3.0.0        | ^8.0         | ^10.4 |
+| v2     | 2.0.0        | ^6.2,  ^7.,4 | ^9.5  |
 
 ## Installation
 
@@ -59,3 +73,6 @@ A ddev based development environment comes with this extension.
 * run `ddev initialize`
 
 and you are set to contribute to this extension
+
+Tests can be run via: `ddev composer run test:behaviour`
+

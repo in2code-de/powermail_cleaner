@@ -16,7 +16,7 @@ Powermail Cleaner
 		powermail cleaner
 
 	:Version:
-		5
+		12
 
 	:Language:
 		en
@@ -42,8 +42,9 @@ Powermail Cleaner
 	:titlesonly:
 	:glob:
 
-	Introduction/Index
+  Introduction/Index
   Installation/Index
   Developer/Index
   Editor/Index
+  Changelog/Index
   KnownProblems/Index
