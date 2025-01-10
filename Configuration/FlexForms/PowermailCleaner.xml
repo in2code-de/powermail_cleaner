@@ -46,7 +46,7 @@
                 <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionPeriod</label>
                 <config>
                     <type>input</type>
-                    <eval>trim,int,required</eval>
+                    <eval>trim,num,required</eval>
                     <default>14</default>
                 </config>
                 <displayCond>
