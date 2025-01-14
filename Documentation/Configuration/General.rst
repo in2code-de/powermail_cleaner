@@ -34,6 +34,7 @@ Use Powermail Cleaner in a disabled state
 
 If you want to prepare your existing forms, you need to prevent, that all warnings in the Frontend are active. There are
 two options to achieve this:
+
 * Do not include the TypoScript Record "Powermail Cleaner Template"
 * Disable the settings via TypoScript (see example below) - this is recommended if you want to activate the functionality parially.
 
