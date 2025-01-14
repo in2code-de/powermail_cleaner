@@ -5,7 +5,7 @@
         <f:if condition="{settings.powermailCleaner.deletionBehavior} == 'deletionDate'">
             <f:variable name="llArgs" value="{0: '{settings.powermailCleaner.deletionDate -> f:format.date(format: \'d.m.Y\')}'}"></f:variable>
         </f:if>
-        <f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior_long.{settings.powermailCleaner.deletionBehavior}" arguments="{llArgs}">deletion</f:translate>
+        <p><f:translate key="LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:pluginInfo.deletionBehavior_long.{settings.powermailCleaner.deletionBehavior}" arguments="{llArgs}">deletion</f:translate></p>
 
         <f:if condition="{settings.powermailCleaner.deletionContact}">
             <f:format.raw>
