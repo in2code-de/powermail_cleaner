@@ -48,6 +48,11 @@
                     <type>input</type>
                     <eval>trim,num,required</eval>
                     <default>14</default>
+                    <range>
+                        <lower>1</lower>
+                        <upper>365</upper>
+                    </range>
+
                 </config>
                 <displayCond>
                     <AND>
