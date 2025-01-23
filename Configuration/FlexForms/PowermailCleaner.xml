@@ -44,15 +44,15 @@
             </settings.flexform.powermailCleaner.deletionBehavior_l10n>
             <settings.flexform.powermailCleaner.deletionPeriod>
                 <label>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionPeriod</label>
+                <description>LLL:EXT:powermail_cleaner/Resources/Private/Language/locallang_db.xlf:deletionPeriod.description</description>
                 <config>
-                    <type>input</type>
-                    <eval>trim,num,required</eval>
+                    <type>number</type>
+                    <eval>trim,required,num</eval>
                     <default>14</default>
                     <range>
                         <lower>1</lower>
-                        <upper>365</upper>
+                        <upper>999</upper>
                     </range>
-
                 </config>
                 <displayCond>
                     <AND>

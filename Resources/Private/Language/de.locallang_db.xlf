@@ -31,6 +31,10 @@
 				<source>Clean-up period (in days)</source>
 				<target>Löschfrist (in Tagen)</target>
 			</trans-unit>
+			<trans-unit id="deletionPeriod.description" resname="deletionPeriod.description">
+				<source>Enter a number of days between 1 and 999.</source>
+				<target>Geben Sie eine Anzahl von Tagen zwischen 1 und 999 ein.</target>
+			</trans-unit>
 			<trans-unit id="deletionDate" resname="deletionDate">
 				<source>Clean-up after the specified date</source>
 				<target>Löschen nach dem angegebenen Datum</target>
