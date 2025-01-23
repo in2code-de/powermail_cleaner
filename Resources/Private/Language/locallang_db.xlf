@@ -76,7 +76,7 @@
 				<source>The data you submitted to this form will be deleted on %s.</source>
 			</trans-unit>
 			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.label">
-				<source>Notificaton of receivers</source>
+				<source> Notification of receivers</source>
 			</trans-unit>
 			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.yes">
 				<source>Yes</source>

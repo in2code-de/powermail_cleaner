@@ -100,7 +100,7 @@
 				<target>Ihre Eingaben in diesem Formular werden am %s gelöscht.</target>
 			</trans-unit>
 			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.label">
-				<source>Notificaton of receivers</source>
+				<source>Notification of receivers</source>
 				<target>Information an E-Mail-Empfänger</target>
 			</trans-unit>
 			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.yes">
