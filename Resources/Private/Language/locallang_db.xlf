@@ -24,6 +24,9 @@
 			<trans-unit id="deletionPeriod" resname="deletionPeriod">
 				<source>Clean-up period (in days)</source>
 			</trans-unit>
+			<trans-unit id="deletionPeriod.description" resname="deletionPeriod.description">
+				<source>Enter a number of days between 1 and 999.</source>
+			</trans-unit>
 			<trans-unit id="deletionDate" resname="deletionDate">
 				<source>Clean-up after the specified date</source>
 			</trans-unit>
@@ -73,7 +76,7 @@
 				<source>The data you submitted to this form will be deleted on %s.</source>
 			</trans-unit>
 			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.label">
-				<source>Notificaton of receivers</source>
+				<source> Notification of receivers</source>
 			</trans-unit>
 			<trans-unit id="pluginInfo.informReceiversBeforeDeletion.yes">
 				<source>Yes</source>
