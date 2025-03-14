@@ -8,14 +8,12 @@ given time period in seconds.
 
 ## Version Matrix
 
-| Branch     | PM - Cleaner | Powermail    | TYPO3 | Purpose                             |
-|------------|--------------|--------------|------|-------------------------------------|
-| master     | 5.0.0        | ^12          | ^12  | Latest stable releases for TYPO3 12 |
-| develop    | 5.0.0        | ^12          | ^12  | Latest development                  |
-| v4         | 4.0.0        | ^10          | ^11 | Stable releases for TYPO3 11        |
-| develop-v4 | 4.0.0        | ^10          | ^11 | Development for TYPO3 11            |
-| develop-v3 | 3.0.0        | ^8.0         | ^10.4 | Development for TYPO3 10            |
-| develop-v2 | 2.0.0        | ^6.2,  ^7.,4 | ^9.5 | Development for TYPO3 9             |
+| Branch | PM - Cleaner | Powermail    | TYPO3 | Purpose                                  |
+|--------|--------------|--------------|-------|------------------------------------------|
+| master | 5.0.0        | ^12          | ^12   | Latest stable releases for TYPO3 12      |
+| v4     | 4.0.0        | ^10          | ^11   | Stable releases for TYPO3 11             |
+| v3     | 3.0.0        | ^8.0         | ^10   | Development for TYPO3 10                 |
+| v2     | 2.0.0        | ^6.2,  ^7.,4 | ^9    | Development for TYPO3 9                  |
 
 ## Installation
 
