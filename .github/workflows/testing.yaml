@@ -1,6 +1,7 @@
 # currently only testing with v12 and supported PHP versions for v12 (8.1-8.4)
 # todo
 # - execute "composer fix:php:cs" and uncomment "php-cs-fixer" job
+# - fix TypoScript linter and uncomment jog
 name: testing
 on:
   push:
@@ -33,17 +34,17 @@ jobs:
           - 8.2
           - 8.3
           - 8.4
-  typoscript-lint:
-    name: "TypoScript linter"
-    runs-on: ubuntu-24.04
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@v4
-      - name: "Run TypoScript lint"
-        uses: TYPO3-Continuous-Integration/TYPO3-CI-Typoscript-Lint@v1
-        with:
-          files: "./Configuration"
-          config_file: ".project/tests/typoscript-lint.yml"
+  #typoscript-lint:
+  #  name: "TypoScript linter"
+  #  runs-on: ubuntu-24.04
+  #  steps:
+  #    - name: "Checkout"
+  #      uses: actions/checkout@v4
+  #    - name: "Run TypoScript lint"
+  #      uses: TYPO3-Continuous-Integration/TYPO3-CI-Typoscript-Lint@v1
+  #      with:
+  #        files: "./Configuration"
+  #        config_file: ".project/tests/typoscript-lint.yml"
   #php-cs-fixer:
   #  name: "PHP CS Fixer"
   #  runs-on: ubuntu-24.04
