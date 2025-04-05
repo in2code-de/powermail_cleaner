@@ -1,0 +1,14 @@
+# tests for v12
+# todo
+# - some phpstan tests will fail due to classes being XCLASSed and the code using the original class, can be explicitly
+#   defined using @var, see Command/CleanupCommand.php
+includes:
+    - phpstan-baseline.neon
+parameters:
+    level: 5
+    tmpDir: ../../.build/var/cache/phpstan
+    paths:
+        - ../../Classes
+    scanDirectories:
+        - ../../.build/vendor/in2code/powermail
+        - ../../.build/vendor/typo3

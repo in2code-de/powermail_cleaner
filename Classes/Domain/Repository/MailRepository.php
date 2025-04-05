@@ -155,7 +155,7 @@ class MailRepository extends \In2code\Powermail\Domain\Repository\MailRepository
 
     /**
      * @param int $mailIdentifier
-     * @return QueryBuilder
+     * @return array
      * @throws Exception
      */
     public function getAnswersWithFiles(int $mailIdentifier): array
