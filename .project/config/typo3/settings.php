@@ -51,6 +51,10 @@ return [
         'powermail_cleaner' => [
             'deleteReferencedFiles' => '1',
         ],
+        'redirects' => [
+            'showCheckIntegrityInfoInReports' => '1',
+            'showCheckIntegrityInfoInReportsSeconds' => '86400',
+        ],
         'scheduler' => [
             'maxLifetime' => '1440',
             'showSampleTasks' => '1',
@@ -58,6 +62,7 @@ return [
         'translate_locallang' => [
             'allowedExts' => '*',
             'allowedFiles' => '',
+            'autoTranslate' => '0',
             'clearCache' => '0',
             'defaultLangKey' => 'en',
             'extFilter' => '*',
@@ -79,8 +84,6 @@ return [
     ],
     'GFX' => [
         'processor' => 'ImageMagick',
-        'processor_allowTemporaryMasksAsPng' => false,
-        'processor_colorspace' => 'sRGB',
         'processor_effects' => true,
         'processor_enabled' => true,
         'processor_path' => '/usr/bin/',
@@ -139,7 +142,6 @@ return [
         'encryptionKey' => 'd38c6c3eba5b63a952a6c91238205abd7fa52e89d4ae98cb66dcd908f0ce441570b26ad56c54417947f2bf09d2897e69',
         'exceptionalErrors' => 4096,
         'features' => [
-            'security.usePasswordPolicyForFrontendUsers' => true,
             'unifiedPageTranslationHandling' => true,
             'yamlImportsFollowDeclarationOrder' => true,
         ],

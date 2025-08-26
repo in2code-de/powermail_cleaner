@@ -1,7 +1,0 @@
-#!/bin/bash
-
-## Description: typo3cms command inside the web container
-## Usage: typo3cms [args]
-## Example: "ddev typo3cms install:setup"
-
-.build/bin/typo3cms "$@"
