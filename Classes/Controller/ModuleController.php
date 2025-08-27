@@ -2,9 +2,7 @@
 declare(strict_types=1);
 namespace In2code\PowermailCleaner\Controller;
 
-use In2code\PowermailCleaner\Domain\Service\CleanupService;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 
 /**
