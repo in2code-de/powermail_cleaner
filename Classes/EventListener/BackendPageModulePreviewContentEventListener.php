@@ -6,16 +6,22 @@ namespace In2code\PowermailCleaner\EventListener;
 
 use In2code\Powermail\Events\BackendPageModulePreviewContentEvent;
 use In2code\PowermailCleaner\Utility\BackendUtility;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\View\ViewFactoryData;
+use TYPO3\CMS\Core\View\ViewFactoryInterface;
 use TYPO3\CMS\Extbase\Configuration\BackendConfigurationManager;
-
-use TYPO3\CMS\Fluid\View\StandaloneView;
 
 final class BackendPageModulePreviewContentEventListener
 {
-    private string $templatePathAndFileName = 'EXT:powermail_cleaner/Resources/Private/Templates/PluginPreview.html';
+    private string $templatePath = 'EXT:powermail_cleaner/Resources/Private/';
+
+    public function __construct(
+        private readonly ViewFactoryInterface $viewFactory,
+        private readonly BackendConfigurationManager $backendConfigurationManager,
+    ) {}
 
     public function __invoke(BackendPageModulePreviewContentEvent $event): void
     {
@@ -31,7 +37,7 @@ final class BackendPageModulePreviewContentEventListener
             );
         }
 
-        if (ArrayUtility::isValidPath($flexforms, 'settings/flexform/powermailCleaner')){
+        if (ArrayUtility::isValidPath($flexforms, 'settings/flexform/powermailCleaner')) {
             $cleanerSettings = $flexforms['settings']['flexform']['powermailCleaner'];
             $cleanerSettings['optin'] = $flexforms['settings']['flexform']['main']['optin'];
 
@@ -41,31 +47,42 @@ final class BackendPageModulePreviewContentEventListener
         }
     }
 
-    protected function getCleanerPreview(array $cleanerConfiguration)
+    protected function getCleanerPreview(array $cleanerConfiguration): string
     {
-        /** @var StandaloneView $standaloneView */
-        $standaloneView = GeneralUtility::makeInstance(StandaloneView::class);
-        $standaloneView->setFormat('html');
-        $standaloneView->setTemplatePathAndFilename($this->templatePathAndFileName);
-        $standaloneView->assignMultiple(
+        $request = $this->getRequest();
+
+        $viewFactoryData = new ViewFactoryData(
+            templateRootPaths: [$this->templatePath . 'Templates/'],
+            partialRootPaths: [$this->templatePath . 'Partials/'],
+            layoutRootPaths: [$this->templatePath . 'Layouts/'],
+            request: $request,
+        );
+
+        $view = $this->viewFactory->create($viewFactoryData);
+        $view->assignMultiple(
             [
                 'deletionBehavior' => $cleanerConfiguration['deletionBehavior'],
                 'deletionDate' => $cleanerConfiguration['deletionDate'] ?? '',
                 'deletionPeriod' => $cleanerConfiguration['deletionPeriod'] ?? '',
                 'informReceiversBeforeDeletion' => $cleanerConfiguration['informReceiversBeforeDeletion'] ?? '',
                 'informReceiversBeforeDeletionPeriod' => $cleanerConfiguration['informReceiversBeforeDeletionPeriod'] ?? '',
-            ],
+            ]
         );
+
         if ('dbDisable' === $cleanerConfiguration['deletionBehavior'] && $cleanerConfiguration['optin'] === '1') {
-            $standaloneView->assign('optinVsDbDelete', true);
+            $view->assign('optinVsDbDelete', true);
         } elseif ('dbDisable' === $cleanerConfiguration['deletionBehavior']) {
-            $backendConfigurationManager = GeneralUtility::makeInstance(BackendConfigurationManager::class);
-            $typoScript = $backendConfigurationManager->getTypoScriptSetup();
+            $typoScript = $this->backendConfigurationManager->getTypoScriptSetup($request);
             if ($typoScript['plugin.']['tx_powermail.']['settings.']['setup.']['main.']['optin'] === '1') {
-                $standaloneView->assign('optinVsDbDelete', true);
+                $view->assign('optinVsDbDelete', true);
             }
         }
 
-        return $standaloneView->render();
+        return $view->render('PluginPreview');
+    }
+
+    private function getRequest(): ServerRequestInterface
+    {
+        return $GLOBALS['TYPO3_REQUEST'];
     }
 }
