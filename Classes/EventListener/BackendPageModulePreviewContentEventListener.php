@@ -21,7 +21,8 @@ final class BackendPageModulePreviewContentEventListener
     public function __construct(
         private readonly ViewFactoryInterface $viewFactory,
         private readonly BackendConfigurationManager $backendConfigurationManager,
-    ) {}
+    ) {
+    }
 
     public function __invoke(BackendPageModulePreviewContentEvent $event): void
     {
@@ -50,11 +51,12 @@ final class BackendPageModulePreviewContentEventListener
     protected function getCleanerPreview(array $cleanerConfiguration): string
     {
         $request = $this->getRequest();
+        $typoScript = $this->backendConfigurationManager->getTypoScriptSetup($request);
 
         $viewFactoryData = new ViewFactoryData(
-            templateRootPaths: [$this->templatePath . 'Templates/'],
-            partialRootPaths: [$this->templatePath . 'Partials/'],
-            layoutRootPaths: [$this->templatePath . 'Layouts/'],
+            templateRootPaths: $typoScript['module.']['tx_powermail_cleaner.']['view.']['templateRootPaths.'] ?? ['EXT:powermail_cleaner/Resources/Private/Templates/'],
+            partialRootPaths: $typoScript['module.']['tx_powermail_cleaner.']['view.']['partialRootPaths.'] ?? ['EXT:powermail_cleaner/Resources/Private/Partials/'],
+            layoutRootPaths: $typoScript['module.']['tx_powermail_cleaner.']['view.']['layoutRootPaths.'] ?? ['EXT:powermail_cleaner/Resources/Private/Layouts/'],
             request: $request,
         );
 
@@ -72,7 +74,6 @@ final class BackendPageModulePreviewContentEventListener
         if ('dbDisable' === $cleanerConfiguration['deletionBehavior'] && $cleanerConfiguration['optin'] === '1') {
             $view->assign('optinVsDbDelete', true);
         } elseif ('dbDisable' === $cleanerConfiguration['deletionBehavior']) {
-            $typoScript = $this->backendConfigurationManager->getTypoScriptSetup($request);
             if ($typoScript['plugin.']['tx_powermail.']['settings.']['setup.']['main.']['optin'] === '1') {
                 $view->assign('optinVsDbDelete', true);
             }
