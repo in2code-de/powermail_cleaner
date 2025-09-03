@@ -12,8 +12,8 @@ Take care that you include the TypoScript Configuration Record in your installat
     :alt: Powermail Cleaner Icon
     :class: float-left with-shadow
 
-Important: Include this settings after the settings of Powermail and ensure that you are not use the key "10" for
-templateRootPaths, partialRootPaths and layoutRootPaths. Otherwise the Cleaner will not work correct in the Frontend.
+Important: Include this settings after the settings of Powermail and ensure that you are not using the key "10" for
+templateRootPaths, partialRootPaths and layoutRootPaths. Otherwise the Cleaner will not work correctly in the Frontend.
 
 
 ..  index::
@@ -36,7 +36,7 @@ If you want to prepare your existing forms, you need to prevent, that all warnin
 two options to achieve this:
 
 * Do not include the TypoScript Record "Powermail Cleaner Template"
-* Disable the settings via TypoScript (see example below) - this is recommended if you want to activate the functionality parially.
+* Disable the settings via TypoScript (see example below) - this is recommended if you want to activate the functionality partially.
 
 ..  code-block:: typoscript
 
@@ -50,7 +50,7 @@ Typical configuration
 Minimal example of TypoScript:
 
 *   Powermail Cleaner adds its settings to the configuration of Powermail.
-*   Below you see the default configuration:
+*   Below you can see the default configuration:
 
 ..  code-block:: typoscript
 
