@@ -12,7 +12,7 @@ Take care that you include the TypoScript Configuration Record in your installat
     :alt: Powermail Cleaner Icon
     :class: float-left with-shadow
 
-Important: Include this settings after the settings of Powermail and ensure that you are not using the key "10" for
+Important: Include these settings after the settings of Powermail and ensure that you are not using the key "10" for
 templateRootPaths, partialRootPaths and layoutRootPaths. Otherwise the Cleaner will not work correctly in the Frontend.
 
 
