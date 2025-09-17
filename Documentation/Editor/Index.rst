@@ -8,18 +8,21 @@ For Editors
 
 How to use the extension powermail cleaner.
 
-The functionality is located in the Plugin Settings of a Powermail Form Plugin at the register "Data protection / Clean-up"
+The functionality is located in the plugin settings of a Powermail form plugin at the register
+"Data protection / Clean-up"
 
 ..  figure:: /Images/Plugin1.png
     :class: with-shadow
     :alt: Backend view
 
-    Default Plugin view
+    Default plugin view
 
-Please choose one of the options in the select box "Clean-up of form data". Depending of your choice options will be shown.Backend
+Please choose one of the options in the select box "Clean-up of form data". Depending on your choice more options
+will be shown.
 
 ..  warning::
-    If you do not select one option, a warning will be shown in the Frontend. If you want to prepare your forms and then active the cleaner functionality, please refer to _configuration_example:
+    If you do not select one option, a warning will be shown in the Frontend. If you want to prepare your forms and
+    then active the cleaner functionality, please refer to _configuration_example:
 
 
 Option 1: Do not store in database
@@ -31,7 +34,7 @@ Option 1: Do not store in database
 
     Screenshot Option 1: "Do not store in database"
 
-If this option is selected, no form answers are stored in the database. This is usefull, if you want to use "just"
+If this option is selected, no form answers are stored in the database. This is useful, if you want to use "just"
 receiving e-mails from the form or if you use customized finishers. Please be aware, that answers can not be restored,
 as they are never saved to the database.
 
