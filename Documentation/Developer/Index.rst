@@ -17,7 +17,7 @@ For example explain how a certain feature was implemented.
 Signals
 =======
 
-Powermail Cleaner uses Signal to perform its opeartions:
+Powermail Cleaner uses Signal to perform its operations:
 
 Powermail: createActionAfterMailDbSaved => This is adding the $pluginUid of the powermail plugin to the mail - then it is possible to build a relation from the mail to the used plugin
 
