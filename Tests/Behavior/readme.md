@@ -41,15 +41,4 @@ Run the following commands in the project root
 
 Then ssh into ddev `ddev ssh` and then run the behat tests via composer
 
-`composer run test:behaviour:ddev`
-
-### "Plain" docker
-
-- Prerequisite: https://github.com/codekitchen/dinghy-http-proxy \
-  This is a local proxy, that enables you to run multiple docker projects in parallel
-- Run `make install-project`
-- Run `make login-php`
-
-In the container run
-
-`composer run test:behaviour:docker`
+`ddev composer run test:behaviour:ddev`
