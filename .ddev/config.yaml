@@ -12,7 +12,7 @@ database:
 hooks:
     post-start:
         - exec: composer install
-host_db_port: "13907"
+host_db_port: "13909"
 use_dns_when_possible: true
 composer_version: "2"
 web_environment:

@@ -5,6 +5,12 @@ Changelog
 =========
 
 -
+      :Version: 13.0.0
+      :Date: 2025-09-25
+      :Changes:
+      * [FEATURE] Support for TYPO3 13
+
+-
       :Version: 12.0.0
       :Date: 2024-11-14
       :Changes:

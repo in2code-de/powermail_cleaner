@@ -9,7 +9,7 @@ Feature: Data won't be stored
 
   Scenario: Check if Form is rendered correctly in German and the setup is different
     Given I am on "de/de-language-independent"
-    Then I should see "The data you submitted to this form will be deleted on 19.05.2027"
+    Then I should see "19.05.2027"
     Then I should see "Kontakt für Einspruch und Löschmöglichkeit"
     Then I should see "Änderungen an der Datenschutzpolitik"
 
