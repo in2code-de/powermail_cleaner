@@ -13,9 +13,9 @@ class CleanupService
     /**
      * @var Connection|null
      */
-    protected $connectionForMails = null;
+    protected ?Connection $connectionForMails = null;
 
-    protected $connectionForAnswers = null;
+    protected ?Connection $connectionForAnswers = null;
 
     public function cleanup($formId, $pluginId, $cleanupConfiguration)
     {
@@ -110,7 +110,7 @@ class CleanupService
             ->from('tx_powermail_domain_model_mail')
             ->where($queryBuilder->expr()->eq('form', $queryBuilder->createNamedParameter($formId)))
             ->andWhere($queryBuilder->expr()->eq('plugin', $queryBuilder->createNamedParameter($pluginId)))
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
     }
 
@@ -128,14 +128,14 @@ class CleanupService
             ->update('tx_powermail_domain_model_mail')
             ->set('deleted', 1)
             ->where($queryBuilder->expr()->in('uid', $uidList))
-            ->execute();
+            ->executeStatement();
 
         $queryBuilder = $connectionForAnswers->createQueryBuilder();
         $queryBuilder
             ->update('tx_powermail_domain_model_answer')
             ->set('deleted',1)
             ->where($queryBuilder->expr()->in('mail', $uidList))
-            ->execute();
+            ->executeStatement();
 
     }
 

@@ -8,7 +8,6 @@ use In2code\Powermail\Events\CheckIfMailIsAllowedToSaveEvent;
 use In2code\PowermailCleaner\Domain\Model\Mail;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Service\FlexFormService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final class CheckIfMailIsAllowedToSaveEventListener
 {

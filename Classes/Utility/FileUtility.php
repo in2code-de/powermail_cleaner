@@ -2,8 +2,6 @@
 
 namespace In2code\PowermailCleaner\Utility;
 
-use DASPRiD\Enum\Exception\CloneNotSupportedException;
-use TYPO3\CMS\Core\Configuration\SiteConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Resource\ResourceStorage;

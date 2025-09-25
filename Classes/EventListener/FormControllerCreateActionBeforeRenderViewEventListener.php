@@ -8,9 +8,7 @@ use In2code\Powermail\Events\FormControllerCreateActionBeforeRenderViewEvent;
 use In2code\Powermail\Utility\HashUtility;
 use In2code\PowermailCleaner\Controller\FormController;
 use In2code\PowermailCleaner\Domain\Model\Mail;
-use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final class FormControllerCreateActionBeforeRenderViewEventListener
 {

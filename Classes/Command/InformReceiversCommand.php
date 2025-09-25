@@ -22,7 +22,6 @@ use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
 
 class InformReceiversCommand extends Command
 {
@@ -33,9 +32,6 @@ class InformReceiversCommand extends Command
     private TimeCalculationService $timeCalculationService;
     private array $receiversList = [];
 
-    /**
-     * @throws InvalidConfigurationTypeException
-     */
     public function __construct(
         private readonly LoggerInterface $logger,
     ) {
@@ -102,9 +98,6 @@ class InformReceiversCommand extends Command
         return $powermailPi1PluginsWithDeletionRestrictions;
     }
 
-    /**
-     * @throws InvalidConfigurationTypeException
-     */
     private function getTypoScriptConfiguration(): array
     {
         $configurationManager = GeneralUtility::makeInstance(ConfigurationManager::class);

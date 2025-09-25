@@ -28,3 +28,19 @@ plugin.tx_powermail_cleaner {
         }
     }
 }
+
+module.tx_powermail_cleaner {
+    view {
+        templateRootPaths {
+            0 = EXT:powermail_cleaner/Resources/Private/Templates/
+        }
+
+        partialRootPaths {
+            0 = EXT:powermail_cleaner/Resources/Private/Partials/
+        }
+
+        layoutRootPaths {
+            0 = EXT:powermail_cleaner/Resources/Private/Layouts/
+        }
+    }
+}
