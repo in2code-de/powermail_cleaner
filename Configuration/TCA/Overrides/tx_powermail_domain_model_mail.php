@@ -22,7 +22,8 @@ $columns = [
             'type' => 'select',
             'renderType' => 'selectSingle',
             'foreign_table' => 'tt_content',
-            'foreign_table_where' => 'and tt_content.deleted = 0 order by tt_content.header',
+            // only fetch selected record since field is readOnly and other options will not be selectable anyway
+            'foreign_table_where' => 'and tt_content.deleted = 0 and tt_content.uid=###REC_FIELD_plugin###',
             'readOnly' => true,
         ],
     ],
