@@ -3,6 +3,13 @@
 
 Changelog
 =========
+-
+      :Version: 13.0.1
+      :Date: 2025-09-26
+      :Changes:
+      * [TASK] CSS-Class for deletionBehavior message
+      * [TASK] Remove conflict with powermailcaptcha in composer.json - thx to speters
+      * [BUGFIX] Change TCA of mail plugin field to fetch less records
 
 -
       :Version: 13.0.0
@@ -10,6 +17,13 @@ Changelog
       :Changes:
       * [FEATURE] Support for TYPO3 13
 
+-
+      :Version: 12.0.1
+      :Date: 2025-09-26
+      :Changes:
+      * [TASK] CSS-Class for deletionBehavior message
+      * [TASK] Remove conflict with powermailcaptcha in composer.json - thx to speters
+      * [BUGFIX] Change TCA of mail plugin field to fetch less records
 -
       :Version: 12.0.0
       :Date: 2024-11-14
