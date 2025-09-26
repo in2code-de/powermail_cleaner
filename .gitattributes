@@ -1,1 +1,5 @@
 *.gz filter=lfs diff=lfs merge=lfs -text
+/.editorconfig export-ignore
+/.github export-ignore
+/.project export-ignore
+/Tests  export-ignore
