@@ -111,9 +111,6 @@
       "typo3/cms-composer-installers": true
     }
   },
-  "conflict": {
-    "traw/powermailcaptcha": "*"
-  },
   "scripts": {
     "post-autoload-dump": [
       "mkdir -p .build/vendor/in2code/",
