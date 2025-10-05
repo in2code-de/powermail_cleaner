@@ -81,14 +81,10 @@
     "friends-of-behat/mink-extension": "^2.7",
     "behat/mink-selenium2-driver": "^1.7",
     "friends-of-behat/mink-browserkit-driver": "^1.6",
-    "drevops/behat-screenshot": "^1.2"
+    "drevops/behat-screenshot": "^1.2",
+    "phpstan/phpstan": "^1.11.7",
+    "saschaegerer/phpstan-typo3": "^1.10.2"
   },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "git@github.com:in2code-pro/powermail.git"
-    }
-  ],
   "autoload": {
     "psr-4": {
       "In2code\\PowermailCleaner\\": "Classes/"
@@ -119,8 +115,11 @@
     "test:behaviour": "behat --config Tests/Behavior/behat.ddev.yml",
     "test:behaviour:tag": "behat --config Tests/Behavior/behat.ddev.yml --tags",
     "test:behaviour:stop": "behat --config Tests/Behavior/behat.ddev.yml --stop-on-failure",
-    "test:php:cs": ".Build/bin/php-cs-fixer --version && .Build/bin/php-cs-fixer fix --dry-run --config=.project/tests/.php-cs-fixer.php --diff",
+    "test:php:cs": ".build/bin/php-cs-fixer --version && .build/bin/php-cs-fixer fix --dry-run --config=.project/tests/.php-cs-fixer.php --diff",
+    "fix:php:cs": ".build/bin/php-cs-fixer --version && .build/bin/php-cs-fixer fix --config=.project/tests/.php-cs-fixer.php --diff",
     "test:php:lint": "find *.php Classes Configuration Tests -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
+    "test:php:phpstan": "phpstan analyse -c .project/tests/phpstan.neon",
+    "test:php:phpstan:generate-baseline": "phpstan analyse -c .project/tests/phpstan.neon --generate-baseline .project/tests/phpstan-baseline.neon",
     "test:typoscript:lint": "typoscript-lint --config=.project/tests/typoscript-lint.yml",
     "test:unit": "phpunit -c phpunit.xml.dist"
   }

@@ -80,6 +80,7 @@ class FileUtility
 
     public static function deleteFromFilesystem(string $identifier, ?ResourceStorage $storage): void
     {
+        $resourceBasePath = '';
         if ($storage instanceof ResourceStorage) {
             $resourceBasePath = $storage->getConfiguration()['basePath'];
         }

@@ -1,0 +1,6 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Static method In2code\\\\PowermailCleaner\\\\Service\\\\TimeCalculationService\\:\\:getTodaysStart\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../Classes/Service/TimeCalculationService.php

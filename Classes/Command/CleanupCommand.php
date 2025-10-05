@@ -25,6 +25,7 @@ class CleanupCommand extends Command
     }
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        /** @var \In2code\PowermailCleaner\Domain\Repository\MailRepository $mailRepository */
         $mailRepository = GeneralUtility::makeInstance(MailRepository::class);
         $mailsToDelete = $mailRepository->findAllDeletionTimeStampOlderThan(time());
         $mails = 0;

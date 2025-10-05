@@ -15,6 +15,9 @@ class TimeCalculationService
         return $notificationLimit;
     }
 
+    /**
+     * @todo Remove? Is not used
+     */
     private static function getTodaysStart(): int
     {
         return strtotime('today', time());

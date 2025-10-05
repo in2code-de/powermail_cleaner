@@ -32,6 +32,7 @@ class ForceCleanupCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        /** @var \In2code\PowermailCleaner\Domain\Repository\MailRepository $mailRepository */
         $mailRepository = GeneralUtility::makeInstance(MailRepository::class);
         // ToDo: calculate timestamp
         $timestamp = (time() - $input->getArgument('Retention days') * 86400);

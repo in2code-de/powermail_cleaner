@@ -41,11 +41,8 @@ class InformReceiversCommand extends Command
     ) {
         parent::__construct();
         $this->powermailCleanerTyposcript = $this->getTypoScriptConfiguration();
-        /** @var MailRepository $mailRepository */
         $this->mailRepository = GeneralUtility::makeInstance(MailRepository::class);
-        /** @var FlexFormService $flexFormService */
         $this->flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
-        /** @var Mail $mail */
         $this->mail = GeneralUtility::makeInstance(Mail::class);
         $this->timeCalculationService = GeneralUtility::makeInstance(TimeCalculationService::class);
     }
@@ -119,7 +116,7 @@ class InformReceiversCommand extends Command
 
     private function findReceivers(array $flexform): array
     {
-        /** @var  ReceiverAddressService $receiverService */
+        /** @var  ReceiverAddressService $addressService */
         $addressService = GeneralUtility::makeInstance(ReceiverAddressService::class, $this->mail, $flexform);
         return $addressService->getReceiverEmails();
     }

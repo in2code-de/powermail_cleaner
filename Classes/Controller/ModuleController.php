@@ -12,15 +12,11 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
  */
 class ModuleController extends \In2code\Powermail\Controller\ModuleController
 {
-    /**
-     * @param int $age
-     * @param int $pid
-     */
     public function cleanupAction(): ResponseInterface
     {
         $age = null;
         $pid = null;
-        
+
         if ($this->request->hasArgument('age')) {
             $age = $this->request->getArgument('age');
         }
