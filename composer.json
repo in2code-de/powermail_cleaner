@@ -111,6 +111,16 @@
       "typo3/cms-composer-installers": true
     }
   },
+  "funding": [
+    {
+      "type": "other",
+      "url": "https://www.in2code.de/supportopensource"
+    },
+    {
+      "type": "github",
+      "url": "https://github.com/orgs/in2code-de/sponsoring"
+    }
+  ],
   "scripts": {
     "post-autoload-dump": [
       "mkdir -p .build/vendor/in2code/",
