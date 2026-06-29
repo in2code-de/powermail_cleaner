@@ -11,15 +11,18 @@ use In2code\PowermailCleaner\Utility\DatabaseUtility;
 use In2code\PowermailCleaner\Service\TimeCalculationService;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mime\Address;
+use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\MailerInterface;
 use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\BackendConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
@@ -34,9 +37,10 @@ class InformReceiversCommand extends Command
 
     public function __construct(
         private readonly LoggerInterface $logger,
+        private readonly BackendConfigurationManager $backendConfigurationManager,
     ) {
         parent::__construct();
-        $this->powermailCleanerTyposcript = $this->getTypoScriptConfiguration();
+
         /** @var MailRepository $mailRepository */
         $this->mailRepository = GeneralUtility::makeInstance(MailRepository::class);
         /** @var FlexFormService $flexFormService */
@@ -48,7 +52,8 @@ class InformReceiversCommand extends Command
 
     protected function configure(): void
     {
-        $this->setHelp('Informs receivers about the deletion of emails');
+        $this->setHelp('Informs receivers about the deletion of emails')
+        ->addArgument('target-page', InputArgument::REQUIRED, 'Must pass target page to fetch TypoScript');
     }
 
     /**
@@ -57,6 +62,13 @@ class InformReceiversCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $targetPage = (int) $input->getArgument('target-page');
+        if ($targetPage < 1) {
+            $output->error('Target page must be greater than 1');
+            return 1;
+        }
+        $this->powermailCleanerTyposcript = $this->getTypoScriptConfiguration($targetPage);
+
         if (empty($this->powermailCleanerTyposcript)) {
             $output->writeln('Powermail Cleaner: TypoScript configuration missing');
             $this->logger->critical('Powermail Cleaner: TypoScript configuration missing');
@@ -98,16 +110,11 @@ class InformReceiversCommand extends Command
         return $powermailPi1PluginsWithDeletionRestrictions;
     }
 
-    private function getTypoScriptConfiguration(): array
+    private function getTypoScriptConfiguration(int $targetPageId): array
     {
-        $configurationManager = GeneralUtility::makeInstance(ConfigurationManager::class);
-        $typoscript = $configurationManager->getConfiguration(
-            ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT
-        );
-        return
-            !empty($typoscript['plugin.']['tx_powermail_cleaner.']['settings.'])
-            ? $typoscript['plugin.']['tx_powermail_cleaner.']['settings.']
-            : [];
+        $request = (new ServerRequest())->withQueryParams(['id' => $targetPageId]);
+        $typoScriptSetup = $this->backendConfigurationManager->getTypoScriptSetup($request);
+        return $typoScriptSetup['plugin.']['tx_powermail_cleaner.']['settings.'] ?? [];
     }
 
     private function findReceivers(array $flexform): array
