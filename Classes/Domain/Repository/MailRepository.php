@@ -23,14 +23,19 @@ class MailRepository extends \In2code\Powermail\Domain\Repository\MailRepository
     /**
      * @throws InvalidQueryException
      */
-    public function findAllDeletionTimeStampOlderThan(int $timestamp): QueryResultInterface
+    public function findAllDeletionTimeStampOlderThan(int $timestamp, bool $includeDeleted = true): QueryResultInterface
     {
         $query = $this->createQuery();
-        $query->getQuerySettings()->setIgnoreEnableFields(true);
+        $query->getQuerySettings()
+            ->setIgnoreEnableFields(true)
+            ->setIncludeDeleted($includeDeleted)
+            ->setRespectStoragePage(false);
+
         $and = [
             $query->lessThan('deletion_timestamp', $timestamp),
             $query->greaterThan('deletion_timestamp', 0),
         ];
+
         $query->matching($query->logicalAnd(...$and));
         return $query->execute();
     }
@@ -177,5 +182,4 @@ class MailRepository extends \In2code\Powermail\Domain\Repository\MailRepository
             ->executeQuery()
             ->fetchAllAssociative();
     }
-
 }
