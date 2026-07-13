@@ -22,10 +22,8 @@ class FormController extends \In2code\Powermail\Controller\FormController {
         return $this->contentObject;
     }
 
-    public function initializeFormAction()
-    {
-       if (abs($this->contentObject->data['sys_language_uid']) > 0)
-       {
+    public function initializeFormAction() {
+       if (abs($this->contentObject->data['sys_language_uid']) > 0) {
            ArrayUtility::mergeRecursiveWithOverrule($this->settings, $this->getParentLocalePowermailCleanerSettings());
        }
 
@@ -42,8 +40,7 @@ class FormController extends \In2code\Powermail\Controller\FormController {
         }
     }
 
-    protected function getParentLocalePowermailCleanerSettings(): array
-    {
+    protected function getParentLocalePowermailCleanerSettings(): array {
         $contentObjectData = $this->contentObject->data ?? [];
         $parentUid = (int)($contentObjectData['l18n_parent'] ?? 0);
 
