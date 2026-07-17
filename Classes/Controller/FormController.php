@@ -67,15 +67,36 @@ class FormController extends \In2code\Powermail\Controller\FormController {
             ->executeQuery()
             ->fetchAssociative();
 
-        if (empty($row['pi_flexform'])) {
+        if (!is_array($row) || empty($row['pi_flexform'])) {
             return [];
         }
 
         $flexFormArray = GeneralUtility::makeInstance(FlexFormService::class)
-            ->convertFlexFormContentToArray($row['pi_flexform']);
+            ->convertFlexFormContentToArray((string)$row['pi_flexform']);
 
-        $settings = $flexFormArray['settings']['flexform']['powermailCleaner'] ?? [];
+        $parentSettings = $flexFormArray['settings']['flexform']['powermailCleaner'] ?? [];
 
-        return is_array($settings) ? $settings : [];
+        if (!is_array($parentSettings)) {
+            return [];
+        }
+
+        /*
+         * Only settings which are intentionally inherited from the
+         * default-language content element.
+         *
+         * Localizable text fields such as deletionDetails must not be included.
+         */
+        $inheritedPropertyNames = [
+            'enabled',
+            'deletionPeriod',
+            'deletionMode',
+        ];
+
+        return [
+            'powermailCleaner' => array_intersect_key(
+                $parentSettings,
+                array_flip($inheritedPropertyNames)
+            ),
+        ];
     }
 }
