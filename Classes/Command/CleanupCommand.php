@@ -7,6 +7,7 @@ use In2code\Powermail\Domain\Repository\MailRepository;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -21,12 +22,22 @@ class CleanupCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setHelp('Use this command to delete mails sent via EXT:powermail');
+            ->setHelp('Use this command to delete mails sent via EXT:powermail')
+            ->addOption(
+                'cleanup-deleted-records',
+                null,
+                InputOption::VALUE_NEGATABLE,
+                'Include soft-deleted powermail records in cleanup',
+                true
+            );
     }
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $mailRepository = GeneralUtility::makeInstance(MailRepository::class);
-        $mailsToDelete = $mailRepository->findAllDeletionTimeStampOlderThan(time());
+        $mailsToDelete = $mailRepository->findAllDeletionTimeStampOlderThan(
+            time(),
+            (bool)$input->getOption('cleanup-deleted-records')
+        );
         $mails = 0;
 
         foreach ($mailsToDelete as $mail) {
