@@ -4,6 +4,13 @@
 Changelog
 =========
 -
+      :Version: 13.0.2
+      :Date: 2026-11-12
+      :Changes:
+      * [BUGFIX] Clean up soft-deleted mail records - thx to TYPOworx GmbH
+      * [BUGFIX] Inherit cleaner settings in translations - thx to TYPOworx GmbH
+
+-
       :Version: 13.0.1
       :Date: 2025-09-26
       :Changes:
